@@ -1,3 +1,5 @@
+<div class="container">
+    
 <form name = "loginform" action = "<?php echo site_url('Guest/login_validation') ?>" method = "post">
 <?php if (isset($message))
     echo "<font color='red'>$message</font><br>";
@@ -8,3 +10,4 @@
 <?php echo form_error("password", "<font color='red'>", "</font>"); ?><br>
     <input type="submit" value="Log in"/>
 </form>
+</div>

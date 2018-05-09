@@ -1,3 +1,5 @@
+<div class="container">
+
 Register:<br><br>
 <form name = "registration_form" action = "<?php echo site_url('Guest/registration_validation') ?>" method = "post">
 <?php if (isset($message))
@@ -23,3 +25,4 @@ Date of birth:<input type="date" name="date_of_birth" value="<?php echo set_valu
 <?php echo form_error("date_of_birth", "<font color='red'>", "</font>"); ?><br>
     <input type="submit" value="Register"/>
 </form>
+</div>

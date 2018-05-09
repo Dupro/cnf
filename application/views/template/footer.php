@@ -1,3 +1,5 @@
+</div>
+
 <footer class="page-footer font-small unique-color-dark pt-0">
 
     
@@ -84,7 +86,7 @@
     <div style="background-color: #6351ce;" class="footer-copyright py-3 text-center">
         © 2018 Copyright:
         <a href="https://mdbootstrap.com/material-design-for-bootstrap/">
-            <strong> Group 6</strong>
+            <strong> Group </strong>
         </a>
     </div>
     <!--/.Copyright -->
