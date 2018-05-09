@@ -15,13 +15,13 @@
  <li class="nav-item">
  <a class="nav-link" href="#">Confereces</a>
  </li>
- 
-
  <li class="nav-item">
- <a class="nav-link" href="#">Login</a>
+     <!-- Button trigger modal -->
+ <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="">Login</a>
  </li>
  <li class="nav-item">
- <a class="nav-link" href="#">Registration</a>
+     <!-- Button trigger modal -->
+ <a class="nav-link" data-toggle="modal" data-target="#exampleModal1" href="">Registration</a>
  </li>
  </ul>
 </nav>
