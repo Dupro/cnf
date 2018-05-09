@@ -20,10 +20,11 @@ class Guest extends CI_Controller{
     
     public function index(){
         $data['pera']="Log in";
-        $this->loadView($data,'forms/login.php' );
-        $this->loadView($data,'forms/registration.php' );
+        $this->load->view("template/header_guest.php", $data);
+        $this->load->view("forms/login.php", $data);
+        $this->load->view("forms/registration.php", $data);
+        $this->load->view("template/footer.php");
     }
-    
     public function login($message=NULL)
     {
         $data=array();
