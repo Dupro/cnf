@@ -1,4 +1,15 @@
 <div class="container">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Registration form</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 
 Register:<br><br>
 <form name = "registration_form" action = "<?php echo site_url('Guest/registration_validation') ?>" method = "post">
@@ -23,6 +34,13 @@ Organisation:<input type="text" name="organisation" value="<?php echo set_value(
 <?php echo form_error("organisation", "<font color='red'>", "</font>"); ?><br>
 Date of birth:<input type="date" name="date_of_birth" value="<?php echo set_value('date_of_birth') ?>"/>
 <?php echo form_error("date_of_birth", "<font color='red'>", "</font>"); ?><br>
-    <input type="submit" value="Register"/>
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-secondary" value="Register"/>
+      </div></form>
+    </div>
+  </div>
+</div>
 </form>
 </div>
