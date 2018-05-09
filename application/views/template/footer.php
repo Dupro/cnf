@@ -86,7 +86,9 @@
     <div style="background-color: #6351ce;" class="footer-copyright py-3 text-center">
         © 2018 Copyright:
         <a href="https://mdbootstrap.com/material-design-for-bootstrap/">
-            <strong> Group </strong>
+        
+                <strong class="misa"> Group </strong>
+         
         </a>
     </div>
     <!--/.Copyright -->
