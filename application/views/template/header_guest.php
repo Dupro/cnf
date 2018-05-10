@@ -11,11 +11,23 @@
  <li class="nav-item ">
      <a class="nav-link" href="<?php echo base_url("index.php"); ?>">Home</a>
  </li>
+  <li class="nav-item">
+ <div class="dropdown">
+ <button type="button" class="btn btn-outline-secondary
+dropdown-toggle" data-toggle="dropdown">
+ Conferences
+ </button>
+ <div class="dropdown-menu">
+ <a class="dropdown-item" href="#">Link 1</a>
+ <a class="dropdown-item" href="#">Link 2</a>
+ <a class="dropdown-item" href="#">Link 3</a>
+ </div>
+</div>
+
+ </li>
  </ul>
     <ul class="nav navbar-nav ml-auto">
- <li class="nav-item">
- <a class="nav-link" href="#">Conferences</a>
- </li>
+
  <li class="nav-item">
      <!-- Button trigger modal -->
  <a class="nav-link" data-toggle="modal" data-target="#LoginModal" href="">Login</a>
