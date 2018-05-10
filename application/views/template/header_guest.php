@@ -1,6 +1,6 @@
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>" />
+<link rel="stylesheet" href="assets/css/style.css">
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark mb-4 py-3">
     <div class="container">
