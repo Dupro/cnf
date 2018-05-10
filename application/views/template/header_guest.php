@@ -27,7 +27,7 @@
  <nav >
   <form class="form-inline">
     
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
   </form>
 </nav>
  </ul>
