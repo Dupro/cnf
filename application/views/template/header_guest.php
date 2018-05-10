@@ -24,12 +24,7 @@
      <!-- Button trigger modal -->
  <a class="nav-link" data-toggle="modal" data-target="#exampleModal1" href="">Registration</a>
  </li>
- <nav >
-  <form class="form-inline">
-    
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
-</nav>
+ 
  </ul>
 </nav>
 
