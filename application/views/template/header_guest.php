@@ -14,7 +14,7 @@
  </ul>
     <ul class="nav navbar-nav ml-auto">
  <li class="nav-item">
- <a class="nav-link" href="#">Confereces</a>
+ <a class="nav-link" href="#">Conferences</a>
  </li>
  <li class="nav-item">
      <!-- Button trigger modal -->
