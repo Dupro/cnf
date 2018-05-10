@@ -82,7 +82,12 @@ class Guest extends CI_Controller {
 
     public function conferenceview() {
         $podaci['info'] = '$info_vesti';
-        $this->loadView($podaci, "main/cnfdetails.php");
+        $this->load->view("template/header_guest.php");
+        $this->load->view("forms/login.php");
+        $this->load->view("forms/registration.php");
+        $this->load->view("main/cnfdetails.php");
+        $this->load->view("template/footer.php");
+
     }
 
 }

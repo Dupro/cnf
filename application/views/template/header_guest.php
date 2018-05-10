@@ -9,7 +9,7 @@
  </a>
  <ul class="navbar-nav">
  <li class="nav-item ">
- <a class="nav-link" href="#">Home</a>
+     <a class="nav-link" href="<?php echo base_url("index.php"); ?>">Home</a>
  </li>
  </ul>
     <ul class="nav navbar-nav ml-auto">
@@ -18,11 +18,11 @@
  </li>
  <li class="nav-item">
      <!-- Button trigger modal -->
- <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="">Login</a>
+ <a class="nav-link" data-toggle="modal" data-target="#LoginModal" href="">Login</a>
  </li>
  <li class="nav-item">
      <!-- Button trigger modal -->
- <a class="nav-link" data-toggle="modal" data-target="#exampleModal1" href="">Registration</a>
+ <a class="nav-link" data-toggle="modal" data-target="#RegistrationModal" href="">Registration</a>
  </li>
  <nav >
   <form class="form-inline">
