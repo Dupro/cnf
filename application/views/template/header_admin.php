@@ -14,7 +14,7 @@
  <a class="nav-link" href="#">My profile</a>
  </li>
  <li class="nav-item">
- <a class="nav-link" href="#">Confereces</a>
+ <a class="nav-link" href="#">Conferences</a>
  </li>
  <li class="nav-item">
  <a class="nav-link" href="#">My conferences</a>
