@@ -6,11 +6,10 @@ class Guest extends CI_Controller {
         parent:: __construct();
         $this->load->model("ModelUser");
         $this->load->model('ModelRegistration');
-//        $this->load->model("ModelVest");
         $this->load->library('session');
         if ($this->session->userdata('user') != NULL)
-//            redirect("User");
-            session_destroy();
+            redirect("User");
+//            session_destroy();
     }
 
     private function loadView($data, $mainPart) {
@@ -81,7 +80,7 @@ class Guest extends CI_Controller {
         }
     }
 
-    function conferenceview() {
+    public function conferenceview() {
         $podaci['info'] = '$info_vesti';
         $this->loadView($podaci, "main/cnfdetails.php");
     }
