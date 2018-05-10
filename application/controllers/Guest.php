@@ -19,7 +19,7 @@ class Guest extends CI_Controller {
     }
 
     public function index() {
-        $data['pera'] = "Log in";
+        $data['controller'] = "Guest";
         $this->load->view("template/header_guest.php", $data);
         $this->load->view("forms/login.php", $data);
         $this->load->view("forms/registration.php", $data);
