@@ -4,6 +4,7 @@ class Guest extends CI_Controller{
     public function __construct() {
         parent:: __construct();
         $this->load->model("ModelUser");
+        $this->load->model('ModelRegistration');
 //        $this->load->model("ModelVest");
         $this->load->library('session');
         if($this->session->userdata('user')!=NULL)
@@ -56,4 +57,31 @@ class Guest extends CI_Controller{
             $this->login();
         
     }
+        public function registerUser(){
+        $this->form_validation->set_rules('username','Username',
+                'required|min_length[6]|max_length[20]');
+        $this->form_validation->set_rules('password','Password','required');
+        $this->form_validation->set_rules('first_name','First_name','required');
+        $this->form_validation->set_rules('last_name','Last_name','required');
+        $this->form_validation->set_rules('phone_number','Phone_number','required');
+        $this->form_validation->set_rules('email','Email','required');
+        $this->form_validation->set_rules('organisation','Organisation','required');
+        if($this->form_validation->run()==FALSE){
+            $this->index();// ne treba redirect jer na refresh treba da proba da opet nesto doda
+        }
+        else{
+            //ispravno
+            $username=$this->input->post("username");
+            $password=$this->input->post("password");
+            $first_name=$this->input->post("first_name");
+            $last_name=$this->input->post("last_name");
+            $phone_number=$this->input->post("phone_number");
+            $email=$this->input->post("email");
+            $organisation=$this->input->post("organisation");
+            $date_of_birth=$this->input->post("date_of_birth");
+            $this->ModelRegistration->register($username, $password, $first_name, $last_name, $phone_number, $email, $organisation, $date_of_birth);
+
+            redirect("User/index");
+        }
+        }
 }

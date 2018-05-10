@@ -20,7 +20,8 @@ class User extends CI_Controller{
     
     public function index(){
         $data['pera']="Log in";
-        $this->load->view("template/header_user.php", $data);
+       $this->load->view("template/header_user.php", $data);
+        $this->load->view("main/guest.php", $data);
         $this->load->view("template/footer.php");
     }
     public function logout(){
