@@ -5,9 +5,9 @@ class Ajaxsearch extends CI_Controller {
 
 	function index()
 	{
-		   
+		   $this->load->view('template/header_guest');
                 $this->load->view('ajaxsearch');
-     
+     $this->load->view('template/footer');
 	}
 
 	function fetch()
