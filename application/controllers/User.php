@@ -6,8 +6,8 @@ class User extends CI_Controller{
         $this->load->model("ModelUser");
 //        $this->load->model("ModelVest");
         $this->load->library('session');
-//        if($this->session->userdata('user')!=NULL)
-//            redirect("User");
+        if($this->session->userdata('user')==NULL)
+            redirect("Guest");
 
     }
     
