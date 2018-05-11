@@ -19,13 +19,21 @@ class User extends CI_Controller{
     }
     
     public function index(){
-        $data['pera']="Log in";
-        $this->load->view("template/header_user.php", $data);
+        $data['controller'] = "User";
+       $this->load->view("template/header_user.php", $data);
+        $this->load->view("main/guest.php", $data);
         $this->load->view("template/footer.php");
     }
     public function logout(){
         $this->session->unset_userdata("User");
         $this->session->sess_destroy();
         redirect("Guest/index");
+    }
+        public function conferenceview() {
+        $podaci['info'] = '$info_vesti';
+        $this->load->view("template/header_user.php");
+        $this->load->view("main/cnfdetails.php");
+        $this->load->view("template/footer.php");
+
     }
 }

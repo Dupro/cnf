@@ -1,6 +1,6 @@
 <div class="container">
 <!-- Modal -->
-<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="RegistrationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -12,7 +12,7 @@
       <div class="modal-body">
 
 
-<form name = "registration_form" action = "<?php echo site_url('Guest/registration_validation') ?>" method = "post">
+<form name = "registration_form" action = "<?php echo site_url('Guest/registerUser') ?>" method = "post">
 <?php if (isset($message))
     echo "<font color='red'>$message</font><br>";
 ?>
@@ -20,8 +20,8 @@
 <?php echo form_error("username", "<font color='red'>", "</font>"); ?>
     Password:<input class="form-control" type="password" name="password"/>
 <?php echo form_error("password", "<font color='red'>", "</font>"); ?>
-Confirm your Password:<input class="form-control" type="password" name="password"/>
-<?php echo form_error("password", "<font color='red'>", "</font>"); ?>
+<!--Confirm your Password:<input class="form-control" type="password" name="password"/>-->
+<?php // echo form_error("password", "<font color='red'>", "</font>"); ?>
 First name:<input class="form-control" type="text" name="first_name" value="<?php echo set_value('first_name') ?>"/>
 <?php echo form_error("first_name", "<font color='red'>", "</font>"); ?>
 Last name:<input class="form-control" type="text" name="last_name" value="<?php echo set_value('last_name') ?>"/>

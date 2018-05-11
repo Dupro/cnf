@@ -1,6 +1,6 @@
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>" />
+<link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
  <a class="navbar-brand" href="#">
@@ -14,7 +14,7 @@
  <a class="nav-link" href="#">My profile</a>
  </li>
  <li class="nav-item">
- <a class="nav-link" href="#">Confereces</a>
+ <a class="nav-link" href="#">Conferences</a>
  </li>
  <li class="nav-item">
  <a class="nav-link" href="#">My conferences</a>
@@ -26,5 +26,5 @@
  
  </ul>
 </nav>
-
+    <div class="container">
 
