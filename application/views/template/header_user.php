@@ -9,7 +9,7 @@
         </a>
         <ul class="navbar-nav">
             <li class="nav-item ">
-                <a class="nav-link" href="<?php echo site_url(); ?>">Home</a>
+                <a class="nav-link" href="<?php echo site_url("User/index"); ?>">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo site_url("User/myProfile"); ?>">My profile</a>
