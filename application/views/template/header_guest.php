@@ -40,11 +40,6 @@ dropdown-toggle" data-toggle="dropdown">
      <a class="nav-link" href="<?php echo site_url("Ajaxsearch/index"); ?>">Search</a>
  </li>
  
- 
-    
-
-  
-
  </ul>
 </nav>
     <div class="container">
