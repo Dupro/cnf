@@ -25,6 +25,8 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <input type="submit" class="btn btn-secondary" value="Log in"/>
       </div></form>
+          <center><b><p>Not registered?</p>
+          <a class="nav-link" data-toggle="modal" data-target="#RegistrationModal" data-dismiss="modal" href="">Register here</a></b></center>
     </div>
   </div>
 </div>
