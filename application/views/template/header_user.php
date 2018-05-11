@@ -20,7 +20,7 @@
                 <a class="nav-link" href="#">Conferences</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Projects</a>
+                <a class="nav-link" href="<?php echo site_url("User/project"); ?>">Projects</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo site_url("User/newProject"); ?>">New project</a>
