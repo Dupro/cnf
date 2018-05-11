@@ -6,8 +6,8 @@
   <li class="list-group-item"><strong>Time:</strong></li>
   <li class="list-group-item"><strong>Receive time:</strong></li>
   <li class="list-group-item"><strong>Area:</strong></li>
-  <li class="list-group-item"><strong>Key word:</strong></li>
-  <li class="list-group-item"><strong>Apstract:</strong></li>
+  <li class="list-group-item"><strong>Key words:</strong></li>
+  <li class="list-group-item"><strong>Abstract:</strong></li>
   
 </ul>
         <button type="button" class="btn btn-secondary">File download</button>
