@@ -7,7 +7,9 @@ class Guest extends CI_Controller {
         $this->load->model("ModelUser");
         $this->load->model('ModelRegistration');
         $this->load->library('session');
-        if ($this->session->userdata('user') != NULL)
+        if ($this->session->userdata('user') != NULL){
+           
+        }
             redirect("User");
 //            session_destroy();
     }
