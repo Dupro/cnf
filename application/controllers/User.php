@@ -43,5 +43,20 @@ class User extends CI_Controller{
         $this->load->view("template/footer.php");
 
     }
+       public function newProject() {
+        $data['controller'] = "User";
+        $this->load->view("template/header_user.php");
+        $this->load->view("main/user_new_project.php");
+        $this->load->view("template/footer.php");
+
+    }
+    public function review() {
+        $data['controller'] = "User";
+        $this->load->view("template/header_user.php");
+        $this->load->view("main/user_review.php");
+        $this->load->view("template/footer.php");
+
+    }
         
+    
 }

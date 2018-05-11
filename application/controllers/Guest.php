@@ -32,7 +32,12 @@ class Guest extends CI_Controller {
         if ($message)
             $data['message'] = $message;
         $data['title_page'] = "Log in";
-        $this->loadView($data, 'forms/login.php');
+        $data['controller'] = "Guest";
+        $this->load->view("template/header_guest.php", $data);
+        $this->load->view("forms/login.php", $data);
+        $this->load->view("forms/registration.php", $data);
+        $this->load->view("main/guest.php", $data);
+        $this->load->view("template/footer.php");
     }
 
     public function login_validation() {

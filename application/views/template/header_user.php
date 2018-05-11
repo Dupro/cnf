@@ -23,10 +23,10 @@
                 <a class="nav-link" href="#">Projects</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">New project</a>
+                <a class="nav-link" href="<?php echo site_url("User/newProject"); ?>">New project</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Review</a>
+                <a class="nav-link" href="<?php echo site_url("User/review"); ?>">Review</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo site_url('User/logout'); ?>">Logout</a>
