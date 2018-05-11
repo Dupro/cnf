@@ -48,6 +48,7 @@ class Guest extends CI_Controller {
             $this->ModelUser->username = $this->input->post('username');
             if (!$this->ModelUser->usernameExist())
                 $this->login("Incorrect username!");
+          
             else if (!$this->ModelUser->correctPassword($this->input->post('password')))
                 $this->login("Incorrect password!");
             else {
