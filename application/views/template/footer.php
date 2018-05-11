@@ -87,7 +87,7 @@
         © 2018 Copyright:
         <a href="https://mdbootstrap.com/material-design-for-bootstrap/">
         
-                <strong class="misa"> Group </strong>
+                <strong class="futerfont"> Group </strong>
          
         </a>
     </div>
