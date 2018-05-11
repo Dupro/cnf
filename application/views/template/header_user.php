@@ -10,7 +10,7 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark mb-4 py-3">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="bird.jpg" alt="Logo" style="width:40px;">
+            <img src="https://www.for-ny.org/wp-content/uploads/2017/04/2017-recovery-conference-logo-276x300.png" alt="Logo" style="width:40px;">
         </a>
         <ul class="navbar-nav">
             <li class="nav-item ">
