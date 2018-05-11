@@ -64,7 +64,7 @@ class User extends CI_Controller{
         $this->load->view("template/footer.php");
 
     }
-<<<<<<< HEAD
+
      public function project() {
         $data['controller'] = "User";
         $this->load->view("template/header_user.php");
@@ -74,9 +74,9 @@ class User extends CI_Controller{
     }
           
    
-=======
+
 
         
     
->>>>>>> e70aa76a59edf0276f785b96897cd82c187ed7e4
+
 }
