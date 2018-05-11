@@ -42,5 +42,12 @@ class ModelUser extends CI_Model {
             return false;
         
     }
+    public function myProfile($username=NULL){
+        if($username!=NULL)
+            $this->db->where("username",$username);
+        $query=$this->db->get('user');
+        $result=$query->result_array();
+        return $result;
+    }
     
 }

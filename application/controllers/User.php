@@ -6,8 +6,8 @@ class User extends CI_Controller{
         $this->load->model("ModelUser");
 //        $this->load->model("ModelVest");
         $this->load->library('session');
-//        if($this->session->userdata('user')!=NULL)
-//            redirect("User");
+        if($this->session->userdata('user')==NULL)
+            redirect("Guest");
 
     }
     
@@ -38,11 +38,18 @@ class User extends CI_Controller{
     }
             public function myProfile() {
         $data['controller'] = "User";
-        $this->load->view("template/header_user.php");
-        $this->load->view("main/user_myprofile.php");
-        $this->load->view("template/footer.php");
+        $idAutor=$this->session->userdata("user")->username;
+        
+        //$pocetni_index=($this->uri->segment(3))?$this->uri->segment(3):0;
+        $vest='';
+        $vesti=$this->ModelUser->myProfile($idAutor);
+        $data['vesti']=$vesti;
+        $this->loadView($data, "main/user_myprofile.php");
 
     }
+
+
+
        public function newProject() {
         $data['controller'] = "User";
         $this->load->view("template/header_user.php");
@@ -57,6 +64,7 @@ class User extends CI_Controller{
         $this->load->view("template/footer.php");
 
     }
+<<<<<<< HEAD
      public function project() {
         $data['controller'] = "User";
         $this->load->view("template/header_user.php");
@@ -66,4 +74,9 @@ class User extends CI_Controller{
     }
           
    
+=======
+
+        
+    
+>>>>>>> e70aa76a59edf0276f785b96897cd82c187ed7e4
 }
