@@ -38,12 +38,11 @@ class User extends CI_Controller{
     }
             public function myProfile() {
         $data['controller'] = "User";
-        $idAutor=$this->session->userdata("user")->username;
+        $idUser=$this->session->userdata("user")->username;
         
-        //$pocetni_index=($this->uri->segment(3))?$this->uri->segment(3):0;
-        $vest='';
-        $vesti=$this->ModelUser->myProfile($idAutor);
-        $data['vesti']=$vesti;
+        $mydata='';
+        $mydata=$this->ModelUser->myProfile($idUser);
+        $data['mydata']=$mydata;
         $this->loadView($data, "main/user_myprofile.php");
 
     }
