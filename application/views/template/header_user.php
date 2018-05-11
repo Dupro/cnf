@@ -12,7 +12,7 @@
                 <a class="nav-link" href="<?php echo site_url(); ?>">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">My profile</a>
+                <a class="nav-link" href="<?php echo site_url("User/myProfile"); ?>">My profile</a>
             </li>
         </ul>
         <ul class="nav navbar-nav ml-auto">
@@ -20,10 +20,10 @@
                 <a class="nav-link" href="#">Conferences</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Radovi</a>
+                <a class="nav-link" href="#">Projects</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Novi rad</a>
+                <a class="nav-link" href="#">New project</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Review</a>

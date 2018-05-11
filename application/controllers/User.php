@@ -30,9 +30,16 @@ class User extends CI_Controller{
         redirect("Guest/index");
     }
         public function conferenceview() {
-        $podaci['info'] = '$info_vesti';
+        $data['controller'] = "User";
         $this->load->view("template/header_user.php");
         $this->load->view("main/cnfdetails.php");
+        $this->load->view("template/footer.php");
+
+    }
+            public function myProfile() {
+        $data['controller'] = "User";
+        $this->load->view("template/header_user.php");
+        $this->load->view("main/user_myprofile.php");
         $this->load->view("template/footer.php");
 
     }

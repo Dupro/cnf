@@ -36,12 +36,10 @@ dropdown-toggle" data-toggle="dropdown">
      <!-- Button trigger modal -->
  <a class="nav-link" data-toggle="modal" data-target="#RegistrationModal" href="">Registration</a>
  </li>
- <nav >
-  <form class="form-inline">
-    
-    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-  </form>
-</nav>
+ <li class="nav-item ">
+     <a class="nav-link" href="<?php echo site_url("Ajaxsearch/index"); ?>">Search</a>
+ </li>
+ 
  </ul>
 </nav>
     <div class="container">
