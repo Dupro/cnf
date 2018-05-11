@@ -43,4 +43,11 @@ class User extends CI_Controller{
         $this->load->view("template/footer.php");
 
     }
+        public function changePass() {
+        $data['controller'] = "User";
+        $this->load->view("template/header_user.php");
+        $this->load->view("forms/changepass.php");
+        $this->load->view("template/footer.php");
+
+    }
 }
