@@ -6,8 +6,8 @@ class User extends CI_Controller{
         $this->load->model("ModelUser");
 //        $this->load->model("ModelVest");
         $this->load->library('session');
-//        if($this->session->userdata('user')!=NULL)
-//            redirect("User");
+        if($this->session->userdata('user')==NULL)
+            redirect("Guest");
 
     }
     
@@ -48,5 +48,23 @@ class User extends CI_Controller{
 
     }
 
+
+
+       public function newProject() {
+        $data['controller'] = "User";
+        $this->load->view("template/header_user.php");
+        $this->load->view("main/user_new_project.php");
+        $this->load->view("template/footer.php");
+
+    }
+    public function review() {
+        $data['controller'] = "User";
+        $this->load->view("template/header_user.php");
+        $this->load->view("main/user_review.php");
+        $this->load->view("template/footer.php");
+
+    }
+
         
+    
 }
