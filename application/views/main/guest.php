@@ -49,6 +49,7 @@
                     <h5 class="card-title"><?php echo $el['title']; ?></h5>
                     <p class="card-text"><?php echo $el['place']; ?></p>
                     <p class="card-text"><?php echo $el['begin']; ?><br/><?php echo $el['end']; ?></p>
+                    <p class="card-text"><?php echo $el['name_field'], $el['name_field']; ?></p>
                     <button type="button" class="btn btn-info">Info</button>
                 </div>
             </div>
