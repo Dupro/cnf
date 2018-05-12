@@ -4,6 +4,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ajaxsearch extends CI_Controller {
 
+    public function __construct() {
+        parent:: __construct();
+        $this->load->model("ModelUser");
+        $this->load->model('ModelRegistration');
+        $this->load->model("Search_model");
+        $this->load->library('session');
+        if ($this->session->userdata('user') != NULL)
+            redirect("User");
+    }
+
     function index() {
         $data['controler'] = 'Guest';
         $this->load->view('template/header_guest');
@@ -16,7 +26,7 @@ class Ajaxsearch extends CI_Controller {
     function fetch() {
         $output = '';
         $query = '';
-        $this->load->model('ajaxsearch_model');
+        $this->load->model('Search_model');
         if ($this->input->post('query')) {
             $query = $this->input->post('query');
         }
