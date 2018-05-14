@@ -7,16 +7,16 @@ class Admin extends CI_Controller{
         $this->load->model('ModelRegistration');
         $this->load->model("Search_model");
         $this->load->library('session');
-        if ($this->session->userdata('user') != NULL){
-            redirect("User");
+        if ($this->session->userdata('user') == NULL){
+            redirect("Guest");
             }
 
     }
   
-    public function loadView(){
+    public function loadView($data, $mainPart){
          $data['controller'] = "Admin";
         $this->load->view("template/header_admin.php", $data);
-        $this->load->view("main/admin_my_conference.php", $data);
+        $this->load->view($mainPart, $data);
         $this->load->view("template/footer.php");
     }
     
@@ -27,10 +27,38 @@ class Admin extends CI_Controller{
         $data['controller'] = "Admin";
        $this->load->view("template/header_admin.php", $data);
         $this->load->view("main/admin.php", $data);
+                $this->load->view("main/admin_my_conference.php", $data);
         $this->load->view("template/footer.php");
     }
   
+        public function myProfile() {
+        $data['controller'] = "Admin";
+        $idUser = $this->session->userdata("user")->username;
+
+        $mydata = '';
+        $mydata = $this->ModelUser->myProfile($idUser);
+        $data['mydata'] = $mydata;
+        $this->loadView($data, "main/user_myprofile.php");
+        
+         $config['upload_path']          = './image/profile/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 1000;
+            $config['max_width']            = 1024;
+            $config['max_height']           = 768;
+            $config['file_name']            = "profile_";
+            
+            $this->load->library('upload', $config);
+            $this->upload->do_upload('slika');
+    }
     
+    
+        public function showImage($idUser){
+        $user=$this->ModelUser->myProfile($idUser);
+        $data['user']=$user;
+        $data['controller']="Admin";
+        $this->loadView($data, "user_myprofile.php");
+    }
+
     
     
        // public function project() {

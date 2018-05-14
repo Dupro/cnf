@@ -13,8 +13,7 @@
             <?php } ?>
 
                     <?php
-                    echo form_error("sadrzaj", '<span style="color:red">', '</span>');
-            echo "<br>";
+             echo form_open_multipart("$controller/addingImage","method=post");
             ?>
         <input type="file" name="image" size="20" /><br>
             <?php
@@ -30,10 +29,7 @@
 
 
 
-                    Password:<input class="form-control" type="password" name="password" />
-                    <?php echo form_error("password", "<font color='red'>", "</font>"); ?>
-                                <!--Confirm your Password:<input class="form-control" type="password" name="password"/>-->
-                                      <?php // echo form_error("password", "<font color='red'>", "</font>");   ?>
+                    
                     First name:<input class="form-control" type="text" name="first_name" value="<?php echo $userdata['first_name']; ?>"/>
                                       <?php echo form_error("first_name", "<font color='red'>", "</font>"); ?>
                     Last name:<input class="form-control" type="text" name="last_name" value="<?php echo $userdata['last_name']; ?>"/>

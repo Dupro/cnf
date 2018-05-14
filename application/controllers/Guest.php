@@ -62,6 +62,7 @@ class Guest extends CI_Controller {
             else if (!$this->ModelUser->correctPassword($this->input->post('password')))
                 $this->login("Incorrect password!");
             else if ($this->ModelUser->coordinatorExist() == TRUE) {
+                $this->session->set_userdata('user', $this->ModelUser);
                 redirect("Admin/index");
             } else {
                 $this->load->library('session');
