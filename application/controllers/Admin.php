@@ -26,7 +26,7 @@ class Admin extends CI_Controller{
 
         $data['controller'] = "Admin";
        $this->load->view("template/header_admin.php", $data);
-        $this->load->view("main/guest.php", $data);
+        $this->load->view("main/admin.php", $data);
         $this->load->view("template/footer.php");
     }
   
