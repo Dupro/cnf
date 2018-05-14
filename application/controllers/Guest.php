@@ -9,9 +9,8 @@ class Guest extends CI_Controller {
         $this->load->model("Search_model");
         $this->load->library('session');
         if ($this->session->userdata('user') != NULL){
-           
-        }
             redirect("User");
+            }
 //            session_destroy();
     }
 
