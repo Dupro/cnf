@@ -20,12 +20,21 @@ class Search_model extends CI_Model {
 
     public function conference() {
         $this->db->from("conference, field, conference_has_field");
-        $this->db->select("conference.title, conference.place,conference.begin, conference.end , field.name_field, "
+        $this->db->select("conference.idconference,conference.title, conference.place,conference.begin, conference.end , field.name_field, "
                 . "conference_has_field.field_idfield,conference_has_field.conference_idconference");
         $this->db->where("conference_has_field.field_idfield=field.idfield and conference_has_field.conference_idconference=conference.idconference  ");
         $this->db->group_by("conference.title");
         $query = $this->db->get();
         return $query->result_array();
+    }
+
+    public function getInfoConf($idconf) {
+
+        $this->db->select("conference.idconference,conference.title, conference.place,conference.begin, conference.end ");
+        $this->db->from("conference");
+        $this->db->where("conference.idconference", $idconf);
+        $query = $this->db->get();
+        return $query->result_array(); //vraca jednu vest
     }
 
 }

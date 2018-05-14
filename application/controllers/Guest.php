@@ -98,11 +98,25 @@ class Guest extends CI_Controller {
     }
 
     public function conferenceview() {
-        $podaci['info'] = '$info_vesti';
+
+        $data['info'] = '$info_vesti';
         $this->load->view("template/header_guest.php");
         $this->load->view("forms/login.php");
         $this->load->view("forms/registration.php");
-        $this->load->view("main/cnfdetails.php");
+        $this->load->view("main/cnfdetails.php", $data);
+        $this->load->view("template/footer.php");
+    }
+
+    public function dataconf($idconf) {
+
+        $datacon = $this->Search_model->getInfoConf($idconf);
+
+
+        $data['confinfo'] = $datacon;
+        $this->load->view("template/header_guest.php");
+        $this->load->view("forms/login.php");
+        $this->load->view("forms/registration.php");
+        $this->load->view("main/cnfdetails.php", $data);
         $this->load->view("template/footer.php");
     }
 

@@ -38,7 +38,7 @@
 <div class="card-deck">
 
     <?php
-    if ($confdata === NULL) {
+    if ($confdata === "") {
         echo "Nema upisanih konferencija u bazi";
     } else {
         foreach ($confdata as $el) {
@@ -50,7 +50,7 @@
                     <p class="card-text"><?php echo $el['place']; ?></p>
                     <p class="card-text"><?php echo $el['begin']; ?><br/><?php echo $el['end']; ?></p>
                     <p class="card-text"><?php echo $el['name_field'], $el['name_field']; ?></p>
-                    <button type="button" class="btn btn-info">Info</button>
+                    <a href="<?php echo site_url("$controller/dataconf/" . $el['idconference']); ?>">Info</a>
                 </div>
             </div>
             <?php

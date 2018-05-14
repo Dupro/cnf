@@ -13,18 +13,14 @@
                     <form name = "loginform" action = "<?php echo site_url('Guest/login_validation') ?>" method = "post">
                         <?php
                         if (isset($message)) {
-                            $show_modal = true;
-                            ?>
-                            <?php if ($show_modal): ?>
-                                <script> $('#LoginModal').modal('show');</script>
-                            <?php endif; ?> <?php
+
                             echo "<font color='red'>$message</font><br>";
                         }
                         ?>
                         Username:<input class="form-control" type="text" name="username" value="<?php echo set_value('username') ?>"/>
                         <?php echo form_error("username", "<font color='red'>", "</font>"); ?><br>
                         Password:<input class="form-control" type="password" name="password"/>
-<?php echo form_error("password", "<font color='red'>", "</font>"); ?><br>
+                        <?php echo form_error("password", "<font color='red'>", "</font>"); ?><br>
 
 
                         </div>
