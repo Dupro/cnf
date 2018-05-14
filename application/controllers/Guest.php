@@ -42,8 +42,6 @@ class Guest extends CI_Controller {
         $data = array();
         if ($message)
             $data['message'] = $message;
-        $conference_data = $this->Search_model->conference();
-        $data['confdata'] = $conference_data;
         $data['title_page'] = "Log in";
         $data['controller'] = "Guest";
         $this->load->view("template/header_guest.php", $data);
@@ -70,7 +68,7 @@ class Guest extends CI_Controller {
                 redirect("User/index");
             }
         } else
-            $this->index();
+            $this->login();
     }
 
     public function registerUser() {
@@ -84,7 +82,7 @@ class Guest extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $this->index(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
         } else {
-            //ispravnoindex
+            //ispravno
             $username = $this->input->post("username");
             $password = $this->input->post("password");
             $first_name = $this->input->post("first_name");
