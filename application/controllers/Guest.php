@@ -8,8 +8,9 @@ class Guest extends CI_Controller {
         $this->load->model('ModelRegistration');
         $this->load->model("Search_model");
         $this->load->library('session');
-        if ($this->session->userdata('user') != NULL)
+        if ($this->session->userdata('user') != NULL) {
             redirect("User");
+        }
 //            session_destroy();
     }
 
@@ -40,8 +41,6 @@ class Guest extends CI_Controller {
         $data = array();
         if ($message)
             $data['message'] = $message;
-        $conference_data = $this->Search_model->conference();
-        $data['confdata'] = $conference_data;
         $data['title_page'] = "Log in";
         $data['controller'] = "Guest";
         $this->load->view("template/header_guest.php", $data);
@@ -62,13 +61,16 @@ class Guest extends CI_Controller {
 
             else if (!$this->ModelUser->correctPassword($this->input->post('password')))
                 $this->login("Incorrect password!");
-            else {
+            else if ($this->ModelUser->coordinatorExist() == TRUE) {
+                $this->session->set_userdata('user', $this->ModelUser);
+                redirect("Admin/index");
+            } else {
                 $this->load->library('session');
                 $this->session->set_userdata('user', $this->ModelUser);
                 redirect("User/index");
             }
         } else
-            $this->index();
+            $this->login();
     }
 
     public function registerUser() {
@@ -82,7 +84,7 @@ class Guest extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $this->index(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
         } else {
-            //ispravnoindex
+            //ispravno
             $username = $this->input->post("username");
             $password = $this->input->post("password");
             $first_name = $this->input->post("first_name");

@@ -1,4 +1,5 @@
 <div class="container">
+
     <!-- Modal -->
     <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

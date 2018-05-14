@@ -49,6 +49,31 @@ class User extends CI_Controller {
         $data['mydata'] = $mydata;
         $this->loadView($data, "main/user_myprofile.php");
     }
+        public function addImage() {
+        $this->loadView(array(), "user_myprofile.php");
+    }
+    public function addingImage(){
+            $userID = $this->session->userdata('user')->iduser;
+            $config['upload_path'] = './image/profile/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 1000;
+            $config['max_width'] = 1024;
+            $config['max_height'] = 768;
+            $config['file_name'] = "profile_".$userID;
+
+            $this->load->library('upload', $config);
+            $this->upload->do_upload('image');
+
+            redirect("User/myProfile");
+    }
+    
+    
+        public function showImage($idUser){
+        $user=$this->ModelUser->myProfile($idUser);
+        $data['user']=$user;
+        $data['controller']="User";
+        $this->loadView($data, "user_myprofile.php");
+    }
 
     public function newProject() {
         $data['controller'] = "User";

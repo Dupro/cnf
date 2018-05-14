@@ -18,5 +18,8 @@
     <div class="form-group">
         <label for="exampleFormControlInput1">Fields:</label>
         <input type="text" class="form-control" id="exampleFormControlInput1" placerequired='Dohvati oblast iz baze'>
+        
     </div>
+    <button type="button" class="btn btn-success">Create</button>
 </div>
+

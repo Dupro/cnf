@@ -1,9 +1,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Home</title>
         <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>" />
         <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
+        <title>Welcome</title>
     </head>
     <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark mb-4 py-3">

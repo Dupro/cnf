@@ -37,7 +37,7 @@ class Ajaxsearch extends CI_Controller {
 						<tr>
 							<th>First name</th>
 							<th>Last name</th>
-
+							<th>Organisation</th>
 						</tr>
 		';
         if ($data->num_rows() > 0) {
@@ -46,7 +46,7 @@ class Ajaxsearch extends CI_Controller {
 						<tr>
 							<td>' . $row->first_name . '</td>
 							<td>' . $row->last_name . '</td>
-							
+							<td>' . $row->organisation . '</td>
 						</tr>
 				';
             }
