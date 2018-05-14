@@ -41,6 +41,8 @@ class Guest extends CI_Controller {
         $data = array();
         if ($message)
             $data['message'] = $message;
+        $conference_data = $this->Search_model->conference();
+        $data['confdata'] = $conference_data;
         $data['title_page'] = "Log in";
         $data['controller'] = "Guest";
         $this->load->view("template/header_guest.php", $data);
