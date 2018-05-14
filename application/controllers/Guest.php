@@ -8,9 +8,9 @@ class Guest extends CI_Controller {
         $this->load->model('ModelRegistration');
         $this->load->model("Search_model");
         $this->load->library('session');
-        if ($this->session->userdata('user') != NULL){
+        if ($this->session->userdata('user') != NULL) {
             redirect("User");
-            }
+        }
 //            session_destroy();
     }
 
@@ -61,7 +61,9 @@ class Guest extends CI_Controller {
 
             else if (!$this->ModelUser->correctPassword($this->input->post('password')))
                 $this->login("Incorrect password!");
-            else {
+            else if ($this->ModelUser->coordinatorExist() == TRUE) {
+                redirect("Admin/index");
+            } else {
                 $this->load->library('session');
                 $this->session->set_userdata('user', $this->ModelUser);
                 redirect("User/index");

@@ -1,7 +1,11 @@
-
-<link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>" />
-<link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
-
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>" />
+        <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
+        <title>Welcome</title>
+    </head>
+    <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark mb-4 py-3">
     <div class="container">
  <a class="navbar-brand" href="#">
