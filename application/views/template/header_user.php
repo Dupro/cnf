@@ -33,6 +33,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo site_url("User/review"); ?>">Review</a>
             </li>
+             <li class="nav-item ">
+     <a class="nav-link" href="<?php echo site_url("Ajaxsearch/index"); ?>">Search</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo site_url('User/logout'); ?>">Logout</a>
             </li>
