@@ -1,10 +1,26 @@
 <h3 style="text-align:center">My profile</h3>
 <h4>Hello: <?php foreach ($mydata as $userdata) {
-    echo $userdata['first_name']; ?> </h4><br>
+    echo $userdata['first_name'];
+   ?> </h4><br>
 <div class="media"> 
 
-
+        <div>
+            <?php if (!file_exists("image/profile/profile_" . $userdata['iduser'] . ".jpg")) { ?>
+                <img class="mr-3" src="<?php echo base_url("image/profile/profile_0.jpg"); ?>" alt="Generic placeholder image"/>
+            <?php } else {
+                ?>
                 <img class="mr-3" src="<?php echo base_url("image/profile/profile_" . $userdata['iduser'] . ".jpg"); ?>" alt="Generic placeholder image"/>
+            <?php } ?>
+
+                    <?php
+                    echo form_error("sadrzaj", '<span style="color:red">', '</span>');
+            echo "<br>";
+            ?>
+        <input type="file" name="image" size="20" /><br>
+            <?php
+            echo form_submit("addimage", "Add image");
+            echo form_close();
+            ?></div>
 
             <div class="media-body">
 
