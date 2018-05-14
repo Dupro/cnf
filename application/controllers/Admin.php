@@ -10,7 +10,7 @@ class Admin extends CI_Controller{
         if ($this->session->userdata('user') != NULL){
             redirect("User");
             }
-//            session_destroy();
+
     }
   
     public function loadView(){
