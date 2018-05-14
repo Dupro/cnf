@@ -9,18 +9,18 @@ class Ajaxsearch extends CI_Controller {
         $this->load->model("ModelUser");
         $this->load->model('ModelRegistration');
         $this->load->model("Search_model");
-        $this->load->library('session');
-        if ($this->session->userdata('user') != NULL)
-            redirect("User");
     }
 
     function index() {
-        $data['controler'] = 'Guest';
-        $this->load->view('template/header_guest');
+
+        $conference_data = $this->Search_model->conference();
+        $data['confdata'] = $conference_data;
+        $data['controller'] = "Guest";
+        $this->load->view("template/header_guest.php", $data);
         $this->load->view("forms/login.php", $data);
         $this->load->view("forms/registration.php", $data);
         $this->load->view('ajaxsearch');
-        $this->load->view('template/footer');
+        $this->load->view("template/footer.php");
     }
 
     function fetch() {
@@ -30,14 +30,15 @@ class Ajaxsearch extends CI_Controller {
         if ($this->input->post('query')) {
             $query = $this->input->post('query');
         }
-        $data = $this->ajaxsearch_model->fetch_data($query);
+        $data = $this->Search_model->fetch_data($query);
         $output .= '
 		<div class="table-responsive">
 					<table class="table table-bordered table-striped">
 						<tr>
-							<th>First name</th>
-							<th>Last name</th>
+							<th>First Name</th>
+							<th>Last Name</th>
 							<th>Organisation</th>
+
 						</tr>
 		';
         if ($data->num_rows() > 0) {
@@ -52,7 +53,7 @@ class Ajaxsearch extends CI_Controller {
             }
         } else {
             $output .= '<tr>
-							<td colspan="5">No Data Found</td>
+							<td colspan="3">No Data Found</td>
 						</tr>';
         }
         $output .= '</table>';

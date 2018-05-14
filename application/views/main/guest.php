@@ -51,7 +51,8 @@
                     <p class="card-text"><?php echo $el['begin']; ?><br/><?php echo $el['end']; ?></p>
 
                     <p class="card-text"><?php echo $el['name_field'], $el['name_field']; ?></p>
-                    <a href="<?php echo site_url("$controller/dataconf/" . $el['idconference']); ?>">Info</a>
+
+                    <button type="button" class="btn btn-info" onclick="window.location.href = '<?php echo site_url("$controller/dataconf/" . $el['idconference']); ?>'">Info</button>
                 </div>
             </div>
             <?php
