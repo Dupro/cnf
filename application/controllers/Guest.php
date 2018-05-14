@@ -6,6 +6,7 @@ class Guest extends CI_Controller {
         parent:: __construct();
         $this->load->model("ModelUser");
         $this->load->model('ModelRegistration');
+        $this->load->model("Search_model");
         $this->load->library('session');
         if ($this->session->userdata('user') != NULL){
            
@@ -15,12 +16,19 @@ class Guest extends CI_Controller {
     }
 
     private function loadView($data, $mainPart) {
+        $data['controller'] = "Guest";
         $this->load->view("template/header_guest.php", $data);
+        $this->load->view("forms/login.php", $data);
+        $this->load->view("forms/registration.php", $data);
+        $this->load->view("main/cnfdetails.php", $data);
         $this->load->view($mainPart, $data);
         $this->load->view("template/footer.php");
     }
 
     public function index() {
+        $conference_data = $this->Search_model->conference();
+        $data['confdata'] = $conference_data;
+
         $data['controller'] = "Guest";
         $this->load->view("template/header_guest.php", $data);
         $this->load->view("forms/login.php", $data);
@@ -30,9 +38,12 @@ class Guest extends CI_Controller {
     }
 
     public function login($message = NULL) {
+
         $data = array();
         if ($message)
             $data['message'] = $message;
+        $conference_data = $this->Search_model->conference();
+        $data['confdata'] = $conference_data;
         $data['title_page'] = "Log in";
         $data['controller'] = "Guest";
         $this->load->view("template/header_guest.php", $data);
@@ -50,6 +61,7 @@ class Guest extends CI_Controller {
             $this->ModelUser->username = $this->input->post('username');
             if (!$this->ModelUser->usernameExist())
                 $this->login("Incorrect username!");
+
             else if (!$this->ModelUser->correctPassword($this->input->post('password')))
                 $this->login("Incorrect password!");
             else {
@@ -58,7 +70,7 @@ class Guest extends CI_Controller {
                 redirect("User/index");
             }
         } else
-            $this->login();
+            $this->index();
     }
 
     public function registerUser() {
@@ -72,7 +84,7 @@ class Guest extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $this->index(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
         } else {
-            //ispravno
+            //ispravnoindex
             $username = $this->input->post("username");
             $password = $this->input->post("password");
             $first_name = $this->input->post("first_name");
@@ -94,7 +106,6 @@ class Guest extends CI_Controller {
         $this->load->view("forms/registration.php");
         $this->load->view("main/cnfdetails.php");
         $this->load->view("template/footer.php");
-
     }
 
 }

@@ -40,6 +40,8 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <input type="submit" class="btn btn-secondary" value="Register"/>
                 </div></form>
+                    <center><b><p>Already registered?</p>
+          <a class="nav-link" data-toggle="modal" data-target="#LoginModal" data-dismiss="modal" href="">Login here</a></b></center>
             </div>
         </div>
     </div>
