@@ -12,7 +12,7 @@ class Ajaxsearch extends CI_Controller {
         $this->load->library('session');
         if ($this->session->userdata('user') == NULL){
         $this->controller="guest";}
-        else if ($this->ModelUser->coordinatorExist()==TRUE){
+        else if ($this->session->userdata('user')->coordinator == "1"){
             $this->controller="admin";
         }
         else {

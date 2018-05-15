@@ -15,16 +15,16 @@
                 </a>
                 <ul class="navbar-nav">
                     <li class="nav-item ">
-                        <a class="nav-link" href="<?php echo site_url("$controller/index"); ?>">Home</a>
+                        <a class="nav-link" href="<?php echo site_url("Admin/index"); ?>">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url("$controller/myProfile"); ?>">My profile</a>
+                        <a class="nav-link" href="<?php echo site_url("Admin/myProfile"); ?>">My profile</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav ml-auto">
                    
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url("User/index"); ?>">Conferences</a>
+                        <a class="nav-link" href="<?php echo site_url("Admin/index"); ?>">Conferences</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url("Admin/loadView"); ?>">My conferences</a>
