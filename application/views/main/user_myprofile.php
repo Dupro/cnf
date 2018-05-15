@@ -46,12 +46,12 @@
 
                 <div class="modal-footer">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePasssword">
                         Change password
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="changePasssword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -61,16 +61,23 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    Old password:<input class="form-control" type="password" name="password"/>
+                                    <?php
+                                    echo form_open("User/changePwd", "method=post");
+                                    echo validation_errors();
+                                    ?>
+                                    Old password:<input class="form-control" type="password" name="opassword"/>
                                     <?php echo form_error("password", "<font color='red'>", "</font>"); ?>
-                                    New password:<input class="form-control" type="password" name="password"/>
+                                    New password:<input class="form-control" type="password" name="npassword"/>
                                     <?php echo form_error("password", "<font color='red'>", "</font>"); ?>
-                                    Re-enter password:<input class="form-control" type="password" name="password"/>
-    <?php echo form_error("password", "<font color='red'>", "</font>"); ?>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                    Re-enter password:<input class="form-control" type="password" name="cpassword"/>
+                                    <?php echo form_error("password", "<font color='red'>", "</font>"); ?>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <input type="submit" class="btn btn-primary" value="Save changes">
+                                    <?php
+                                    echo form_close();
+                                    ?>
                             </div>
                         </div>
                     </div>

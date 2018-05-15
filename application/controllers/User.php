@@ -49,7 +49,31 @@ class User extends CI_Controller {
         $data['mydata'] = $mydata;
         $this->loadView($data, "main/user_myprofile.php");
     }
-        public function addImage() {
+
+    public function changePwd() {
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules('opassword','Old Password','required|trim|xss_clean|callback_change');
+        $this->form_validation->set_rules('npassword','New Password','required|trim');
+        $this->form_validation->set_rules('cpassword','Confirm Password','required|trim|matches[npassword]');
+        
+        if ($this->form_validation->run() != true) {
+            $this->load->view('settings');}
+            else{
+            $this->ModelUser->change($sql);
+            foreach ($sql->result() as $my_info) {
+
+            $db_password = $my_info->password;
+            $db_id = $my_info->iduser;
+        }
+        if($this->input->post('opassword') == $db_password){
+            $fixed_pw = $this->input->post('npassword');
+            $this->ModelUser->changePush($fixed_pw);
+        
+        }
+            }
+    }
+
+    public function addImage() {
         $this->loadView(array(), "user_myprofile.php");
     }
     public function addingImage(){
