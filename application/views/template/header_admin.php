@@ -29,7 +29,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url("Admin/loadView"); ?>">My conferences</a>
                     </li>
-                   
+                   <li class="nav-item ">
+                        <a class="nav-link" href="<?php echo site_url("Ajaxsearch/index"); ?>">Search</a>
+                    </li>
                     
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url('User/logout'); ?>">Logout</a>
