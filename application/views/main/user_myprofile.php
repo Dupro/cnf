@@ -43,12 +43,11 @@
                     Date of birth:<input class="form-control" type="date" name="date_of_birth" value="<?php echo $userdata['date_of_birth'];
         } ?>"/>
     <?php echo form_error("date_of_birth", "<font color='red'>", "</font>"); ?>
-
+                    <br>
+                    
                 <div class="modal-footer">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePasssword">
-                        Change password
-                    </button>
+                    <a class="btn btn-primary" href="<?php echo site_url('ControllerChangePassword'); ?>">Change your password</a>
 
                     <!-- Modal -->
                     <div class="modal fade" id="changePasssword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

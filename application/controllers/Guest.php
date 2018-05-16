@@ -96,7 +96,6 @@ class Guest extends CI_Controller {
             $organisation = $this->input->post("organisation");
             $date_of_birth = $this->input->post("date_of_birth");
             $this->ModelRegistration->register($username, $password, $first_name, $last_name, $phone_number, $email, $organisation, $date_of_birth);
-
             redirect("User/index");
         }
     }
