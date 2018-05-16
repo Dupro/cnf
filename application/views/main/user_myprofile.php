@@ -9,13 +9,13 @@
                 <img class="mr-3" src="<?php echo base_url("image/profile/profile_0.jpg"); ?>" alt="Generic placeholder image"/>
             <?php } else {
                 ?>
-                <img class="mr-3" src="<?php echo base_url("image/profile/profile_" . $userdata['iduser'] . ".jpg"); ?>" alt="Generic placeholder image"/>
+                <img class="mr-3" src="<?php echo base_url("image/profile/profile_" . $userdata['iduser'] . ".jpg"); ?>" width="256" height="256" alt="Generic placeholder image"/>
             <?php } ?>
 
                     <?php
              echo form_open_multipart("$controller/addingImage","method=post");
             ?>
-        <input type="file" name="image" size="20" /><br>
+                <input type="file" name="image" size="20"/><br>
             <?php
             echo form_submit("addimage", "Add image");
             echo form_close();
