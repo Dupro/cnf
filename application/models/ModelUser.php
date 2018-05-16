@@ -54,13 +54,6 @@ class ModelUser extends CI_Model {
         
     }
     
-    public function change($sql) {
-        $sql = $this->db->select('*')->from('user')->where('username', $this->session->userdata('username'))->get();
-        }
-        public function changePush($fixed_pw){
-            $this->db->query("Update 'users' SET 'password'='$fixed_pw' WHERE 'iduser'='$db_id'")or die(mysql_error());
-        }
-    
 
     public function myProfile($username=NULL){
         if($username!=NULL)
