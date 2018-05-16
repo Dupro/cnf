@@ -8,12 +8,12 @@
     <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark mb-4 py-3">
     <div class="container">
- <a class="navbar-brand" href="#">
- <img src="https://www.for-ny.org/wp-content/uploads/2017/04/2017-recovery-conference-logo-276x300.png" alt="Logo" style="width:40px;">
+ <a class="navbar-brand" href="<?php echo site_url("Guest/index"); ?>">
+ <img src="https://www.for-ny.org/wp-content/uploads/2017/04/2017-recovery-conference-logo-276x300.png" alt="Logo" style="width:40px;" >
  </a>
  <ul class="navbar-nav">
  <li class="nav-item ">
-     <a class="nav-link" href="<?php echo base_url("index.php"); ?>">Home</a>
+     <a class="nav-link" href="<?php echo site_url("Guest/index"); ?>">Home</a>
  </li>
   <li class="nav-item">
  <div class="dropdown">
