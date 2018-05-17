@@ -10,6 +10,7 @@ class Admin extends CI_Controller{
         if ($this->session->userdata('user') == NULL){
             redirect("Guest");
             }
+        $this->session->flashdata('successPW');
 
     }
   
@@ -33,6 +34,7 @@ class Admin extends CI_Controller{
   
         public function myProfile() {
         $data['controller'] = "Admin";
+        $data['successPW'] = $this->session->flashdata('successPW');
         $idUser = $this->session->userdata("user")->username;
 
         $mydata = '';

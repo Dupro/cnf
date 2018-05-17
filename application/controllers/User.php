@@ -10,6 +10,8 @@ class User extends CI_Controller {
         $this->load->library('session');
         if ($this->session->userdata('user') == NULL)
             redirect("Guest");
+        $this->session->flashdata('successPW');
+//        print_r($this->session->flashdata('successPW'));
     }
 
     private function loadView($data, $mainPart) {
@@ -42,8 +44,9 @@ class User extends CI_Controller {
 
     public function myProfile() {
         $data['controller'] = "User";
+        $data['successPW'] = $this->session->flashdata('successPW');
         $idUser = $this->session->userdata("user")->username;
-
+        
         $mydata = '';
         $mydata = $this->ModelUser->myProfile($idUser);
         $data['mydata'] = $mydata;

@@ -50,7 +50,9 @@ class ControllerChangePassword extends CI_Controller {
             //ispravno
             $npassword = $this->input->post("npassword");
             $this->ModelChangePassword->updateNewPassword($iduser, $username, $npassword);
+            $this->session->set_flashdata('successPW', 'You have successfully changed your password!');
             redirect('User/myProfile');
+            
         }
     }
 
