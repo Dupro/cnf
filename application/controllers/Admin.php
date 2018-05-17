@@ -36,7 +36,7 @@ class Admin extends CI_Controller {
     public function index() {
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
-
+        $data['controller'] = "Admin";
         
         $this->load->view("template/header_" . $this->controller . ".php", $data);
         $this->load->view("main/admin.php", $data);
@@ -77,12 +77,21 @@ class Admin extends CI_Controller {
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
 
-     
+        $data['controller'] = "Admin";
         $data['info'] = '$info_vesti';
         $this->load->view("template/header_" . $this->controller . ".php", $data);
         $this->load->view("forms/login.php");
         $this->load->view("forms/registration.php");
         $this->load->view("main/guest.php", $data);
+        $this->load->view("template/footer.php");
+    }
+    public function conferenceview() {
+
+        $data['info'] = '$info_vesti';
+        $this->load->view("template/header_" . $this->controller . ".php", $data);
+        $this->load->view("forms/login.php");
+        $this->load->view("forms/registration.php");
+        $this->load->view("main/cnfdetails.php", $data);
         $this->load->view("template/footer.php");
     }
 
