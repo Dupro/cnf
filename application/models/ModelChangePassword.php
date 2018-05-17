@@ -7,9 +7,7 @@ class ModelChangePassword extends CI_Model {
         $this->load->database();
     }
     
-    public function checkOldPassword($iduser, $username, $opassword){
-        $this->db->where('iduser', $iduser);
-        $this->db->where('username', $username);
+    public function checkOldPassword($opassword){
         $this->db->where('password',$opassword);
         $result=$this->db->get('user');
         if($result->result())
