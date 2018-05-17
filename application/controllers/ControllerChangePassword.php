@@ -19,8 +19,8 @@ class ControllerChangePassword extends CI_Controller {
 
     }
 
-    public function index() {
-        $data = array();
+    public function index($message = NULL) {
+            $data['message'] = $message;
         $this->load->view("template/header_" . $this->controller . ".php", $data);
         $this->load->view('forms/change_password', $data);
         $this->load->view("template/footer.php");
@@ -41,12 +41,10 @@ class ControllerChangePassword extends CI_Controller {
             $this->index(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
         } 
         else if (!$this->ModelChangePassword->checkOldPassword($iduser, $username, $this->input->post('opassword'))) {
-            $this->index();
-            echo "Incorrect password!";
+            $this->index("Incorrect password!");
         }
         else if ($this->input->post('opassword') == $this->input->post('npassword')) {
-            $this->index();
-            echo "You can't enter the same password like your old one!";
+            $this->index("You can't enter the same password like your old one!");
         }
         else {
             //ispravno
