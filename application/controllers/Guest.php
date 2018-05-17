@@ -27,6 +27,7 @@ class Guest extends CI_Controller {
 
     public function index() {
         $config['base_url'] = base_url() . 'Guest/index';
+
 //        $config['total_rows'] = $this->db->count_all('conferences');
         $config['per_page'] = 20;
         $config['uri_segment'] = 3;
@@ -84,7 +85,7 @@ class Guest extends CI_Controller {
 
     public function registerUser() {
         $this->form_validation->set_rules('username', 'Username', 'required|min_length[6]|max_length[20]');
-        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[12]|alpha_numeric|password_check[1,1,1,1]');
         $this->form_validation->set_rules('first_name', 'First_name', 'required');
         $this->form_validation->set_rules('last_name', 'Last_name', 'required');
         $this->form_validation->set_rules('phone_number', 'Phone_number', 'required');
