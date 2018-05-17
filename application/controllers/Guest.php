@@ -4,6 +4,7 @@ class Guest extends CI_Controller {
 
     public function __construct() {
         parent:: __construct();
+       
         $this->load->model("ModelUser");
         $this->load->model('ModelRegistration');
         $this->load->model("Search_model");
@@ -15,7 +16,7 @@ class Guest extends CI_Controller {
     }
 
     private function loadView($data, $mainPart) {
-        $data['controller'] = "Guest";
+       
         $this->load->view("template/header_guest.php", $data);
         $this->load->view("forms/login.php", $data);
         $this->load->view("forms/registration.php", $data);
@@ -28,7 +29,7 @@ class Guest extends CI_Controller {
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
 
-        $data['controller'] = "Guest";
+       
         $this->load->view("template/header_guest.php", $data);
         $this->load->view("forms/login.php", $data);
         $this->load->view("forms/registration.php", $data);
@@ -44,7 +45,6 @@ class Guest extends CI_Controller {
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
         $data['title_page'] = "Log in";
-        $data['controller'] = "Guest";
         $this->load->view("template/header_guest.php", $data);
         $this->load->view("forms/login.php", $data);
         $this->load->view("forms/registration.php", $data);
@@ -113,8 +113,6 @@ class Guest extends CI_Controller {
     public function dataconf($idconf) {
 
         $datacon = $this->Search_model->getInfoConf($idconf);
-
-
         $data['confinfo'] = $datacon;
         $this->load->view("template/header_guest.php");
         $this->load->view("forms/login.php");

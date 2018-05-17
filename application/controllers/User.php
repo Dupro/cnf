@@ -8,12 +8,17 @@ class User extends CI_Controller {
         $this->load->model("Search_model");
 //        $this->load->model("ModelVest");
         $this->load->library('session');
-        if ($this->session->userdata('user') == NULL)
-            redirect("Guest");
+       if ($this->session->userdata('user') == NULL){
+        $this->controller="guest";}
+        else if ($this->session->userdata('user')->coordinator == "1"){
+            $this->controller="admin";
+        }
+        else {
+        $this->controller="user";}
     }
 
     private function loadView($data, $mainPart) {
-        $this->load->view("template/header_user.php", $data);
+        $this->load->view("template/header_".$this->controller.".php", $data);
         $this->load->view($mainPart, $data);
         $this->load->view("template/footer.php");
     }
@@ -22,7 +27,7 @@ class User extends CI_Controller {
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
         $data['controller'] = "User";
-        $this->load->view("template/header_user.php", $data);
+        $this->load->view("template/header_".$this->controller.".php", $data);
         $this->load->view("main/guest.php", $data);
         $this->load->view("template/footer.php");
     }
@@ -35,7 +40,7 @@ class User extends CI_Controller {
 
     public function conferenceview() {
         $data['controller'] = "User";
-        $this->load->view("template/header_user.php");
+        $this->load->view("template/header_".$this->controller.".php", $data);
         $this->load->view("main/cnfdetails.php");
         $this->load->view("template/footer.php");
     }
@@ -79,21 +84,21 @@ class User extends CI_Controller {
 
     public function newProject() {
         $data['controller'] = "User";
-        $this->load->view("template/header_user.php");
+        $this->load->view("template/header_".$this->controller.".php", $data);
         $this->load->view("main/user_new_project.php");
         $this->load->view("template/footer.php");
     }
 
     public function review() {
         $data['controller'] = "User";
-        $this->load->view("template/header_user.php");
+        $this->load->view("template/header_".$this->controller.".php", $data);
         $this->load->view("main/user_review.php");
         $this->load->view("template/footer.php");
     }
 
     public function project() {
         $data['controller'] = "User";
-        $this->load->view("template/header_user.php");
+        $this->load->view("template/header_".$this->controller.".php", $data);
         $this->load->view("main/user_project.php");
         $this->load->view("template/footer.php");
     }
@@ -104,7 +109,7 @@ class User extends CI_Controller {
 
 
         $data['confinfo'] = $datacon;
-        $this->load->view("template/header_guest.php");
+        $this->load->view("template/header_".$this->controller.".php", $data);
         $this->load->view("forms/login.php");
         $this->load->view("forms/registration.php");
         $this->load->view("main/cnfdetails.php", $data);
@@ -116,7 +121,7 @@ class User extends CI_Controller {
 
         $data['controller'] = "User";
         $data['info'] = '$info_vesti';
-        $this->load->view("template/header_user.php");
+        $this->load->view("template/header_".$this->controller.".php", $data);
         $this->load->view("forms/login.php");
         $this->load->view("forms/registration.php");
         $this->load->view("main/guest.php", $data);
