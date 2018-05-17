@@ -28,7 +28,7 @@ class Guest extends CI_Controller {
     public function index() {
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
-
+        $data['controller'] = "Guest";
        
         $this->load->view("template/header_guest.php", $data);
         $this->load->view("forms/login.php", $data);
