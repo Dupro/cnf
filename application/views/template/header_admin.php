@@ -22,13 +22,13 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav ml-auto">
-                   
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url("Admin/index"); ?>">Conferences</a>
+                   <li class="nav-item">
+                        <a class="nav-link" href="<?php echo site_url("Admin/index"); ?>">My conferences</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url("Admin/loadView"); ?>">My conferences</a>
+                        <a class="nav-link" href="<?php echo site_url("Admin/conferenceview"); ?>">Conferences</a>
                     </li>
+                    
                    <li class="nav-item ">
                         <a class="nav-link" href="<?php echo site_url("Ajaxsearch/index"); ?>">Search</a>
                     </li>
