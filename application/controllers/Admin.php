@@ -59,7 +59,7 @@ class Admin extends CI_Controller{
         $this->loadView($data, "user_myprofile.php");
     }
 
-    public function conferenceview() {
+    public function conferences() {
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
 

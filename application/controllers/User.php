@@ -110,5 +110,17 @@ class User extends CI_Controller {
         $this->load->view("main/cnfdetails.php", $data);
         $this->load->view("template/footer.php");
     }
+    public function conferences() {
+        $conference_data = $this->Search_model->conference();
+        $data['confdata'] = $conference_data;
+
+        $data['controller'] = "User";
+        $data['info'] = '$info_vesti';
+        $this->load->view("template/header_user.php");
+        $this->load->view("forms/login.php");
+        $this->load->view("forms/registration.php");
+        $this->load->view("main/guest.php", $data);
+        $this->load->view("template/footer.php");
+    }
 
 }

@@ -26,7 +26,7 @@
                         <a class="nav-link" href="<?php echo site_url("Admin/index"); ?>">My conferences</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url("Admin/conferenceview"); ?>">Conferences</a>
+                        <a class="nav-link" href="<?php echo site_url("Admin/conferences"); ?>">Conferences</a>
                     </li>
                     
                    <li class="nav-item ">
