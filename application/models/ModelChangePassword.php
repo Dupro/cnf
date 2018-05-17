@@ -16,10 +16,10 @@ class ModelChangePassword extends CI_Model {
             return false;
     }
     
-    public function updateNewPassword($npassword){
-//        $this->db->where('username', $username);
+    public function updateNewPassword($iduser, $username, $npassword){
+        $this->db->where('iduser', $iduser);
+        $this->db->where('username', $username);
         $this->db->set('password', $npassword);
-         $this->db->update("user");
-        
+        $this->db->update('user');
     }
 }

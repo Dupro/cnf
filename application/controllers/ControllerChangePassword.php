@@ -48,8 +48,10 @@ class ControllerChangePassword extends CI_Controller {
             }
             else {
             //ispravno
+            $iduser= $this->session->userdata('user')->iduser;
+            $username= $this->session->userdata('user')->username;
             $npassword = $this->input->post("npassword");
-            $this->ModelChangePassword->updateNewPassword($npassword);
+            $this->ModelChangePassword->updateNewPassword($iduser, $username, $npassword);
             redirect('User/myProfile');
 
             }
