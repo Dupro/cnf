@@ -40,7 +40,7 @@
     </select>
   </div>
     <div class="form-group">
-        <label for="exampleFormControlTextarea1">Apstract</label>
+        <label for="exampleFormControlTextarea1">Abstract</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
 </form>
