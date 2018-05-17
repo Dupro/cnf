@@ -47,6 +47,7 @@
                     
                 <div class="modal-footer">
                     <!-- Button trigger modal -->
+                    <?php echo "<font color='blue'>".$successPW."</font>"; ?>
                     <a class="btn btn-primary" href="<?php echo site_url('ControllerChangePassword'); ?>">Change your password</a>
 
                     <!-- Modal -->
