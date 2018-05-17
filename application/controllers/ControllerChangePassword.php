@@ -16,6 +16,7 @@ class ControllerChangePassword extends CI_Controller {
         } else {
             $this->controller = "user";
         }
+
     }
 
     public function index() {
@@ -26,6 +27,8 @@ class ControllerChangePassword extends CI_Controller {
     }
 
     public function changePW($message = NULL) {
+        $iduser = $this->session->userdata('user')->iduser;
+        $username = $this->session->userdata('user')->username;
         $data = array();
         if ($message)
             $data['message'] = $message;
@@ -36,24 +39,21 @@ class ControllerChangePassword extends CI_Controller {
         $this->form_validation->set_message("matches[npassword]", "Field {field} does not match new password.");
         if ($this->form_validation->run() == FALSE) {
             $this->index(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
-            } 
-            else if (!$this->ModelChangePassword->checkOldPassword($this->input->post('opassword'))){
-                $this->index();
+        } 
+        else if (!$this->ModelChangePassword->checkOldPassword($iduser, $username, $this->input->post('opassword'))) {
+            $this->index();
             echo "Incorrect password!";
-            
-            }
-            else if($this->input->post('opassword')==$this->input->post('npassword')){
-                $this->index();
-                echo "You can't enter the same password like your old one!";
-            }
-            else {
+        }
+        else if ($this->input->post('opassword') == $this->input->post('npassword')) {
+            $this->index();
+            echo "You can't enter the same password like your old one!";
+        }
+        else {
             //ispravno
-            $iduser= $this->session->userdata('user')->iduser;
-            $username= $this->session->userdata('user')->username;
             $npassword = $this->input->post("npassword");
             $this->ModelChangePassword->updateNewPassword($iduser, $username, $npassword);
             redirect('User/myProfile');
-
-            }
+        }
     }
+
 }
