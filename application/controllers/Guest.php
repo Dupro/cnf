@@ -27,7 +27,7 @@ class Guest extends CI_Controller {
 
     public function index() {
         $config['base_url'] = base_url() . 'Guest/index';
-        $config['total_rows'] = $this->db->count_all('conferences');
+//        $config['total_rows'] = $this->db->count_all('conferences');
         $config['per_page'] = 20;
         $config['uri_segment'] = 3;
         
@@ -103,6 +103,7 @@ class Guest extends CI_Controller {
             $organisation = $this->input->post("organisation");
             $date_of_birth = $this->input->post("date_of_birth");
             $this->ModelRegistration->register($username, $password, $first_name, $last_name, $phone_number, $email, $organisation, $date_of_birth);
+            $this->session->set_userdata('user', $this->ModelUser);
             redirect("User/index");
         }
     }
