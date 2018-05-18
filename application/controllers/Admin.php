@@ -54,21 +54,38 @@ class Admin extends CI_Controller {
         $mydata = $this->ModelUser->myProfile($idUser);
         $data['mydata'] = $mydata;
         $this->loadView($data, "main/user_myprofile.php");
+        
+    }
+        public function addImage() {
+        $this->loadView(array(), "user_myprofile.php");
+    }
+    public function addingImage(){
+            $userID = $this->session->userdata('user')->iduser;
+            $config['upload_path'] = './image/profile/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 1000;
+            $config['max_width'] = 1024;
+            $config['max_height'] = 768;
+            $config['file_name'] = "profile_".$userID;
 
-        $config['upload_path'] = './image/profile/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = 1000;
-        $config['max_width'] = 1024;
-        $config['max_height'] = 768;
-        $config['file_name'] = "profile_";
-
-        $this->load->library('upload', $config);
-        $this->upload->do_upload('slika');
+            $this->load->library('upload', $config);
+            if (!file_exists("image/profile/profile_" . $userID . ".jpg")){
+                $this->upload->do_upload('image');
+                redirect("Admin/myProfile");
+            }
+           else if (file_exists("image/profile/profile_" . $userID . ".jpg")){
+                unlink('image/profile/'."profile_".$userID.".jpg");
+                $this->upload->do_upload('image');
+                redirect("Admin/myProfile");
+            } else
+            $this->upload->do_upload('image');
+            redirect("Admin/myProfile");
     }
 
     public function showImage($idUser) {
         $user = $this->ModelUser->myProfile($idUser);
         $data['user'] = $user;
+        $data['controller']="Admin";
        
         $this->loadView($data, "user_myprofile.php");
     }
