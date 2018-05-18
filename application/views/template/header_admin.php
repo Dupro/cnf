@@ -23,7 +23,7 @@
                 </ul>
                 <ul class="nav navbar-nav ml-auto">
                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url("Admin/index"); ?>">My conferences</a>
+                        <a class="nav-link" href="<?php echo site_url("Admin/myConferences"); ?>">My conferences</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url("Admin/conferences"); ?>">Conferences</a>

@@ -94,6 +94,16 @@ class Admin extends CI_Controller {
         $this->load->view("main/cnfdetails.php", $data);
         $this->load->view("template/footer.php");
     }
+    public function myConferences() {
+        $data['controller'] = "Admin";
+        
+        $iduser = $this->session->userdata("user")->username;
+        
+        $mydata = '';
+        $mydata = $this->ModelUser->myConferences($iduser);
+        $data['mydata'] = $mydata;
+        $this->loadView($data, "main/admin_my_conference.php");
+    }
 
     // public function project() {
     //$data['controller'] = "Admin";

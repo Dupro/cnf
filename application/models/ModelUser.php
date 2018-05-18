@@ -62,5 +62,15 @@ class ModelUser extends CI_Model {
         $result=$query->result_array();
         return $result;
     }
-    
+    public function myConferences($iduser){
+        
+            $this->db->select('iduser','user_iduser','idconfernce','conference_idconference');
+        $query=$this->db->get('user','user_has_conference','conference');
+        $array=array('iduser'=>'user_iduser','idconference'=>'conference_idconference');
+        $this->db->where($array);
+        $this->db->group_by('iduser');
+        $this->db->having('iduser',$iduser);
+        $result=$query->result_array();
+        return $result;
+    }
 }
