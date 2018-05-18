@@ -33,7 +33,7 @@ class ControllerChangePassword extends CI_Controller {
         if ($message)
             $data['message'] = $message;
         $this->form_validation->set_rules('opassword', 'Old Password', 'required|trim');
-        $this->form_validation->set_rules('npassword', 'New Password', 'required|trim');
+        $this->form_validation->set_rules('npassword', 'New Password', 'required|trim|min_length[6]|max_length[12]|alpha_numeric|password_check[1,1,1,1]');
         $this->form_validation->set_rules('cpassword', 'Re-enter Password', 'required|trim|matches[npassword]');
         $this->form_validation->set_message("required", "Field {field} is empty.");
         $this->form_validation->set_message("matches[npassword]", "Field {field} does not match new password.");
