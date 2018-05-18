@@ -34,6 +34,9 @@ class Admin extends CI_Controller {
     }
 
     public function index() {
+        
+        $mydata = $this->ModelUser->myConferences();
+        $data['mydata'] = $mydata;
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
         $data['controller'] = "Admin";
@@ -112,11 +115,13 @@ class Admin extends CI_Controller {
         $this->load->view("template/footer.php");
     }
     public function myConferences() {
+        
         $data['controller'] = "Admin";
         
-        $iduser = $this->session->userdata("user")->username;
+        $iduser = $this->session->userdata("user")->iduser;
         
-        $mydata = '';
+        
+
         $mydata = $this->ModelUser->myConferences($iduser);
         $data['mydata'] = $mydata;
         $this->loadView($data, "main/admin_my_conference.php");
