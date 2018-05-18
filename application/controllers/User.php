@@ -76,9 +76,16 @@ class User extends CI_Controller {
             $config['file_name'] = "profile_".$userID;
 
             $this->load->library('upload', $config);
+            if (!file_exists("image/profile/profile_" . $userID . ".jpg")){
+                $this->upload->do_upload('image');
+                redirect("User/myProfile");
+            }
+           else if (file_exists("image/profile/profile_" . $userID . ".jpg")){
+                unlink('image/profile/'."profile_".$userID.".jpg");
+                $this->upload->do_upload('image');
+                redirect("User/myProfile");
+            } else
             $this->upload->do_upload('image');
-
-
             redirect("User/myProfile");
     }
     
