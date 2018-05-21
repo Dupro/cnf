@@ -1,8 +1,8 @@
 
-<h3 style="text-align:center">Review</h3>
+<h3 style="text-align:center">Reviewer invitation</h3>
 <form>
     <div class="form-group">
-    <label for="exampleFormControlSelect2">Conference</label>
+    <label for="exampleFormControlSelect2">Reviewer</label>
     <input class="form-control" type="text" name="conferencename" value="<?php echo set_value('conference') ?>"/>
      
     </select>
