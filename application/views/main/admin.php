@@ -18,6 +18,7 @@
             } else {
                 foreach ($confdata as $el) {
                     ?>
+            <div class="col-sm-3 mb-4" >
                     <div class="card">
                         <img class="card-img-top" src="https://i.pinimg.com/originals/4b/3f/9a/4b3f9ad60ef749b1533623220230727b.jpg" alt="Card image cap">
                         <div class="card-body">
@@ -27,6 +28,7 @@
                             <button type="button" class="btn btn-info">Info</button>
                         </div>
                     </div>
+                </div>
                     <?php
                 }
             }
