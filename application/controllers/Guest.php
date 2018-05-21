@@ -89,7 +89,7 @@ class Guest extends CI_Controller {
         $this->form_validation->set_rules('first_name', 'First_name', 'required');
         $this->form_validation->set_rules('last_name', 'Last_name', 'required');
         $this->form_validation->set_rules('phone_number', 'Phone_number', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('organisation', 'Organisation', 'required');
         if ($this->form_validation->run() == FALSE) {
             $this->index(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
