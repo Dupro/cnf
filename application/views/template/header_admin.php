@@ -22,22 +22,30 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav ml-auto">
-                   <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url("Admin/myConferences"); ?>">My conferences</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url("Admin/conferences"); ?>">Conferences</a>
                     </li>
-                    
-                   <li class="nav-item ">
+
+                    <li class="nav-item ">
                         <a class="nav-link" href="<?php echo site_url("Ajaxsearch/index"); ?>">Search</a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url('User/logout'); ?>">Logout</a>
                     </li>
 
                 </ul>
+                </div>
         </nav>
+        <!--OVDE IDE SIDEBAR-->
+        
+        
+        
+        
+        
+        <!--OVDE SE ZAVRSAVA-->
         <div class="container">
 
