@@ -53,12 +53,10 @@
                             <p class="card-text"><?php echo $el['begin']; ?><br/><?php echo $el['end']; ?></p>
                             
                            
-                        <a href="<?php echo site_url("$controller/dataconf/" . $el['idconference']); ?>" class="btn btn-info " tabindex="-1" role="button" aria-disabled="true">Info</a>
+                <a href="<?php echo site_url("$controller/dataconf/" . $el['idconference']); ?>" class="btn btn-info " tabindex="-1" role="button" aria-disabled="true">Info</a>
                         </div>
                     </div>
-                    <?php
-                }
-            }
-            ?>
+            <?php } } ?>
+                <?php echo $this->pagination->create_links(); ?>
 </div>
 

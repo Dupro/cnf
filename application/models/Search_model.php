@@ -23,7 +23,10 @@ class Search_model extends CI_Model {
    return $this->db->get();
     }
 
-    public function conference() {
+    public function conference($limit=FALSE, $offset=FALSE) {
+        if($limit){
+             $this->db->limit($limit, $offset);
+        }
 //$this->db->select('*');
 //        $this->db->from("conference");
 //        $this->db->select("conference.idconference,conference.title, conference.place,conference.begin, conference.end , field.name_field, "
