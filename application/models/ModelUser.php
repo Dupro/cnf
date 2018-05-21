@@ -66,13 +66,6 @@ class ModelUser extends CI_Model {
         if ($iduser!=NULL)
        $query= $this->db->query('SELECT iduser, first_name, last_name, title FROM user, user_has_conference, conference
 WHERE iduser='.$iduser. ' and user_iduser='.$iduser. ' and idconference =conference_idconference');
-//        $this->db->select('first_name', 'last_name', 'title');
-//        $this->db->where('iduser', $iduser);
-//        $this->db->where($iduser, 'user_iduser');
-//        $this->db->where('idconference', 'conference_idconference');
-//         $query= $this->db->from('user', 'user_has_conference', 'conference');
-//        $this->db->join('user_has_conference uhc');
-//        $this->db->join('conference c');
         $result=$query->result_array();
         return $result;
     }
