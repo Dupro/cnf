@@ -2,14 +2,8 @@
 
 
 <div class="row">
-    <div class="col-3">
-        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link" id="v-pills-home-tab"  href="" role="tab" aria-controls="v-pills-home" >Project</a>
-            <a class="nav-link" id="v-pills-profile-tab"  href="<?php echo site_url("Admin/addnewConference"); ?>" role="tab" aria-controls="v-pills-profile" >Add new conference</a>
-            <a class="nav-link" id="v-pills-messages-tab" href="<?php echo site_url("Admin/reviewerInvitation"); ?>" role="tab" aria-controls="v-pills-messages" aria-selected="false">Rewier invitation</a>
-        </div>
-    </div>
-    <div class="col-9">
+  
+    <div class="col-12">
         <div class="card-deck">
 
             <?php
@@ -18,6 +12,7 @@
             } else {
                 foreach ($confdata as $el) {
                     ?>
+            <div class="col-sm-3 mb-4" >
                     <div class="card">
                         <img class="card-img-top" src="https://i.pinimg.com/originals/4b/3f/9a/4b3f9ad60ef749b1533623220230727b.jpg" alt="Card image cap">
                         <div class="card-body">
@@ -27,6 +22,7 @@
                             <button type="button" class="btn btn-info">Info</button>
                         </div>
                     </div>
+                </div>
                     <?php
                 }
             }

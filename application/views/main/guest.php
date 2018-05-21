@@ -36,10 +36,12 @@
     </a>
 </div><br>
 
+
 <div class="card-deck">
 
-   <?php
+    <?php
 //   echo $carton;
+
             if ($confdata === "") {
                 echo "Nema upisanih konferencija u bazi";
             } else {
@@ -58,5 +60,11 @@
                     </div>
             <?php } } ?>
                 <?php echo $this->pagination->create_links(); ?>
+
+
+
+           
+
+
 </div>
 
