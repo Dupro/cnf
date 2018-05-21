@@ -4,9 +4,9 @@
 <div class="row">
     <div class="col-3">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Project</a>
-            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Rewier list</a>
-            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Rewier invitation</a>
+            <a class="nav-link" id="v-pills-home-tab"  href="" role="tab" aria-controls="v-pills-home" >Project</a>
+            <a class="nav-link" id="v-pills-profile-tab"  href="" role="tab" aria-controls="v-pills-profile" >Rewier list</a>
+            <a class="nav-link" id="v-pills-messages-tab" href="<?php echo site_url("Admin/reviewerInvitation"); ?>" role="tab" aria-controls="v-pills-messages" aria-selected="false">Rewier invitation</a>
         </div>
     </div>
     <div class="col-9">
