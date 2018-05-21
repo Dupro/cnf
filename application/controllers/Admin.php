@@ -43,7 +43,7 @@ class Admin extends CI_Controller {
         
         $this->load->view("template/header_" . $this->controller . ".php", $data);
         $this->load->view("main/admin.php", $data);
-        $this->load->view("main/admin_my_conference.php", $data);
+       
         $this->load->view("template/footer.php");
     }
 
