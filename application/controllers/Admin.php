@@ -43,7 +43,7 @@ class Admin extends CI_Controller {
         
         $this->load->view("template/header_" . $this->controller . ".php", $data);
         $this->load->view("main/admin.php", $data);
-        $this->load->view("main/admin_my_conference.php", $data);
+       
         $this->load->view("template/footer.php");
     }
 
@@ -119,6 +119,32 @@ class Admin extends CI_Controller {
         $myconf = $this->ModelUser->modelMyConferences($iduser);
         $data['myconf'] = $myconf;
         $this->loadView($data, "main/admin_my_conference.php");
+    }
+    public function reviewerInvitation() {
+        
+        $mydata = $this->ModelUser->myConferences();
+        $data['mydata'] = $mydata;
+        $conference_data = $this->Search_model->conference();
+        $data['confdata'] = $conference_data;
+        $data['controller'] = "Admin";
+        
+        $this->load->view("template/header_" . $this->controller . ".php", $data);
+        $this->load->view("main/admin.php", $data);
+        $this->load->view("main/admin_reviewer_invitation.php", $data);
+        $this->load->view("template/footer.php");
+    }
+    public function addnewConference() {
+        
+        $mydata = $this->ModelUser->myConferences();
+        $data['confdata'] = $mydata;
+        $conference_data = $this->Search_model->conference();
+        $data['confdata'] = $conference_data;
+        $data['controller'] = "Admin";
+        
+        $this->load->view("template/header_" . $this->controller . ".php", $data);
+        $this->load->view("main/admin.php", $data);
+        $this->load->view("main/admin_addnew_conference.php", $data);
+        $this->load->view("template/footer.php");
     }
 
     // public function project() {

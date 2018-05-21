@@ -2,10 +2,10 @@
     <div class="col-sm-6">
         <ul class="list-group">
             <?php
-            if ($confdata === NULL) {
+            if ($confinfo === NULL) {
                 echo "Nema upisanih konferencija u bazi";
             } else {
-                foreach ($confdata as $el) {
+                foreach ($confinfo as $el) {
                     ?>
                     <li class="list-group-item active"><strong>Conference name: <?php echo $el['title']; ?></strong></li>
                     <li class="list-group-item"><strong>Place: <?php echo $el['place']; ?></strong></li>
