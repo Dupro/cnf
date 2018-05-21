@@ -21,6 +21,12 @@ project_name LIKE '%{$var}%'");
         $result=$query->result_array();
         return $result ;
     }
+     public function users() {
+
+        $query = $this->db->get("user");
+        $result=$query->result_array();
+        return $result ;
+    }
 
     public function getInfoConf($idconf) {
 

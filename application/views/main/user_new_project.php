@@ -4,11 +4,18 @@
     <div class="form-group">
     <label for="exampleFormControlSelect2">Conferences</label>
     <select multiple class="form-control" id="exampleFormControlSelect2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+        <?php 
+    if ($confdata === "") {
+        echo "Nema upisanih konferencija u bazi";
+    } else {
+        foreach ($confdata as $el) {
+            ?>
+      <option><?php echo $el['title'];?></option>
+       <?php
+        }
+    }
+    ?>
+     
     </select>
   </div>
     <div class="form-group">
@@ -32,11 +39,17 @@
     <div class="form-group">
     <label for="exampleFormControlSelect2">Autors</label>
     <select multiple class="form-control" id="exampleFormControlSelect2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+         <?php 
+    if ($autor === "") {
+        echo "Nema upisanih konferencija u bazi";
+    } else {
+        foreach ($autor as $el) {
+            ?>
+      <option><?php echo $el['first_name']." ".$el['last_name'];?></option>
+       <?php
+        }
+    }
+    ?>
     </select>
   </div>
     <div class="form-group">

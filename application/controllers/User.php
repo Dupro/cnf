@@ -98,6 +98,10 @@ class User extends CI_Controller {
     }
 
     public function newProject() {
+        $conference_data = $this->Search_model->conference();
+        $autors = $this->Search_model->users();
+        $data['confdata'] = $conference_data;
+        $data['autor'] = $autors;
         $data['controller'] = "User";
         $this->load->view("template/header_".$this->controller.".php", $data);
         $this->load->view("main/user_new_project.php");
