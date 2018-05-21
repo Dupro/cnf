@@ -27,7 +27,6 @@ class Guest extends CI_Controller {
 
     public function index() {
         $config['base_url'] = base_url() . 'Guest/index';
-
 //        $config['total_rows'] = $this->db->count_all('conferences');
         $config['per_page'] = 20;
         $config['uri_segment'] = 3;
@@ -37,7 +36,7 @@ class Guest extends CI_Controller {
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
         $data['controller'] = "Guest";
-       
+      
         $this->load->view("template/header_guest.php", $data);
         $this->load->view("forms/login.php", $data);
         $this->load->view("forms/registration.php", $data);

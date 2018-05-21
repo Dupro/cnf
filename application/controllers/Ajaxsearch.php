@@ -46,7 +46,7 @@ class Ajaxsearch extends CI_Controller {
 						<tr>
 							<th>First Name</th>
 							<th>Last Name</th>
-							<th>Organisation</th>
+							<th>Project</th>
 
 						</tr>
 		';
@@ -56,7 +56,7 @@ class Ajaxsearch extends CI_Controller {
 						<tr>
 							<td>' . $row->first_name . '</td>
 							<td>' . $row->last_name . '</td>
-							<td>' . $row->organisation . '</td>
+							<td>' . $row->project_name . '</td>
 						</tr>
 				';
             }
