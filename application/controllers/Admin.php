@@ -35,7 +35,7 @@ class Admin extends CI_Controller {
 
     public function index() {
         
-        $mydata = $this->ModelUser->myConferences();
+        $mydata= '';
         $data['mydata'] = $mydata;
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
@@ -115,15 +115,9 @@ class Admin extends CI_Controller {
         $this->load->view("template/footer.php");
     }
     public function myConferences() {
-        
-        $data['controller'] = "Admin";
-        
         $iduser = $this->session->userdata("user")->iduser;
-        
-        
-
-        $mydata = $this->ModelUser->myConferences($iduser);
-        $data['mydata'] = $mydata;
+        $myconf = $this->ModelUser->modelMyConferences($iduser);
+        $data['myconf'] = $myconf;
         $this->loadView($data, "main/admin_my_conference.php");
     }
     public function reviewerInvitation() {
