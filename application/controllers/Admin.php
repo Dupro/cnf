@@ -134,9 +134,7 @@ class Admin extends CI_Controller {
         $this->load->view("template/footer.php");
     }
     public function addnewConference() {
-        
-        $mydata = $this->ModelUser->myConferences();
-        $data['confdata'] = $mydata;
+
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
         $data['controller'] = "Admin";
