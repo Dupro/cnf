@@ -25,15 +25,15 @@ class Guest extends CI_Controller {
         $this->load->view("template/footer.php");
     }
 
-    public function index() {
-        $config['base_url'] = base_url() . 'Guest/index';
-//        $config['total_rows'] = $this->db->count_all('conferences');
-        $config['per_page'] = 20;
+    public function index($offset=0) {
+        $config['base_url'] = base_url() . 'guest/index/';
+        $config['total_rows'] = $this->db->count_all('conference');
+        $config['per_page'] = 3;
         $config['uri_segment'] = 3;
         
         $this->pagination->initialize($config);
 
-        $conference_data = $this->Search_model->conference();
+        $conference_data = $this->Search_model->conference($config['per_page'], $offset);
         $data['confdata'] = $conference_data;
         $data['controller'] = "Guest";
       

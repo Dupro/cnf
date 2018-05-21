@@ -15,7 +15,12 @@ project_name LIKE '%{$var}%'");
    return $query->result();
     }
 
-    public function conference() {
+
+    public function conference($limit=FALSE, $offset=FALSE) {
+        if($limit){
+             $this->db->limit($limit, $offset);
+        }
+
 
         $query = $this->db->get("conference");
         $result=$query->result_array();
