@@ -50,8 +50,8 @@ class Ajaxsearch extends CI_Controller {
 
 						</tr>
 		';
-        if ($data->num_rows() > 0) {
-            foreach ($data->result() as $row) {
+        if ($data != NULL) {
+            foreach ($data as $row) {
                 $output .= '
 						<tr>
 							<td>' . $row->first_name . '</td>
