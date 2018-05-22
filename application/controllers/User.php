@@ -18,6 +18,7 @@ class User extends CI_Controller {
         $this->controller="guest";}
         else if ($this->session->userdata('user')->coordinator == "1"){
             $this->controller="admin";
+            redirect("Admin");
         }
         else {
         $this->controller="user";}

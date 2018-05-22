@@ -48,9 +48,8 @@ class Admin extends CI_Controller {
     }
 
     public function myProfile() {
-               $data['controller'] = "Admin";
+        $data['controller'] = "Admin";
         $data['successPW'] = $this->session->flashdata('successPW');
-
         $idUser = $this->session->userdata("user")->username;
 
         $mydata = '';
@@ -59,6 +58,15 @@ class Admin extends CI_Controller {
         $this->loadView($data, "main/user_myprofile.php");
         
     }
+    public function logout() {
+        $this->session->unset_userdata("User");
+        $this->session->sess_destroy();
+        redirect("Guest/index");
+    }
+    
+    
+    
+    
         public function addImage() {
         $this->loadView(array(), "user_myprofile.php");
     }

@@ -34,7 +34,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url('User/logout'); ?>">Logout</a>
+                        <a class="nav-link" href="<?php echo site_url('Admin/logout'); ?>">Logout</a>
                     </li>
 
                 </ul>
