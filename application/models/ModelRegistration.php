@@ -32,4 +32,23 @@ class ModelRegistration extends CI_Model{
         $id=$this->db->insert_id();
         return $id;
     }
+    public function newConference($title, $place, $event_begin, $event_end, $application_begin, $application_end, $projects_per_autor){
+        $this->db->set("title", $title);
+        $this->db->set("place", $place);
+        $this->db->set("event_begin",$event_begin);
+        $this->db->set("event_end",$event_end);
+        $this->db->set("application_begin",$application_begin);
+        $this->db->set("application_end",$application_end);
+        $this->db->set("projects_per_autor",$projects_per_autor);
+        $this->db->insert("conference");
+        $id=$this->db->insert_id();
+        return $id;
+    }
+    public function userHasConference($idconf, $iduser){
+        $this->db->set("conference_idconference", $idconf);
+        $this->db->set("user_iduser", $iduser);
+        $this->db->insert("user_has_conference");
+        $id=$this->db->insert_id();
+        return $id;
+    }
 }

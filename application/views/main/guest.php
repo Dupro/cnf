@@ -52,7 +52,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $el['title']; ?></h5>
                             <p class="card-text"><?php echo $el['place']; ?></p>
-                            <p class="card-text"><?php echo $el['begin']; ?><br/><?php echo $el['end']; ?></p>
+                            <p class="card-text"><?php echo $el['event_begin']; ?><br/><?php echo $el['event_end']; ?></p>
                             
                            
                 <a href="<?php echo site_url("$controller/dataconf/" . $el['idconference']); ?>" class="btn btn-info " tabindex="-1" role="button" aria-disabled="true">Info</a>

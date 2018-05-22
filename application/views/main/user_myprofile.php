@@ -1,6 +1,6 @@
 <h3 style="text-align:center">My profile</h3>
 <h4>Hello: <?php foreach ($mydata as $userdata) {
-    echo $userdata['first_name'];
+    echo $userdata['username'];
    ?> </h4><br>
 <div class="media"> 
 
