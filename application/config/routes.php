@@ -52,6 +52,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'Guest';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['conferences/index']='conference/index';
-$route['conferences/(:any)']='conference/view/$1';
+$route['guest/index']='guest/index';
+$route['guest/index/(:any)']='guest/view/$1';
 
