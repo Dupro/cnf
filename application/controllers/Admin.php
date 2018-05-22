@@ -40,7 +40,7 @@ class Admin extends CI_Controller {
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
         $data['controller'] = "Admin";
-        
+        $data['successAddConf'] = $this->session->flashdata('successAddConf');
         $this->load->view("template/header_" . $this->controller . ".php", $data);
         $this->load->view("main/admin.php", $data);
        
@@ -173,7 +173,9 @@ class Admin extends CI_Controller {
             $projects_per_autor = $this->input->post("projects_per_autor");
             $idconf= $this->ModelRegistration->newConference($title, $place, $event_begin, $event_end, $application_begin, $application_end, $projects_per_autor);
             $iduser= $this->session->userdata('user')->iduser;
+            $successAddConf= $this->session->set_flashdata('successAddConf', 'You have successfully created a new conference!');
             $this->ModelRegistration->userHasConference($idconf, $iduser);
+            $successAddConf;
         redirect("Admin/index");}
         
     }

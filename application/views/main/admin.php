@@ -1,5 +1,5 @@
 
-
+<?php echo "<font color='blue'>".$successAddConf."</font>"; ?>
 
 <div class="row">
   
