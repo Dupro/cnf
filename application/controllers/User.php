@@ -147,5 +147,20 @@ class User extends CI_Controller {
         $this->load->view("main/guest.php", $data);
         $this->load->view("template/footer.php");
     }
-
+    public function get_field() // dovlacenje liste fileda za konferencije u myNewProject
+            
+	{
+        echo "smrda";
+		$idconference = $this->input->post('idconference');
+		$field = $this->Search_model->get_province_query($idconference);
+		if(count($field)>0)
+		{
+			$pro_select_box = '';
+			$pro_select_box .= '<option value="" hidden="">Select Field</option>';
+			foreach ($field as $field) {
+				$pro_select_box .='<option value="'.$field->idfield.'">'.$field->name_field.'</option>';
+			}
+			echo $pro_select_box;
+		}
+	}
 }

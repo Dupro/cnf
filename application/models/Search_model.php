@@ -20,8 +20,6 @@ project_name LIKE '%{$var}%'");
         if($limit){
              $this->db->limit($limit, $offset);
         }
-
-
         $query = $this->db->get("conference");
         $result=$query->result_array();
         return $result ;
@@ -41,5 +39,21 @@ project_name LIKE '%{$var}%'");
         $query = $this->db->get();
         return $query->result_array(); //vraca jednu vest
     }
-
+    public function conference_fieldlist($param) {
+        $query= $this->db->query("Select name_field from field, conference_has_field, conference
+where idconference=conference_idconference and idfield=field_idfield and title='$param'");
+        $result=$query->result();
+        return $result;
+    }
+    public function get_country_query()
+	{
+		$query = $this->db->get('conference');
+		return $query->result();
+	}
+	public function get_province_query($idconference)
+	{
+		$query= $this->db->query("Select name_field from field, conference_has_field, conference
+where idconference=conference_idconference and idfield=field_idfield and idconference='$idconference'");
+		return $query->result();
+	}
 }
