@@ -18,7 +18,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $el['title']; ?></h5>
                             <p class="card-text"><?php echo $el['place']; ?></p>
-                            <p class="card-text"><?php echo $el['begin']; ?><br/><?php echo $el['end']; ?></p>
+                            <p class="card-text">Event begin: <?php echo $el['event_begin']; ?><br/>Event end: <?php echo $el['event_end']; ?></p>
                             <button type="button" class="btn btn-info">Info</button>
                         </div>
                     </div>

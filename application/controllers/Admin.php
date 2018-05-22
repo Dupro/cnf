@@ -148,11 +148,70 @@ class Admin extends CI_Controller {
         $data['controller'] = "Admin";
         
         $this->load->view("template/header_" . $this->controller . ".php", $data);
-        $this->load->view("main/admin.php", $data);
+//        $this->load->view("main/admin.php", $data);
         $this->load->view("main/admin_addnew_conference.php", $data);
         $this->load->view("template/footer.php");
     }
+    public function createConference(){
+        $this->form_validation->set_rules('title', 'Title', 'required|min_length[6]');
+        $this->form_validation->set_rules('place', 'Place', 'required');
+        $this->form_validation->set_rules('event_begin', 'Event Begin', 'required');
+        $this->form_validation->set_rules('event_end', 'Event end', 'required');
+        $this->form_validation->set_rules('application_begin', 'Application begin', 'required');
+        $this->form_validation->set_rules('application_end', 'Application end', 'required');
+        $this->form_validation->set_rules('projects_per_autor', 'Projects per autor', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->index(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
+        } else {
+            //ispravno
+            $title = $this->input->post("title");
+            $place = $this->input->post("place");
+            $event_begin = $this->input->post("event_begin");
+            $event_end = $this->input->post("event_end");
+            $application_begin = $this->input->post("application_begin");
+            $application_end = $this->input->post("application_end");
+            $projects_per_autor = $this->input->post("projects_per_autor");
+            $idconf= $this->ModelRegistration->newConference($title, $place, $event_begin, $event_end, $application_begin, $application_end, $projects_per_autor);
+            $iduser= $this->session->userdata('user')->iduser;
+            $this->ModelRegistration->userHasConference($idconf, $iduser);
+        redirect("Admin/index");}
+        
+    }
+//    DODAVANJE SLIKE U CONF
+        public function addConfImage() {
+        $this->loadView(array(), "user_myprofile.php");
+    }
+    public function addingConfImage(){
+            $userID = $this->session->userdata('user')->iduser;
+            $config['upload_path'] = './image/profile/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 2000;
+            $config['max_width'] = 2048;
+            $config['max_height'] = 1024;
+            $config['file_name'] = "profile_".$userID;
 
+            $this->load->library('upload', $config);
+            if (!file_exists("image/profile/profile_" . $userID . ".jpg")){
+                $this->upload->do_upload('image');
+                redirect("User/myProfile");
+            }
+           else if (file_exists("image/profile/profile_" . $userID . ".jpg")){
+                unlink('image/profile/'."profile_".$userID.".jpg");
+                $this->upload->do_upload('image');
+                redirect("User/myProfile");
+            } else
+            $this->upload->do_upload('image');
+            redirect("User/myProfile");
+    }
+//    TO DO
+    
+    
+    
+    
+    
+    
+    
+    
     // public function project() {
     //$data['controller'] = "Admin";
     //$this->load->view("template/header_admin.php");
