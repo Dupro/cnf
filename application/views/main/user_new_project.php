@@ -35,7 +35,7 @@
             } else {
                 foreach ($autor as $el) {
                     ?>
-            <option value="<?php echo $el['first_name'] . " " . $el['last_name']; ?>"><?php echo $el['first_name'] . " " . $el['last_name']; ?></option>
+            <option value="<?php echo $el['first_name'] . " " . $el['last_name']." (".$el['username'].") " ?>"><?php echo $el['first_name'] . " " . $el['last_name']." (".$el['username'].") "; ?></option>
                     <?php
                 }
             }

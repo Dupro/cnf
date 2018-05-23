@@ -16,15 +16,15 @@
      <a class="nav-link" href="<?php echo site_url("Guest/index"); ?>">Home</a>
  </li>
   <li class="nav-item">
- <div class="dropdown">
- <button type="button" class="btn btn-outline-secondary
-dropdown-toggle" data-toggle="dropdown">
+ <div class="dropdown nav-item">
+ <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
  Conferences
- </button>
+ </a>
  <div class="dropdown-menu">
- <a class="dropdown-item" href="#">Link 1</a>
- <a class="dropdown-item" href="#">Link 2</a>
- <a class="dropdown-item" href="#">Link 3</a>
+     <?php
+                foreach ($confdata as $el) { ?>
+ <a class="dropdown-item" href="<?php echo site_url("$controller/dataconf/" . $el['idconference']); ?>"><?php echo $el['title']; ?></a>
+         <?php } ?>
  </div>
 </div>
 

@@ -33,7 +33,7 @@ class User extends CI_Controller {
 
     public function index() {
         $conference_data = $this->Search_model->conference();
-        $data['confdata'] = $conference_data;
+        $data['confdatapag'] = $conference_data;
         $data['controller'] = "User";
         $this->load->view("template/header_" . $this->controller . ".php", $data);
         $this->load->view("main/guest.php", $data);
@@ -137,7 +137,7 @@ class User extends CI_Controller {
 
     public function conferences() {
         $conference_data = $this->Search_model->conference();
-        $data['confdata'] = $conference_data;
+        $data['confdatapag'] = $conference_data;
 
         $data['controller'] = "User";
         $data['info'] = '$info_vesti';
@@ -171,11 +171,14 @@ class User extends CI_Controller {
 //            $this->index(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
 //        } else {
             //ispravno
+        $fieldid=$this->input->post("field");
+            $field_name= $this->Search_model->field($fieldid);
             $project_name = $this->input->post("project_name");
             $keywords = $this->input->post("keywords");
-            $section_pro = $this->input->post("field");
+             foreach ($field_name as $field) {
+             $section_pro .= $field['name_field'];}
             $apstract = $this->input->post("apstract");
-            $field_idfield = "1";
+            $field_idfield = $this->input->post("field");
             $idproject = $this->ModelRegistration->myNewProject($project_name, $keywords, $section_pro, $apstract, $field_idfield);
             $iduser = $this->session->userdata('user')->iduser;
             $successAddProject = $this->session->set_flashdata('successAddProject', 'You have successfully add a new project!');

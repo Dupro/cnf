@@ -7,16 +7,20 @@ class Ajaxsearch extends CI_Controller {
     public function __construct() {
         parent:: __construct();
         $this->load->model("ModelUser");
-        $this->load->model('ModelRegistration');
+        $this->load->model("ModelRegistration");
         $this->load->model("Search_model");
         $this->load->library('session');
-        if ($this->session->userdata('user') == NULL){
-        $this->controller="guest";}
-        else if ($this->session->userdata('user')->coordinator == "1"){
-            $this->controller="admin";
+
+
+        if ($this->session->userdata('user') == NULL) {
+            $this->controller = "guest";
+            $controller="Guest";
+        } else if ($this->session->userdata('user')->coordinator == "1") {
+            $this->controller = "admin";
+            $controller="Admin";
+        } else {
+            $this->controller = "user";
         }
-        else {
-        $this->controller="user";}
         
     }
 
@@ -24,7 +28,8 @@ class Ajaxsearch extends CI_Controller {
         
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
-        
+        $controller="";
+        $data['controller']=$controller;
         $this->load->view("template/header_".$this->controller.".php", $data);
         $this->load->view("forms/login.php", $data);
         $this->load->view("forms/registration.php", $data);
