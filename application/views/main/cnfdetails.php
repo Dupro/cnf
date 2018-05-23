@@ -9,7 +9,7 @@
                     ?>
                     <li class="list-group-item active"><strong>Conference name: <?php echo $el['title']; ?></strong></li>
                     <li class="list-group-item"><strong>Place: <?php echo $el['place']; ?></strong></li>
-                    <li class="list-group-item"><strong>Time: <?php echo $el['begin']; ?></strong></li>
+                    <li class="list-group-item"><strong>Time: <?php echo $el['event_begin']; ?></strong></li>
                     <li class="list-group-item"><strong>Receive time:</strong></li>
                     <li class="list-group-item"><strong>Area:</strong></li>
                     <li class="list-group-item"><strong>Key words:</strong></li>
