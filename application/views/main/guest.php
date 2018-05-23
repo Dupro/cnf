@@ -42,10 +42,10 @@
     <?php
 //   echo $carton;
 
-            if ($confdata === "") {
+            if ($confdatapag === "") {
                 echo "Nema upisanih konferencija u bazi";
             } else {
-                foreach ($confdata as $el) {
+                foreach ($confdatapag as $el) {
                     ?>
                     <div class="card">
                         <img class="card-img-top" src="https://i.pinimg.com/originals/4b/3f/9a/4b3f9ad60ef749b1533623220230727b.jpg" alt="Card image cap">

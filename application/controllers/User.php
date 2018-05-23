@@ -175,7 +175,7 @@ class User extends CI_Controller {
             $keywords = $this->input->post("keywords");
             $section_pro = $this->input->post("field");
             $apstract = $this->input->post("apstract");
-            $field_idfield = "1";
+            $field_idfield = $this->input->post("field");
             $idproject = $this->ModelRegistration->myNewProject($project_name, $keywords, $section_pro, $apstract, $field_idfield);
             $iduser = $this->session->userdata('user')->iduser;
             $successAddProject = $this->session->set_flashdata('successAddProject', 'You have successfully add a new project!');

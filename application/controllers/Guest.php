@@ -9,8 +9,14 @@ class Guest extends CI_Controller {
         $this->load->model('ModelRegistration');
         $this->load->model("Search_model");
         $this->load->library('session');
-        if ($this->session->userdata('user') != NULL) {
-            redirect("User");
+       if ($this->session->userdata('user') == NULL) {
+            $this->controller = "guest";
+            $controller="Guest";
+        } else if ($this->session->userdata('user')->coordinator == "1") {
+            $this->controller = "admin";
+            $controller="Admin";
+        } else {
+            $this->controller = "user";
         }
 //            session_destroy();
     }
@@ -32,9 +38,13 @@ class Guest extends CI_Controller {
         $config['uri_segment'] = 3;
         
         $this->pagination->initialize($config);
+        $conference_data = $this->Search_model->conference();
+        $data['confdata'] = $conference_data;
+        $controller="";
+        $data['controller']=$controller;
 
         $conference_data = $this->Search_model->conference($config['per_page'], $offset);
-        $data['confdata'] = $conference_data;
+        $data['confdatapag'] = $conference_data;
         $data['controller'] = "Guest";
       
         $this->load->view("template/header_guest.php", $data);
@@ -120,10 +130,13 @@ class Guest extends CI_Controller {
     }
 
     public function dataconf($idconf) {
-
+        $conference_data = $this->Search_model->conference();
+        $data['confdata'] = $conference_data;
+        $controller="";
+        $data['controller']=$controller;
         $datacon = $this->Search_model->getInfoConf($idconf);
         $data['confinfo'] = $datacon;
-        $this->load->view("template/header_guest.php");
+        $this->load->view("template/header_guest.php", $data);
         $this->load->view("forms/login.php");
         $this->load->view("forms/registration.php");
         $this->load->view("main/cnfdetails.php", $data);
