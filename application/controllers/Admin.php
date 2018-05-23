@@ -103,7 +103,7 @@ class Admin extends CI_Controller {
 
     public function conferences() {
         $conference_data = $this->Search_model->conference();
-        $data['confdata'] = $conference_data;
+        $data['confdatapag'] = $conference_data;
 
         $data['controller'] = "Admin";
         $data['info'] = '$info_vesti';
