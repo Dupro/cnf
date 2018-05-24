@@ -129,11 +129,12 @@ class Guest extends CI_Controller {
         $this->load->view("template/footer.php");
     }
 
-    public function dataconf($idconf) {
+    public function dataconf($idconf) { //podaci o konferencijam
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
         $controller="";
         $data['controller']=$controller;
+        $data['controller'] = "Guest";
         $datacon = $this->Search_model->getInfoConf($idconf);
         $data['confinfo'] = $datacon;
         $this->load->view("template/header_guest.php", $data);

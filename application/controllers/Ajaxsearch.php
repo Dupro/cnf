@@ -25,10 +25,19 @@ class Ajaxsearch extends CI_Controller {
     }
 
     function index() {
-        
+        $controller="";
+        if ($this->session->userdata('user') == NULL) {
+            $this->controller = "Guest";
+            $controller="Guest";
+        } else if ($this->session->userdata('user')->coordinator == "1") {
+            $this->controller = "Admin";
+            $controller="Admin";
+        } else {
+            $this->controller = "User";
+        }
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
-        $controller="";
+        
         $data['controller']=$controller;
         $this->load->view("template/header_".$this->controller.".php", $data);
         $this->load->view("forms/login.php", $data);
