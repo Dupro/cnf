@@ -70,5 +70,11 @@ where idconference=conference_idconference and idfield=field_idfield and idconfe
         $query = $this->db->get();
         return $query->result_array();
     }
+    public function findUserByUsername($username) {
+        $query = $this->db->query("Select iduser from user where  username='$username'");
+        $result = $query->result_array();
+        return $result;
+       
+    }
 
 }

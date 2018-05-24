@@ -1,7 +1,7 @@
 
 <h3 style="text-align:center">My new project</h3>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<form name="createProject" action="<?php echo site_url('User/mynewProject'); ?>" method="POST">
+<form name="createProject" action="<?php echo site_url('User/mynewProject'); ?>" onsubmit="return selectAll()" method="POST">
     <div class="form-group">
         <label for="exampleFormControlSelect2">Conferences</label>
         <select class="form-control" id="conferenc" name="conferenc">
@@ -45,7 +45,7 @@
     
      <div class="form-group col-5">
         <label for="exampleFormControlSelect2">Autors</label>
-        <select multiple class="form-control" id="autorslistselect" name="autor">
+        <select multiple class="form-control" id="autorslistselect" name="autorslistselect[]" multiple="multiple">
             </select>
      </div> 
     <div class="col-1"> <button type="button" class="btn btn-outline-danger mt-5" onclick="deleteautor()">DELETE</button></div>
@@ -55,7 +55,7 @@
         <label for="exampleFormControlTextarea1">Abstract</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="apstract"></textarea>
     </div>
-    <button type="submit" class="btn btn-success">Send</button>
+    <button type="submit" class="btn btn-success" >Send</button>
 </form>
 <form>
     <div class="form-group">
@@ -97,7 +97,12 @@ function addautor() {
     var x = document.getElementById("autorslistselect");
     var option = document.createElement("option");
     var y=document.getElementById("autorslist").value;
-    option.text =   y;
+    var oval=document.getElementById("autorslist").value;
+    var t=oval.replace(") ","")
+    var k=t.split("(");
+    alert(k[1]);
+    option.text =  y;
+    option.value=k[1];
     x.add(option);
 }
 </script>
@@ -105,5 +110,15 @@ function addautor() {
 function deleteautor() {
     var x = document.getElementById("autorslistselect");
     x.remove(x.selectedIndex);
+}
+</script>
+<script type="text/javascript">
+    function selectAll()
+{
+	for (var i = 0; i < document.getElementById("autorslistselect").options.length; i++)
+	{
+		document.getElementById("autorslistselect").options[i].selected = true;
+	}
+        return true;
 }
 </script>

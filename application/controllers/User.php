@@ -170,21 +170,31 @@ class User extends CI_Controller {
 //        if ($this->form_validation->run() == FALSE) {
 //            $this->index(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
 //        } else {
-            //ispravno
-        $fieldid=$this->input->post("field");
-            $field_name= $this->Search_model->field($fieldid);
-            $project_name = $this->input->post("project_name");
-            $keywords = $this->input->post("keywords");
-             foreach ($field_name as $field) {
-             $section_pro .= $field['name_field'];}
-            $apstract = $this->input->post("apstract");
-            $field_idfield = $this->input->post("field");
-            $idproject = $this->ModelRegistration->myNewProject($project_name, $keywords, $section_pro, $apstract, $field_idfield);
-            $iduser = $this->session->userdata('user')->iduser;
-            $successAddProject = $this->session->set_flashdata('successAddProject', 'You have successfully add a new project!');
-            $this->ModelRegistration->autor($idproject, $iduser);
-            $successAddProject;
-            redirect("User/index");
+        //ispravno
+        $fieldid = $this->input->post("field");
+        $field_name = $this->Search_model->field($fieldid);
+        $project_name = $this->input->post("project_name");
+        $keywords = $this->input->post("keywords");
+        foreach ($field_name as $field) {
+            $section_pro .= $field['name_field'];
+        }
+        $apstract = $this->input->post("apstract");
+        $field_idfield = $this->input->post("field");
+
+        $idproject = $this->ModelRegistration->myNewProject($project_name, $keywords, $section_pro, $apstract, $field_idfield);
+        $iduser = $this->session->userdata('user')->iduser;
+        $successAddProject = $this->session->set_flashdata('successAddProject', 'You have successfully add a new project!');
+        $this->ModelRegistration->autor($idproject, $iduser);
+        $successAddProject;
+        foreach ($_POST['autorslistselect'] as $item) {
+            
+            $coautorid=$this->Search_model->findUserByUsername($item);
+            foreach ($coautorid as $el) {
+            $coautorid2= $el['iduser']; }
+            $this->ModelRegistration->autor($idproject, $coautorid2);
+        }
+
+        redirect("User/index");
 //        }
     }
 
