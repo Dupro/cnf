@@ -100,7 +100,6 @@ function addautor() {
     var oval=document.getElementById("autorslist").value;
     var t=oval.replace(") ","")
     var k=t.split("(");
-    alert(k[1]);
     option.text =  y;
     option.value=k[1];
     x.add(option);
