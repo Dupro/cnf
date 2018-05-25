@@ -69,4 +69,10 @@ WHERE iduser='.$iduser. ' and user_iduser='.$iduser. ' and idconference =confere
         $result=$query->result_array();
         return $result;
     }
+    public function myproject($param) {
+        $query= $this->db->query("SELECT * from project, user, conference, autor, conference_has_project where project.idproject=autor.project_idproject and conference_idconference=idconference and iduser=user_iduser AND conference_has_project.project_idproject=project.idproject and iduser='5'");
+        $result=$query->result_array();
+        return $result;
+        
+    }
 }

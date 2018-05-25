@@ -23,6 +23,7 @@ class Admin extends CI_Controller {
             $this->controller = "admin";
         } else {
             $this->controller = "user";
+            redirect("User");
         }
     }
 

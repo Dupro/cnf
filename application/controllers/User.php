@@ -17,11 +17,12 @@ class User extends CI_Controller {
 
         if ($this->session->userdata('user') == NULL) {
             $this->controller = "guest";
+            redirect("Guest");
         } else if ($this->session->userdata('user')->coordinator == "1") {
-            $this->controller = "admin";
+            $this->controller = "Admin";
             redirect("Admin");
         } else {
-            $this->controller = "user";
+            $this->controller = "User";
         }
     }
 
@@ -116,9 +117,12 @@ class User extends CI_Controller {
     }
 
     public function project() {
+        $idUser = $this->session->userdata("user")->iduser;
+        $project_data = $this->ModelUser->myproject($idUser);
+        $data['project_data']=$project_data;
         $data['controller'] = "User";
         $this->load->view("template/header_" . $this->controller . ".php", $data);
-        $this->load->view("main/user_project.php");
+        $this->load->view("main/user_project.php",$data);
         $this->load->view("template/footer.php");
     }
 

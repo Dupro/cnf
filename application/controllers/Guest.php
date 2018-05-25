@@ -15,8 +15,10 @@ class Guest extends CI_Controller {
         } else if ($this->session->userdata('user')->coordinator == "1") {
             $this->controller = "admin";
             $controller="Admin";
+            redirect("Admin");
         } else {
             $this->controller = "user";
+            redirect("user");
         }
 //            session_destroy();
     }
