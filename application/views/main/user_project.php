@@ -4,8 +4,8 @@
            <div class="form-group">
     <label for="exampleFormControlSelect2">Project name:</label>
     <select multiple class="form-control" id="exampleFormControlSelect2">
-        <?php foreach ($project_data as $val) { ?>
-        <option value="<?php echo $val['idproject']; ?>"> <?php echo $val["project_name"]."  ".$val['title'] ?></option>
+        <?php foreach ($project_data as $val) { ?> 
+        <option value="<?php echo $val['idproject']; ?>" > <?php echo $val["project_name"]?></option>
  <?php } ?>
     </select>
   </div><br>
