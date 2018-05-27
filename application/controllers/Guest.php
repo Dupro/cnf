@@ -4,17 +4,17 @@ class Guest extends CI_Controller {
 
     public function __construct() {
         parent:: __construct();
-        
+
         $this->load->model("ModelUser");
         $this->load->model('ModelRegistration');
         $this->load->model("Search_model");
         $this->load->library('session');
-       if ($this->session->userdata('user') == NULL) {
+        if ($this->session->userdata('user') == NULL) {
             $this->controller = "guest";
-            $controller="Guest";
+            $controller = "Guest";
         } else if ($this->session->userdata('user')->coordinator == "1") {
             $this->controller = "admin";
-            $controller="Admin";
+            $controller = "Admin";
             redirect("Admin");
         } else {
             $this->controller = "user";
@@ -24,7 +24,7 @@ class Guest extends CI_Controller {
     }
 
     private function loadView($data, $mainPart) {
-       
+
         $this->load->view("template/header_guest.php", $data);
         $this->load->view("forms/login.php", $data);
         $this->load->view("forms/registration.php", $data);
@@ -33,22 +33,37 @@ class Guest extends CI_Controller {
         $this->load->view("template/footer.php");
     }
 
-    public function index($offset=0) {
-        $config['base_url'] = base_url() . 'guest/index/';
-        $config['total_rows'] = $this->db->count_all('conference');
-        $config['per_page'] = 3;
-        $config['uri_segment'] = 3;
-        
-        $this->pagination->initialize($config);
+//$offset = 0
+    public function index() {
+
+        if ($this->uri->segment(3))
+            $indexnum = $this->uri->segment(3);
+        else
+            $indexnum = 0;
+
+        $limit = 3;
+        $conferencenum = $this->db->count_all('conference');
+        $data['confdatapag'] = $this->Search_model->conference($limit, $indexnum);
+
+        $this->load->library('pagination'); // ovo moze i u  config/autoload.php da se doda
+        $this->config->load('bootstrap_pagination'); //moze i u autoload.php
+
+        $config_pagination = $this->config->item('pagination');
+        $config_pagination['base_url'] = site_url("Guest/index");
+        $config_pagination['total_rows'] = $conferencenum;
+        $config_pagination['per_page'] = $limit;
+        $config_pagination['next_link'] = 'Next';
+        $config_pagination['prev_link'] = 'Prev';
+
+        $this->pagination->initialize($config_pagination);
+        $data['links'] = $this->pagination->create_links();
+
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
-        $controller="";
-        $data['controller']=$controller;
-
-        $conference_data = $this->Search_model->conference($config['per_page'], $offset);
-        $data['confdatapag'] = $conference_data;
+        $controller = "";
+        $data['controller'] = $controller;
         $data['controller'] = "Guest";
-      
+
         $this->load->view("template/header_guest.php", $data);
         $this->load->view("forms/login.php", $data);
         $this->load->view("forms/registration.php", $data);
@@ -134,8 +149,8 @@ class Guest extends CI_Controller {
     public function dataconf($idconf) { //podaci o konferencijam
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
-        $controller="";
-        $data['controller']=$controller;
+        $controller = "";
+        $data['controller'] = $controller;
         $data['controller'] = "Guest";
         $datacon = $this->Search_model->getInfoConf($idconf);
         $data['confinfo'] = $datacon;

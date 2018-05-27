@@ -15,18 +15,23 @@ u.first_name LIKE '%{$var}%' OR u.last_name LIKE '%{$var}%' OR
 p.project_name LIKE '%{$var}%'");
 
 //$query= $this->db->query("SELECT first_name, last_name, project_name FROM user, autor, project
-//WHERE iduser=user_iduser AND project_idproject= idproject and 
+//WHERE iduser=user_iduser AND project_idproject= idproject and
 //first_name LIKE '%{$var}%' OR last_name LIKE '%{$var}%' OR
 //project_name LIKE '%{$var}%'"); lik kida radi sve drugi nacin
         return $query->result();
     }
 
-    public function conference($limit = FALSE, $offset = FALSE) {
+//$limit = FALSE, $offset = FALSE
+    public function conference($limit = 1000, $pocetak = 0) {
         if ($limit) {
-            $this->db->limit($limit, $offset);
+//            $this->db->limit($limit, $offset);
+//
+            $query = $this->db->get('conference', $limit, $pocetak);
+        } else {
+            $query = $this->db->get();
         }
-        $query = $this->db->get("conference");
-        $result = $query->result_array();
+//prikazujem prvih deset vesti
+        $result = $query->result_array(); //vraca niz vesti
         return $result;
     }
 
@@ -70,11 +75,11 @@ where idconference=conference_idconference and idfield=field_idfield and idconfe
         $query = $this->db->get();
         return $query->result_array();
     }
+
     public function findUserByUsername($username) {
         $query = $this->db->query("Select iduser from user where  username='$username'");
         $result = $query->result_array();
         return $result;
-       
     }
 
 }
