@@ -33,8 +33,27 @@ class User extends CI_Controller {
     }
 
     public function index() {
-        $conference_data = $this->Search_model->conference();
-        $data['confdatapag'] = $conference_data;
+        if ($this->uri->segment(3))
+            $indexnum = $this->uri->segment(3);
+        else
+            $indexnum = 0;
+
+        $limit = 3;
+        $conferencenum = $this->db->count_all('conference');
+        $data['confdatapag'] = $this->Search_model->conference($limit, $indexnum);
+
+        $this->load->library('pagination'); // ovo moze i u  config/autoload.php da se doda
+        $this->config->load('bootstrap_pagination'); //moze i u autoload.php
+
+        $config_pagination = $this->config->item('pagination');
+        $config_pagination['base_url'] = site_url("Admin/conferences");
+        $config_pagination['total_rows'] = $conferencenum;
+        $config_pagination['per_page'] = $limit;
+        $config_pagination['next_link'] = 'Next';
+        $config_pagination['prev_link'] = 'Prev';
+
+        $this->pagination->initialize($config_pagination);
+        $data['links'] = $this->pagination->create_links();
         $data['controller'] = "User";
         $this->load->view("template/header_" . $this->controller . ".php", $data);
         $this->load->view("main/guest.php", $data);
@@ -59,10 +78,29 @@ class User extends CI_Controller {
         $data['successPW'] = $this->session->flashdata('successPW');
         $idUser = $this->session->userdata("user")->username;
 
-        $mydata = '';
         $mydata = $this->ModelUser->myProfile($idUser);
         $data['mydata'] = $mydata;
         $this->loadView($data, "main/user_myprofile.php");
+    }
+
+    public function editMyProfile() {
+        if ($this->input->post("submitMyEditProfile") !== NULL) {
+            $iduser = $this->session->userdata("user")->iduser;
+            $first_name = $this->input->post("first_name");
+            $last_name = $this->input->post("last_name");
+            $phone_number = $this->input->post("phone_number");
+            $email = $this->input->post("email");
+            $organisation = $this->input->post("organisation");
+            $date_of_birth = $this->input->post("date_of_birth");
+            $this->ModelRegistration->changeMyProfile($iduser, $first_name, $last_name, $phone_number, $email, $organisation, $date_of_birth);
+            redirect("User/myProfile");
+        } else {
+            $idUser = $this->session->userdata("user")->username;
+            $mydata = $this->ModelUser->myProfile($idUser);
+            $data['mydata'] = $mydata;
+            $data['controller'] = "User";
+            $this->loadView($data, "main/user_editmyprofile.php");
+        }
     }
 
     public function addImage() {
@@ -119,18 +157,16 @@ class User extends CI_Controller {
     public function project() {
         $idUser = $this->session->userdata("user")->iduser;
         $project_data = $this->ModelUser->myproject($idUser);
-        $data['project_data']=$project_data;
+        $data['project_data'] = $project_data;
         $data['controller'] = "User";
         $this->load->view("template/header_" . $this->controller . ".php", $data);
-        $this->load->view("main/user_project.php",$data);
+        $this->load->view("main/user_project.php", $data);
         $this->load->view("template/footer.php");
     }
 
     public function dataconf($idconf) {
 
         $datacon = $this->Search_model->getInfoConf($idconf);
-
-
         $data['confinfo'] = $datacon;
         $this->load->view("template/header_" . $this->controller . ".php", $data);
         $this->load->view("forms/login.php");
@@ -191,10 +227,11 @@ class User extends CI_Controller {
         $this->ModelRegistration->autor($idproject, $iduser);
         $successAddProject;
         foreach ($_POST['autorslistselect'] as $item) {
-            
-            $coautorid=$this->Search_model->findUserByUsername($item);
+
+            $coautorid = $this->Search_model->findUserByUsername($item);
             foreach ($coautorid as $el) {
-            $coautorid2= $el['iduser']; }
+                $coautorid2 = $el['iduser'];
+            }
             $this->ModelRegistration->autor($idproject, $coautorid2);
         }
 

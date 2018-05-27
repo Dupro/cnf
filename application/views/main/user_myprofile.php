@@ -3,7 +3,7 @@
     foreach ($mydata as $userdata) {
         echo $userdata['username'];
         ?> </h4><br>
-    <div class="media"> 
+    <div class="media">
 
         <div>
             <?php if (!file_exists("image/profile/profile_" . $userdata['iduser'] . ".jpg")) { ?>
@@ -29,12 +29,12 @@
 
 
 
-<script>
-            function editprofile() {
-                document.document.getElementsById("first_name").readOnly = false;
-                document.document.getElementsById("last_name").readOnly = false;
-            }
-        </script>
+                <script>
+                    function editprofile() {
+                        document.document.getElementsById("first_name").readOnly = false;
+                        document.document.getElementsById("last_name").readOnly = false;
+                    }
+                </script>
 
                 First name:<input class="form-control bg-white text-body" type="text" id="first_name" name="first_name" value="<?php echo $userdata['first_name']; ?>"readonly="TRUE"/>
                 <?php echo form_error("first_name", "<font color='red'>", "</font>"); ?>
@@ -48,15 +48,17 @@
                 Organisation:<input class="form-control bg-white text-body" type="text" name="organisation" value="<?php echo $userdata['organisation']; ?>"readonly/>
                 <?php echo form_error("organisation", "<font color='red'>", "</font>"); ?>
                 Date of birth:<input class="form-control bg-white text-body" type="date" name="date_of_birth" value="<?php
-                echo $userdata['date_of_birth'];} ?>"readonly/>
-<?php echo form_error("date_of_birth", "<font color='red'>", "</font>"); ?>
+                echo $userdata['date_of_birth'];
+            }
+            ?>"readonly/>
+                                 <?php echo form_error("date_of_birth", "<font color='red'>", "</font>"); ?>
             <br>
 
             <div class="modal-footer">
                 <!-- Button trigger modal -->
-<?php echo "<font color='blue'>" . $successPW . "</font>"; ?>
+                <?php echo "<font color='blue'>" . $successPW . "</font>"; ?>
                 <a class="btn btn-primary" href="<?php echo site_url('ControllerChangePassword'); ?>">Change your password</a>
-
+                <a class="btn btn-secondary" href="<?php echo site_url('User/editMyProfile'); ?>">Edit</a>
                 <!-- Modal -->
                 <div class="modal fade" id="changePasssword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -77,7 +79,7 @@
                                 New password:<input class="form-control" type="password" name="npassword"/>
                                 <?php echo form_error("password", "<font color='red'>", "</font>"); ?>
                                 Re-enter password:<input class="form-control" type="password" name="cpassword"/>
-<?php echo form_error("password", "<font color='red'>", "</font>"); ?>
+                                <?php echo form_error("password", "<font color='red'>", "</font>"); ?>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -92,12 +94,12 @@
 
 
 
+                <!--onclick="editprofile()"-->
+            </div></form>
 
 
-                <input type="button" class="btn btn-secondary" onclick="editprofile()" value="Edit"/>
 
-            </div></form>    
-        
+
 
     </div>
 </div>
