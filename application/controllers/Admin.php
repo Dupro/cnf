@@ -100,8 +100,27 @@ class Admin extends CI_Controller {
     }
 
     public function conferences() {
-        $conference_data = $this->Search_model->conference();
-        $data['confdatapag'] = $conference_data;
+        if ($this->uri->segment(3))
+            $indexnum = $this->uri->segment(3);
+        else
+            $indexnum = 0;
+
+        $limit = 3;
+        $conferencenum = $this->db->count_all('conference');
+        $data['confdatapag'] = $this->Search_model->conference($limit, $indexnum);
+
+        $this->load->library('pagination'); // ovo moze i u  config/autoload.php da se doda
+        $this->config->load('bootstrap_pagination'); //moze i u autoload.php
+
+        $config_pagination = $this->config->item('pagination');
+        $config_pagination['base_url'] = site_url("Admin/conferences");
+        $config_pagination['total_rows'] = $conferencenum;
+        $config_pagination['per_page'] = $limit;
+        $config_pagination['next_link'] = 'Next';
+        $config_pagination['prev_link'] = 'Prev';
+
+        $this->pagination->initialize($config_pagination);
+        $data['links'] = $this->pagination->create_links();
 
         $data['controller'] = "Admin";
         $data['info'] = '$info_vesti';
@@ -131,7 +150,7 @@ class Admin extends CI_Controller {
 
     public function reviewerEmailInvitation() {
         $data['successSentEmail'] = $this->session->flashdata('successSentEmail');
-        $this->loadView($data, "forms/admin_reviewer_email_invitation.php"); 
+        $this->loadView($data, "forms/admin_reviewer_email_invitation.php");
     }
 
     public function sendEmail() {
@@ -170,10 +189,9 @@ class Admin extends CI_Controller {
         $this->email->set_newline("\r\n");
         $this->email->send();
         $this->email->print_debugger();
-        $successSentEmail= $this->session->set_flashdata('successSentEmail', 'You have successfully sent a email!');
-            $successSentEmail;
-            redirect('Admin/reviewerEmailInvitation');
-
+        $successSentEmail = $this->session->set_flashdata('successSentEmail', 'You have successfully sent a email!');
+        $successSentEmail;
+        redirect('Admin/reviewerEmailInvitation');
     }
 
     // OVO TEK TREBA DA SE RADI
@@ -184,7 +202,7 @@ class Admin extends CI_Controller {
 //        $conference_data = $this->Search_model->conference();
 //        $data['confdata'] = $conference_data;
 //        $data['controller'] = "Admin";
-//        
+//
 //        $this->load->view("template/header_" . $this->controller . ".php", $data);
 //        $this->load->view("main/admin.php", $data);
 //        $this->load->view("main/admin_reviewer_invitation.php", $data);
