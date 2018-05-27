@@ -10,7 +10,7 @@
 
 
                 <?php echo form_error("password", "<font color='red'>", "</font>"); ?>
-                                                <!--Confirm your Password:<input class="form-control" type="password" name="password"/>-->
+                                                                                                                    <!--Confirm your Password:<input class="form-control" type="password" name="password"/>-->
                 <?php // echo form_error("password", "<font color='red'>", "</font>");    ?>
                 First name:<input class="form-control" type="text" name="first_name" value="<?php echo $userdata['first_name'] ?>"/>
                 <?php echo form_error("first_name", "<font color='red'>", "</font>"); ?>
@@ -26,9 +26,33 @@
                 <?php echo form_error("date_of_birth", "<font color='red'>", "</font>"); ?>
             <?php } ?>
             <div class="modal-footer">
-                <input type="submit" class="btn btn-secondary" name="submitMyEditProfile" value="Submit"/>
+                <input type="submit" class="btn btn-success" name="submitMyEditProfile" data-toggle="modal" data-target="#sucesschange" data-target="#sucess" value="Submit"/>
+
 
             </div></form>
 
-    </div>
-</div>
+        <div class="modal" id="sucesschange">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Modal Heading</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <iframe width="500" height="500" src="https://lottiefiles.com/iframe/782-check-mark-success" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div></div>
+
