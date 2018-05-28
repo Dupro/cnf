@@ -40,13 +40,6 @@
                 </ul>
                 </div>
         </nav>
-        <div class="col-2 position-fixed">
-        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link" id="v-pills-home-tab"  href="" role="tab" aria-controls="v-pills-home" >Project</a>
-            <a class="nav-link" id="v-pills-profile-tab"  href="<?php echo site_url("Admin/addnewConference"); ?>" role="tab" aria-controls="v-pills-profile" >Add new conference</a>
-            <a class="nav-link" id="v-pills-messages-tab" href="<?php echo site_url("Admin/reviewerInvitation"); ?>" role="tab" aria-controls="v-pills-messages" aria-selected="false">Reviewer invitation</a>
-            <a class="nav-link" id="v-pills-messages-tab" href="<?php echo site_url("Admin/reviewerEmailInvitation"); ?>" role="tab" aria-controls="v-pills-messages" aria-selected="false">Reviewer Email invitation</a>
-        </div>
-    </div>
+        
         <div class="container">
 
