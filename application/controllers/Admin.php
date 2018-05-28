@@ -197,16 +197,16 @@ class Admin extends CI_Controller {
     // OVO TEK TREBA DA SE RADI
     public function reviewerInvitation() {
 
-//        $mydata = $this->ModelUser->myConferences();
-//        $data['mydata'] = $mydata;
-//        $conference_data = $this->Search_model->conference();
-//        $data['confdata'] = $conference_data;
-//        $data['controller'] = "Admin";
-//
-//        $this->load->view("template/header_" . $this->controller . ".php", $data);
-//        $this->load->view("main/admin.php", $data);
-//        $this->load->view("main/admin_reviewer_invitation.php", $data);
-//        $this->load->view("template/footer.php");
+        $mydata = $this->Search_model->conference();
+        $data['mydata'] = $mydata;
+        $conference_data = $this->Search_model->conference();
+        $data['confdata'] = $conference_data;
+        $data['controller'] = "Admin";
+
+        $this->load->view("template/header_" . $this->controller . ".php", $data);
+      
+        $this->load->view("forms/admin_reviewer_invitation.php", $data);
+        $this->load->view("template/footer.php");
     }
 
     public function addnewConference() {

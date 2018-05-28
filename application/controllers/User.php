@@ -46,7 +46,7 @@ class User extends CI_Controller {
         $this->config->load('bootstrap_pagination'); //moze i u autoload.php
 
         $config_pagination = $this->config->item('pagination');
-        $config_pagination['base_url'] = site_url("Admin/conferences");
+        $config_pagination['base_url'] = site_url("User/index");
         $config_pagination['total_rows'] = $conferencenum;
         $config_pagination['per_page'] = $limit;
         $config_pagination['next_link'] = 'Next';
