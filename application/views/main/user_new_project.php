@@ -10,20 +10,25 @@
                 <option value="<?php echo $el["idconference"]; ?>"><?php echo $el["title"]; ?></option>
             <?php endforeach; ?>
         </select>
+        <?php echo form_error("conferenc", "<font color='red'>", "</font>"); ?>
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1" >Project name</label>
         <input type="text" class="form-control" id="exampleFormControlInput1" name="project_name" >
+        <?php echo form_error("project_name", "<font color='red'>", "</font>"); ?>
     </div>
+    
     <div class="form-group">
         <label for="exampleFormControlInput1">Key words</label>
         <input type="text" class="form-control" id="exampleFormControlInput1" name="keywords" >
+        <?php echo form_error("keywords", "<font color='red'>", "</font>"); ?>
     </div>
     <div class="form-group">
         <label for="exampleFormControlSelect1">Section</label>
         <select class="form-control" name="field" id="field" disabled="">
             
         </select>
+        <?php echo form_error("field", "<font color='red'>", "</font>"); ?>
     </div>
     <div class="row">
     <div class="form-group col-5" >

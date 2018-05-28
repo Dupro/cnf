@@ -189,7 +189,7 @@ class User extends CI_Controller {
     }
 
     public function get_field() { // dovlacenje liste fileda za konferencije u myNewProject
-        echo "smrda";
+        
         $idconference = $this->input->post('idconference');
         $field = $this->Search_model->get_province_query($idconference);
         if (count($field) > 0) {
@@ -203,13 +203,13 @@ class User extends CI_Controller {
     }
 
     public function mynewProject() {
-//        $this->form_validation->set_rules('project_name', 'Project Name', 'required|min_length[4]');
-//        $this->form_validation->set_rules('keywords', 'Keywords', 'required');
-//        $this->form_validation->set_rules('field', 'Section', 'required');
-//        $this->form_validation->set_rules('apstract', 'Apstract', 'required');
-//        if ($this->form_validation->run() == FALSE) {
-//            $this->index(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
-//        } else {
+        $this->form_validation->set_rules('project_name', 'Project Name', 'required|min_length[4]');
+        $this->form_validation->set_rules('keywords', 'Keywords', 'required');
+        $this->form_validation->set_rules('field', 'Section', 'required');
+        $this->form_validation->set_rules('apstract', 'Apstract', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->newProject(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
+        } else {
         //ispravno
         $fieldid = $this->input->post("field");
         $field_name = $this->Search_model->field($fieldid);
@@ -236,7 +236,7 @@ class User extends CI_Controller {
         }
 
         redirect("User/index");
-//        }
+        }
     }
 
 }

@@ -296,15 +296,33 @@ class Admin extends CI_Controller {
     }
 
 //    TO DO
-    // public function project() {
-    //$data['controller'] = "Admin";
-    //$this->load->view("template/header_admin.php");
-    //$this->load->view("main/admin_my_conference.php");
-    //$this->load->view("template/footer.php");
+    public function projects() {
+        $iduser = $this->session->userdata("user")->iduser;
+        $myconf = $this->ModelUser->modelMyConferences($iduser);
+        $data['myconf'] = $myconf;
+        $data['controller'] = "Admin";
+        $this->load->view("template/header_admin.php");
+        $this->load->view("main/admin_projects.php",$data);
+        $this->load->view("template/footer.php");
+    }
+
     // public function addnewconf() {
     //$data['controller'] = "Admin";
     //$this->load->view("template/header_admin.php");
     //$this->load->view("main/admin_addnew_conference.php");
     //$this->load->view("template/footer.php");
     // }
+    public function projectofconf(){
+   $idconference = $this->input->post('idconference');
+            $projectofconf=$this->ModelUser->projectofconf($idconference);
+            if (count($projectofconf) > 0) {
+            $pro_table = 'nesto';
+            
+            foreach ($projectofconf as $field) {$pro_table .= '<tr>';
+                $pro_table .= '<td value="' . $field->idproject . '">' . $field->project_name . '</>';
+                $pro_table .= '</tr>';
+            }
+            echo $pro_table;
+        }
+    }
 }

@@ -24,8 +24,6 @@ p.project_name LIKE '%{$var}%'");
 //$limit = FALSE, $offset = FALSE
     public function conference($limit = 1000, $pocetak = 0) {
         if ($limit) {
-//            $this->db->limit($limit, $offset);
-//
             $query = $this->db->get('conference', $limit, $pocetak);
         } else {
             $query = $this->db->get();

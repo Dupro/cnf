@@ -64,7 +64,7 @@ class ModelUser extends CI_Model {
     }
     public function modelMyConferences($iduser=NULL){
         if ($iduser!=NULL)
-       $query= $this->db->query('SELECT iduser, first_name, last_name, title FROM user, user_has_conference, conference
+       $query= $this->db->query('SELECT * FROM user, user_has_conference, conference
 WHERE iduser='.$iduser. ' and user_iduser='.$iduser. ' and idconference =conference_idconference');
         $result=$query->result_array();
         return $result;
@@ -72,6 +72,12 @@ WHERE iduser='.$iduser. ' and user_iduser='.$iduser. ' and idconference =confere
     public function myproject($param) {
         $query= $this->db->query("SELECT * from project, user, conference, autor, conference_has_project where project.idproject=autor.project_idproject and conference_idconference=idconference and iduser=user_iduser AND conference_has_project.project_idproject=project.idproject and iduser='5'");
         $result=$query->result_array();
+        return $result;
+        
+    }
+    public function projectofconf($idconference) {
+        $query= $this->db->query("Select * from conference, conference_has_project, project where idconference=conference_idconference and idproject=project_idproject and idconference='.$idconference.'");
+        $result=$query->result();
         return $result;
         
     }
