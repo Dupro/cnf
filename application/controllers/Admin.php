@@ -212,6 +212,8 @@ class Admin extends CI_Controller {
     public function addnewConference() {
 
         $conference_data = $this->Search_model->conference();
+        $field_data= $this->Search_model->all_field();
+        $data['field_data'] = $field_data;
         $data['confdata'] = $conference_data;
         $data['controller'] = "Admin";
 
@@ -221,19 +223,24 @@ class Admin extends CI_Controller {
         $this->load->view("template/footer.php");
     }
 
-    public function createConference() {
-        $this->form_validation->set_rules('title', 'Title', 'required|min_length[6]');
+    public function createConference($message = NULL) {
+        $data= array();
+        if($message)
+        $data['message'] = $message;    
+        
+        $this->form_validation->set_rules('title', 'Conference name', 'required|min_length[6]');
         $this->form_validation->set_rules('place', 'Place', 'required');
         $this->form_validation->set_rules('event_begin', 'Event Begin', 'required');
         $this->form_validation->set_rules('event_end', 'Event end', 'required');
         $this->form_validation->set_rules('application_begin', 'Application begin', 'required');
         $this->form_validation->set_rules('application_end', 'Application end', 'required');
         $this->form_validation->set_rules('projects_per_autor', 'Projects per autor', 'required');
-
+        $this->form_validation->set_rules('field', 'Field', 'required');
+        $this->form_validation->set_message("required", "Field {field} is empty.");
 
 
         if ($this->form_validation->run() == FALSE) {
-            $this->index(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
+            $this->addnewConference(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
         } else {
             //ispravno
             $title = $this->input->post("title");
@@ -243,7 +250,10 @@ class Admin extends CI_Controller {
             $application_begin = $this->input->post("application_begin");
             $application_end = $this->input->post("application_end");
             $projects_per_autor = $this->input->post("projects_per_autor");
+            $idfield = $this->input->post("field");
             $idconf = $this->ModelRegistration->newConference($title, $place, $event_begin, $event_end, $application_begin, $application_end, $projects_per_autor);
+            
+            $this->ModelRegistration->confHasField($idfield, $idconf);
             $iduser = $this->session->userdata('user')->iduser;
             $successAddConf = $this->session->set_flashdata('successAddConf', 'You have successfully created a new conference!');
             $this->ModelRegistration->userHasConference($idconf, $iduser);
