@@ -25,7 +25,8 @@
     </div>
     <div class="form-group">
         <label for="exampleFormControlSelect1">Section</label>
-        <select class="form-control" name="field" id="field" disabled="">
+        <select class="form-control" name="field" id="field" disabled="" >
+            <option value="" hidden="" >Select Conference to open Section</option>
             
         </select>
         <?php echo form_error("field", "<font color='red'>", "</font>"); ?>
