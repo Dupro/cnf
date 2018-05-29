@@ -209,16 +209,7 @@ class User extends CI_Controller {
     
         
         
-        $conference_data = $this->Search_model->conference();
-        $data['confdatapag'] = $conference_data;
-
-      
-        $data['info'] = '$info_vesti';
-        $this->load->view("template/header_" . $this->controller . ".php", $data);
-        $this->load->view("forms/login.php");
-        $this->load->view("forms/registration.php");
-        $this->load->view("main/guest.php", $data);
-        $this->load->view("template/footer.php");
+       
     }
 
     public function get_field() { // dovlacenje liste fileda za konferencije u myNewProject
