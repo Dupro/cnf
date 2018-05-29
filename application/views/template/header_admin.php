@@ -15,7 +15,7 @@
                 </a>
                 <ul class="navbar-nav">
                     <li class="nav-item ">
-                        <a class="nav-link" href="<?php echo site_url("Admin/index"); ?>">Home</a>
+                        <a class="nav-link" href="<?php echo site_url("Admin/conferences"); ?>">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url("Admin/myProfile"); ?>">My profile</a>
