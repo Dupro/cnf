@@ -1,7 +1,9 @@
 
 <h3 style="text-align:center">My new project</h3>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<form name="createProject" action="<?php echo site_url('User/mynewProject'); ?>" onsubmit="return selectAll()" method="POST">
+<!--<form name="createProject" action="<?php // echo site_url('User/mynewProject'); ?>" onsubmit="return selectAll()" method="POST">-->
+    <?php    echo form_open_multipart("User/mynewProject", array('method' => 'POST',
+                                                            'onsubmit' => 'return selectALL()')); ?>
     <div class="form-group">
         <label for="exampleFormControlSelect2">Conferences</label>
         <select class="form-control" id="conferenc" name="conferenc">
@@ -61,14 +63,18 @@
         <label for="exampleFormControlTextarea1">Abstract</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="apstract"></textarea>
     </div>
+<div class="form-group">
+        <label for="exampleFormControlFile1">Choose file</label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="fileUpload">
+    </div>
     <button type="submit" class="btn btn-success" >Send</button>
 </form>
-<form>
+<!--<form>
     <div class="form-group">
         <label for="exampleFormControlFile1">Choose file</label>
         <input type="file" class="form-control-file" id="exampleFormControlFile1">
     </div>
-</form>
+</form>-->
 
 
 <script type="text/javascript">

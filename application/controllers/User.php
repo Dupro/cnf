@@ -111,9 +111,9 @@ class User extends CI_Controller {
         $userID = $this->session->userdata('user')->iduser;
         $config['upload_path'] = './image/profile/';
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = 2000;
+        $config['max_size'] = 2048;
         $config['max_width'] = 2048;
-        $config['max_height'] = 1024;
+        $config['max_height'] = 2048;
         $config['file_name'] = "profile_" . $userID;
 
         $this->load->library('upload', $config);
@@ -247,6 +247,21 @@ class User extends CI_Controller {
 
         $idproject = $this->ModelRegistration->myNewProject($project_name, $keywords, $section_pro, $apstract, $field_idfield);
         $iduser = $this->session->userdata('user')->iduser;
+        
+        // --------------DODAVANJE FOLDERA ZA KONKRETAN PROJEKAT AKO NE POSTOJI--------------
+        if (!is_dir('userProject/'.$idproject)){ 
+        mkdir('userProject/'.$idproject, 0777, TRUE);}
+        // --------------KONFIGURACIJA ZA SAM FAJL KOJI CE BITI UPLOADOVAN--------------
+        $config['upload_path'] = './userProject/'. $idproject .'/';
+        $config['allowed_types'] = 'pdf|doc|docx||txt|';
+        $config['max_size'] = 2048;
+        $config['file_name'] = "project_" . $idproject;
+        
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('fileUpload');
+        
+        
+        
         $successAddProject = $this->session->set_flashdata('successAddProject', 'You have successfully add a new project!');
         $this->ModelRegistration->autor($idproject, $iduser);
         $successAddProject;
@@ -258,7 +273,7 @@ class User extends CI_Controller {
             }
             $this->ModelRegistration->autor($idproject, $coautorid2);
         }
-
+        
         redirect("User/index");
         }
     }
