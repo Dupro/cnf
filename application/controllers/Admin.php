@@ -142,11 +142,47 @@ class Admin extends CI_Controller {
     }
 
     public function myConferences() {
+        if ($this->uri->segment(3))
+            $indexnum = $this->uri->segment(3);
+        else
+            $indexnum = 0;
+
+        $limit = 3;
+        $conferencenum = $this->db->count_all('conference');
+        $data['confdatapag'] = $this->Search_model->conference($limit, $indexnum);
+
+        $this->load->library('pagination'); // ovo moze i u  config/autoload.php da se doda
+        $this->config->load('bootstrap_pagination'); //moze i u autoload.php
+
+        $config_pagination = $this->config->item('pagination');
+        $config_pagination['base_url'] = site_url("Admin/myConferences");
+        $config_pagination['total_rows'] = $conferencenum;
+        $config_pagination['per_page'] = $limit;
+        $config_pagination['next_link'] = 'Next';
+        $config_pagination['prev_link'] = 'Prev';
+
+        $this->pagination->initialize($config_pagination);
+        $data['links'] = $this->pagination->create_links();
+        $conference_data = $this->Search_model->conference();
+        $data['confdata'] = $conference_data;
+        $controller = "";
+        $data['controller'] = $controller;
+
+        
         $iduser = $this->session->userdata("user")->iduser;
         $myconf = $this->ModelUser->modelMyConferences($iduser);
         $data['myconf'] = $myconf;
         $this->loadView($data, "main/admin_my_conference.php");
+        
+        
+         
+
+        
     }
+    
+    
+    
+    
 
     public function reviewerEmailInvitation() {
         $data['successSentEmail'] = $this->session->flashdata('successSentEmail');
