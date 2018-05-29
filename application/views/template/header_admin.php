@@ -6,7 +6,7 @@
         <title>Welcome</title>
     </head>
     <body>
-        
+
 
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark mb-4 py-3">
             <div class="container">
@@ -15,7 +15,7 @@
                 </a>
                 <ul class="navbar-nav">
                     <li class="nav-item ">
-                        <a class="nav-link" href="<?php echo site_url("Admin/index"); ?>">Home</a>
+                        <a class="nav-link" href="<?php echo site_url("Admin/conferences"); ?>">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url("Admin/myProfile"); ?>">My profile</a>
@@ -23,11 +23,12 @@
                 </ul>
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url("Admin/myConferences"); ?>">My conferences</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url("Admin/conferences"); ?>">Conferences</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo site_url("Admin/myConferences"); ?>">My conferences</a>
+                    </li>
+
 
                     <li class="nav-item ">
                         <a class="nav-link" href="<?php echo site_url("Ajaxsearch/index"); ?>">Search</a>
@@ -38,19 +39,19 @@
                     </li>
 
                 </ul>
-                </div>
+            </div>
         </nav>
 
         <div class="col-2 position-fixed">
-        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link" id="v-pills-home-tab"  href="<?php echo site_url("Admin/projects"); ?>" role="tab" aria-controls="v-pills-home" >Project</a>
-            <a class="nav-link" id="v-pills-profile-tab"  href="<?php echo site_url("Admin/addnewConference"); ?>" role="tab" aria-controls="v-pills-profile" >Add new conference</a>
-            <a class="nav-link" id="v-pills-messages-tab" href="<?php echo site_url("Admin/reviewerInvitation"); ?>" role="tab" aria-controls="v-pills-messages" aria-selected="false">Reviewer invitation</a>
-            <a class="nav-link" id="v-pills-messages-tab" href="<?php echo site_url("Admin/reviewerEmailInvitation"); ?>" role="tab" aria-controls="v-pills-messages" aria-selected="false">Reviewer Email invitation</a>
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link" id="v-pills-home-tab"  href="<?php echo site_url("Admin/projects"); ?>" role="tab" aria-controls="v-pills-home" >Project</a>
+                <a class="nav-link" id="v-pills-profile-tab"  href="<?php echo site_url("Admin/addnewConference"); ?>" role="tab" aria-controls="v-pills-profile" >Add new conference</a>
+                <a class="nav-link" id="v-pills-messages-tab" href="<?php echo site_url("Admin/reviewerInvitation"); ?>" role="tab" aria-controls="v-pills-messages" aria-selected="false">Reviewer invitation</a>
+                <a class="nav-link" id="v-pills-messages-tab" href="<?php echo site_url("Admin/reviewerEmailInvitation"); ?>" role="tab" aria-controls="v-pills-messages" aria-selected="false">Reviewer Email invitation</a>
+            </div>
         </div>
-    </div>
 
-        
+
 
         <div class="container">
 

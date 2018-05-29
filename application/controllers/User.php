@@ -176,8 +176,28 @@ class User extends CI_Controller {
     }
 
     public function conferences() {
-        $conference_data = $this->Search_model->conference();
-        $data['confdatapag'] = $conference_data;
+        
+         if ($this->uri->segment(3))
+            $indexnum = $this->uri->segment(3);
+        else
+            $indexnum = 0;
+
+        $limit = 3;
+        $conferencenum = $this->db->count_all('conference');
+        $data['confdatapag'] = $this->Search_model->conference($limit, $indexnum);
+
+        $this->load->library('pagination'); // ovo moze i u  config/autoload.php da se doda
+        $this->config->load('bootstrap_pagination'); //moze i u autoload.php
+
+        $config_pagination = $this->config->item('pagination');
+        $config_pagination['base_url'] = site_url("User/conferences");
+        $config_pagination['total_rows'] = $conferencenum;
+        $config_pagination['per_page'] = $limit;
+        $config_pagination['next_link'] = 'Next';
+        $config_pagination['prev_link'] = 'Prev';
+
+        $this->pagination->initialize($config_pagination);
+        $data['links'] = $this->pagination->create_links();
 
         $data['controller'] = "User";
         $data['info'] = '$info_vesti';
@@ -186,6 +206,10 @@ class User extends CI_Controller {
         $this->load->view("forms/registration.php");
         $this->load->view("main/guest.php", $data);
         $this->load->view("template/footer.php");
+    
+        
+        
+       
     }
 
     public function get_field() { // dovlacenje liste fileda za konferencije u myNewProject
