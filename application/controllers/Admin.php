@@ -35,16 +35,34 @@ class Admin extends CI_Controller {
     }
 
     public function index() {
+        if ($this->uri->segment(3))
+            $indexnum = $this->uri->segment(3);
+        else
+            $indexnum = 0;
 
-        $mydata = '';
-        $data['mydata'] = $mydata;
-        $conference_data = $this->Search_model->conference();
-        $data['confdata'] = $conference_data;
+        $limit = 3;
+        $conferencenum = $this->db->count_all('conference');
+        $data['confdatapag'] = $this->Search_model->conference($limit, $indexnum);
+
+        $this->load->library('pagination'); // ovo moze i u  config/autoload.php da se doda
+        $this->config->load('bootstrap_pagination'); //moze i u autoload.php
+
+        $config_pagination = $this->config->item('pagination');
+        $config_pagination['base_url'] = site_url("Admin/index");
+        $config_pagination['total_rows'] = $conferencenum;
+        $config_pagination['per_page'] = $limit;
+        $config_pagination['next_link'] = 'Next';
+        $config_pagination['prev_link'] = 'Prev';
+
+        $this->pagination->initialize($config_pagination);
+        $data['links'] = $this->pagination->create_links();
+
         $data['controller'] = "Admin";
-        $data['successAddConf'] = $this->session->flashdata('successAddConf');
+        $data['info'] = '$info_vesti';
         $this->load->view("template/header_" . $this->controller . ".php", $data);
-        $this->load->view("main/admin.php", $data);
-
+        $this->load->view("forms/login.php");
+        $this->load->view("forms/registration.php");
+        $this->load->view("main/guest.php", $data);
         $this->load->view("template/footer.php");
     }
 
@@ -100,6 +118,7 @@ class Admin extends CI_Controller {
     }
 
     public function conferences() {
+        
         if ($this->uri->segment(3))
             $indexnum = $this->uri->segment(3);
         else
@@ -125,8 +144,8 @@ class Admin extends CI_Controller {
         $data['controller'] = "Admin";
         $data['info'] = '$info_vesti';
         $this->load->view("template/header_" . $this->controller . ".php", $data);
-        $this->load->view("forms/login.php");
-        $this->load->view("forms/registration.php");
+//        $this->load->view("forms/login.php");
+//        $this->load->view("forms/registration.php");
         $this->load->view("main/guest.php", $data);
         $this->load->view("template/footer.php");
     }
@@ -142,21 +161,22 @@ class Admin extends CI_Controller {
     }
 
     public function myConferences() {
+        $idUser = $this->session->userdata("user")->iduser;
         if ($this->uri->segment(3))
             $indexnum = $this->uri->segment(3);
         else
             $indexnum = 0;
 
-        $limit = 3;
+        $limit = 4;
         $conferencenum = $this->db->count_all('conference');
-        $data['confdatapag'] = $this->Search_model->conference($limit, $indexnum);
+        $data['confdatapag'] = $this->Search_model->myconference($idUser,$limit,$indexnum);
 
         $this->load->library('pagination'); // ovo moze i u  config/autoload.php da se doda
         $this->config->load('bootstrap_pagination'); //moze i u autoload.php
 
         $config_pagination = $this->config->item('pagination');
         $config_pagination['base_url'] = site_url("Admin/myConferences");
-        $config_pagination['total_rows'] = $conferencenum;
+        $config_pagination['total_rows'] = 5;
         $config_pagination['per_page'] = $limit;
         $config_pagination['next_link'] = 'Next';
         $config_pagination['prev_link'] = 'Prev';
@@ -168,21 +188,12 @@ class Admin extends CI_Controller {
         $controller = "";
         $data['controller'] = $controller;
 
-        
+
         $iduser = $this->session->userdata("user")->iduser;
         $myconf = $this->ModelUser->modelMyConferences($iduser);
         $data['myconf'] = $myconf;
         $this->loadView($data, "main/admin_my_conference.php");
-        
-        
-         
-
-        
     }
-    
-    
-    
-    
 
     public function reviewerEmailInvitation() {
         $data['successSentEmail'] = $this->session->flashdata('successSentEmail');
@@ -240,7 +251,7 @@ class Admin extends CI_Controller {
         $data['controller'] = "Admin";
 
         $this->load->view("template/header_" . $this->controller . ".php", $data);
-      
+
         $this->load->view("forms/admin_reviewer_invitation.php", $data);
         $this->load->view("template/footer.php");
     }
@@ -248,7 +259,7 @@ class Admin extends CI_Controller {
     public function addnewConference() {
 
         $conference_data = $this->Search_model->conference();
-        $field_data= $this->Search_model->all_field();
+        $field_data = $this->Search_model->all_field();
         $data['field_data'] = $field_data;
         $data['confdata'] = $conference_data;
         $data['controller'] = "Admin";
@@ -260,10 +271,10 @@ class Admin extends CI_Controller {
     }
 
     public function createConference($message = NULL) {
-        $data= array();
-        if($message)
-        $data['message'] = $message;    
-        
+        $data = array();
+        if ($message)
+            $data['message'] = $message;
+
         $this->form_validation->set_rules('title', 'Conference name', 'required|min_length[6]');
         $this->form_validation->set_rules('place', 'Place', 'required');
         $this->form_validation->set_rules('event_begin', 'Event Begin', 'required');
@@ -288,7 +299,7 @@ class Admin extends CI_Controller {
             $projects_per_autor = $this->input->post("projects_per_autor");
             $idfield = $this->input->post("field");
             $idconf = $this->ModelRegistration->newConference($title, $place, $event_begin, $event_end, $application_begin, $application_end, $projects_per_autor);
-            
+
             $this->ModelRegistration->confHasField($idfield, $idconf);
             $iduser = $this->session->userdata('user')->iduser;
             $successAddConf = $this->session->set_flashdata('successAddConf', 'You have successfully created a new conference!');
@@ -348,7 +359,7 @@ class Admin extends CI_Controller {
         $data['myconf'] = $myconf;
         $data['controller'] = "Admin";
         $this->load->view("template/header_admin.php");
-        $this->load->view("main/admin_projects.php",$data);
+        $this->load->view("main/admin_projects.php", $data);
         $this->load->view("template/footer.php");
     }
 
@@ -358,17 +369,80 @@ class Admin extends CI_Controller {
     //$this->load->view("main/admin_addnew_conference.php");
     //$this->load->view("template/footer.php");
     // }
-    public function projectofconf(){
-   $idconference = $this->input->post('idconference');
-            $projectofconf=$this->ModelUser->projectofconf($idconference);
-            if (count($projectofconf) > 0) {
+    public function projectofconf() {
+        $idconference = $this->input->post('idconference');
+        $projectofconf = $this->ModelUser->projectofconf($idconference);
+        if (count($projectofconf) > 0) {
             $pro_table = 'nesto';
-            
-            foreach ($projectofconf as $field) {$pro_table .= '<tr>';
+
+            foreach ($projectofconf as $field) {
+                $pro_table .= '<tr>';
                 $pro_table .= '<td value="' . $field->idproject . '">' . $field->project_name . '</>';
                 $pro_table .= '</tr>';
             }
             echo $pro_table;
         }
     }
+    public function editMyProfile() {
+        if ($this->input->post("submitMyEditProfile") !== NULL) {
+            $iduser = $this->session->userdata("user")->iduser;
+            $first_name = $this->input->post("first_name");
+            $last_name = $this->input->post("last_name");
+            $phone_number = $this->input->post("phone_number");
+            $email = $this->input->post("email");
+            $organisation = $this->input->post("organisation");
+            $date_of_birth = $this->input->post("date_of_birth");
+            $this->ModelRegistration->changeMyProfile($iduser, $first_name, $last_name, $phone_number, $email, $organisation, $date_of_birth);
+            redirect("Admin/myProfile");
+        } else {
+            $idUser = $this->session->userdata("user")->username;
+            $mydata = $this->ModelUser->myProfile($idUser);
+            $data['mydata'] = $mydata;
+            $data['controller'] = "Admin";
+            $this->loadView($data, "main/user_editmyprofile.php");
+        }
+    }
+
+    public function selectprojectofconf() {
+        $output="";
+        $result =$this->Search_model->users();
+        $output .= '  
+      <div class="table-responsive">  
+           <table class="table table-bordered">  
+                <tr>  
+                     <th width="10%">Id</th>  
+                     <th width="40%">First Name</th>  
+                     <th width="40%">Last Name</th>  
+                     <th width="10%">Delete</th>  
+                </tr>';
+        if ($result !== 0) {
+            $output .= '  
+           <tr>  
+                <td></td>  
+                <td id="first_name" contenteditable></td>  
+                <td id="last_name" contenteditable></td>  
+                <td><button type="button" name="btn_add" id="btn_add" class="btn btn-xs btn-success">+</button></td>  
+           </tr>  
+      ';
+           foreach ( $result as $row ) {
+                $output .= '  
+                <tr>  
+                     <td>' . $row["iduser"] . '</td>  
+                     <td class="first_name" data-id1="' . $row["iduser"] . '" contenteditable>' . $row["first_name"] . '</td>  
+                     <td class="last_name" data-id2="' . $row["iduser"] . '" contenteditable>' . $row["last_name"] . '</td>  
+                     <td><button type="button" name="delete_btn" data-id3="' . $row["iduser"] . '" class="btn btn-xs btn-danger btn_delete">x</button></td>  
+                </tr>  
+           ';
+            }
+            
+        } else {
+            $output .= '<tr>  
+                          <td colspan="4">Data not Found</td>  
+                     </tr>';
+        }
+        $output .= '</table>  
+      </div>';
+        echo $output;
+    }
+    
 }

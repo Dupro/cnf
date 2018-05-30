@@ -58,7 +58,7 @@
                 <!-- Button trigger modal -->
                 <?php echo "<font color='blue'>" . $successPW . "</font>"; ?>
                 <a class="btn btn-primary" href="<?php echo site_url('ControllerChangePassword'); ?>">Change your password</a>
-                <a class="btn btn-secondary" href="<?php echo site_url('User/editMyProfile'); ?>">Edit</a>
+                <a class="btn btn-secondary" href="<?php echo site_url($controller.'/editMyProfile'); ?>">Edit</a>
                 <!-- Modal -->
                 <div class="modal fade" id="changePasssword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">

@@ -83,5 +83,22 @@ where idconference=conference_idconference and idfield=field_idfield and idconfe
         $result = $query->result_array();
         return $result;
     }
+    public function myconference($iduser,$limit = 1000, $pocetak = 0) {
+//        $this->db->from("conference");
+//        
+//        $this->db->join("user_has_conference","idconference=conference_idconference" );
+//        $this->db->join("user","iduser=user_iduser");
+//        $this->db->where("iduser", "$iduser");
+//        
+        
+            $query = $this->db->query('SELECT * FROM user, user_has_conference, conference 
+WHERE iduser='.$iduser. ' and user_iduser='.$iduser. ' and idconference =conference_idconference LiMIT '.$limit.' OFFSET '.$pocetak.'');
+//        $conference="conference";
+//       $query = $this->db->get($limit, $pocetak);
+//prikazujem prvih deset vesti
+        $result = $query->result_array(); //vraca niz vesti
+        return $result;
+    
+    }
 
 }
