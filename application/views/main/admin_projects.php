@@ -33,6 +33,7 @@
         $dateend = explode(' ', $el['application_end']);
         echo $date[0] . " - " . $dateend[0];
         ?></td>
+    <input type="hidden" id="<?php echo $i.'id'?>" value="<?php echo $el['idconference']; ?>" >
     </tr>
 <!--    <form id="form-id" method="post" action="<?php echo site_url("Admin/projectofconf"); ?>">
 <input type="hidden" name="idconference" value="<?php echo $el['idconference']; ?>">
@@ -42,7 +43,7 @@
 
                 <div class="card card-body">
                     <table id="tableofproj">
-                        <div id="live_data"></div>  
+                        <div id=<?php echo $i."res";?>></div>  
                     </table>
                 </div>
             </div>
@@ -70,18 +71,25 @@
 //       
 //    });
 
- $(document).ready(function(){  
+ $(document).on('click', '#1<?php echo $el['idconference']; ?>',function(){  
       function fetch_data()  
       {  
-          var idconference = $('#idconference').text(); 
+//          $(document).on('click', '#btn_add', function(){  
+          var idconference = document.getElementById("<?php echo $i.'id'?>").value; 
+//          var idcong=idconference.trim(" ");
+//          var idcong=idcong.split(" ");
+         alert (idconference);
            $.ajax({  
                 url:"<?php echo base_url() ?>Admin/selectprojectofconf",  
                 method:"POST",  
+                data:{idconference:idconference},  
+//                dataType:"text",
                 success:function(data){  
-                     $('#live_data').html(data);  
+                     $('#<?php echo $i."res";?>').html(data);  
                 }  
            });  
-      }  
+      } 
+//      }
       fetch_data();  
       $(document).on('click', '#btn_add', function(){  
            var first_name = $('#first_name').text();  

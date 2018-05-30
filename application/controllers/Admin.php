@@ -404,6 +404,8 @@ class Admin extends CI_Controller {
     }
 
     public function selectprojectofconf() {
+//        $katran=$this->input->post('query');
+//        alert $katran;
         $output="";
         $result =$this->Search_model->users();
         $output .= '  
