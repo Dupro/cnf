@@ -22,7 +22,7 @@
             ?></div>
 
     <div class="media-body">
-        <form name = "editprofile" action = "<?php echo site_url('User/editMyProfile') ?>" method = "post">
+        <form name = "editprofile" action = "<?php echo site_url($controller.'/editMyProfile') ?>" method = "post">
 
 
 
