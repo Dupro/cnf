@@ -70,6 +70,14 @@ class ModelRegistration extends CI_Model {
         $id = $this->db->insert_id();
         return $id;
     }
+    public function myNewFile($idproject, $project_name, $time){
+        $this->db->set("project_idproject", $idproject);
+        $this->db->set("name", $project_name);
+        $this->db->set("time", $time);
+        $this->db->insert("project_file");
+        $id=$this->db->insert_id();
+        return $id;
+    }
 
     public function autor($idproject, $iduser) {
         $this->db->set("project_idproject", $idproject);
