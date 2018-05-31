@@ -87,10 +87,16 @@ where idconference=conference_idconference and idfield=field_idfield and idconfe
 
             $query = $this->db->query('SELECT * FROM user, user_has_conference, conference 
 WHERE iduser='.$iduser. ' and user_iduser='.$iduser. ' and idconference =conference_idconference LiMIT '.$limit.' OFFSET '.$pocetak.'');
-//      
+  
         $result = $query->result_array(); //vraca niz vesti
         return $result;
     
+    }
+    public function myprojectofconf($idconference){
+        $query = $this->db->query("SELECT * FROM conference, conference_has_project, project, user, autor
+where idconference=conference_idconference and idproject=conference_has_project.project_idproject and idproject=autor.project_idproject and iduser=autor.user_iduser and project.core=user.iduser  and idconference=".$idconference."");
+        $result = $query->result_array(); 
+        return $result;
     }
 
 }
