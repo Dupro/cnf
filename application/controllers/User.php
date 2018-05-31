@@ -235,6 +235,7 @@ class User extends CI_Controller {
             $this->newProject(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
         } else {
         //ispravno
+        
         $fieldid = $this->input->post("field");
         $field_name = $this->Search_model->field($fieldid);
         $project_name = $this->input->post("project_name");
@@ -244,9 +245,9 @@ class User extends CI_Controller {
         }
         $apstract = $this->input->post("apstract");
         $field_idfield = $this->input->post("field");
-
-        $idproject = $this->ModelRegistration->myNewProject($project_name, $keywords, $section_pro, $apstract, $field_idfield);
         $iduser = $this->session->userdata('user')->iduser;
+        $idproject = $this->ModelRegistration->myNewProject($project_name, $keywords, $section_pro, $apstract, $field_idfield, $iduser);
+        
         
         // --------------DODAVANJE FOLDERA ZA KONKRETAN PROJEKAT AKO NE POSTOJI--------------
         if (!is_dir('userProject/'.$idproject)){ 

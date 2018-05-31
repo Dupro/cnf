@@ -59,12 +59,13 @@ class ModelRegistration extends CI_Model {
         return $id;
     }
 
-    public function myNewProject($project_name, $keywords, $section_pro, $apstract, $field_idfield) {
+    public function myNewProject($project_name, $keywords, $section_pro, $apstract, $field_idfield,$iduser) {
         $this->db->set("project_name", $project_name);
         $this->db->set("keywords", $keywords);
         $this->db->set("section_pro", $section_pro);
         $this->db->set("apstract", $apstract);
         $this->db->set("field_idfield", $field_idfield);
+        $this->db->set("core", $iduser);
         $this->db->insert("project");
         $id = $this->db->insert_id();
         return $id;
