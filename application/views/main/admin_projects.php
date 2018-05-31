@@ -32,7 +32,7 @@
         $date = explode(' ', $el['application_begin']);
         $dateend = explode(' ', $el['application_end']);
         echo $date[0] . " - " . $dateend[0];
-        ?></td>
+        ?></td><td></td>
     <input type="hidden" id="<?php echo $i.'id'?>" value="<?php echo $el['idconference']; ?>" >
     </tr>
 <!--    <form id="form-id" method="post" action="<?php echo site_url("Admin/projectofconf"); ?>">
@@ -78,7 +78,7 @@
           var idconference = document.getElementById("<?php echo $i.'id'?>").value; 
 //          var idcong=idconference.trim(" ");
 //          var idcong=idcong.split(" ");
-         alert (idconference);
+//         alert (idconference);
            $.ajax({  
                 url:"<?php echo base_url() ?>Admin/selectprojectofconf",  
                 method:"POST",  
