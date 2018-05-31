@@ -17,9 +17,9 @@
                         if (isset($message))
                             echo "<font color='red'>$message</font><br>";
                         ?>
-                        Username:<input class="form-control" type="text" name="username" value="<?php echo set_value('username') ?>"/>
+                        Username:<input title="Enter your username" class="form-control" type="text" name="username"  value="<?php echo set_value('username') ?>"/>
                         <?php echo form_error("username", "<font color='red'>", "</font>"); ?>
-                        Password:<input class="form-control" type="password" name="password"/>
+                        Password:<input title="Password must contain at least 6 and max 12 characters, including at least one UPPER/lowercase and number and first character must be a letter" class="form-control" type="password" name="password"/>
                         <?php echo form_error("password", "<font color='red'>", "</font>"); ?>
                     <!--Confirm your Password:<input class="form-control" type="password" name="password"/>-->
                         <?php // echo form_error("password", "<font color='red'>", "</font>");  ?>
