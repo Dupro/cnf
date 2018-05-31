@@ -82,9 +82,15 @@ class ModelRegistration extends CI_Model {
     public function autor($idproject, $iduser) {
         $this->db->set("project_idproject", $idproject);
         $this->db->set("user_iduser", $iduser);
+         
         $this->db->insert("autor");
         $id = $this->db->insert_id();
         return $id;
+    }
+    public function conference_has_project($idproject,$idconferenceee){
+        $this->db->set("project_idproject", $idproject);
+         $this->db->set("conference_idconference", $idconferenceee);
+         $this->db->insert("conference_has_project");
     }
 
     public function changeMyProfile($iduser, $first_name, $last_name, $phone_number, $email, $organisation, $date_of_birth) {

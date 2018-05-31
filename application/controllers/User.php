@@ -235,7 +235,12 @@ class User extends CI_Controller {
             $this->newProject(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
         } else {
         //ispravno
+//           foreach ($field_name as $field) {
+//            $section_pro .= $field['name_field'];
+//        }
+           $idconferenceee = $this->input->post('conferenc');
         
+        $section_pro="";
         $fieldid = $this->input->post("field");
         $field_name = $this->Search_model->field($fieldid);
         $project_name = $this->input->post("project_name");
@@ -267,6 +272,7 @@ class User extends CI_Controller {
         
         $successAddProject = $this->session->set_flashdata('successAddProject', 'You have successfully add a new project!');
         $this->ModelRegistration->autor($idproject, $iduser);
+        $this->ModelRegistration->conference_has_project($idproject, $idconferenceee);
         $successAddProject;
         foreach ($_POST['autorslistselect'] as $item) {
 
