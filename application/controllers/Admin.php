@@ -404,18 +404,19 @@ class Admin extends CI_Controller {
     }
 
     public function selectprojectofconf() {
-//        $katran=$this->input->post('query');
-//        alert $katran;
+        $katran=$this->input->post('idconference');
+       
         $output="";
-        $result =$this->Search_model->users();
+        $result =$this->Search_model->myprojectofconf($katran);
         $output .= '  
       <div class="table-responsive">  
            <table class="table table-bordered">  
                 <tr>  
-                     <th width="10%">Id</th>  
-                     <th width="40%">First Name</th>  
-                     <th width="40%">Last Name</th>  
-                     <th width="10%">Delete</th>  
+                     <th width="10%">ID</th>  
+                     <th width="20%">First Name</th>  
+                     <th width="20%">Last Name</th>  
+                     <th width="40%">Project Name</th>  
+                     <td></td>
                 </tr>';
         if ($result !== 0) {
             $output .= '  
@@ -423,6 +424,7 @@ class Admin extends CI_Controller {
                 <td></td>  
                 <td id="first_name" contenteditable></td>  
                 <td id="last_name" contenteditable></td>  
+                <td id="project_name" contenteditable></td>  
                 <td><button type="button" name="btn_add" id="btn_add" class="btn btn-xs btn-success">+</button></td>  
            </tr>  
       ';
@@ -432,6 +434,7 @@ class Admin extends CI_Controller {
                      <td>' . $row["iduser"] . '</td>  
                      <td class="first_name" data-id1="' . $row["iduser"] . '" contenteditable>' . $row["first_name"] . '</td>  
                      <td class="last_name" data-id2="' . $row["iduser"] . '" contenteditable>' . $row["last_name"] . '</td>  
+                     <td class="last_name" data-id2="' . $row["iduser"] . '" contenteditable>' . $row["project_name"] . '</td> 
                      <td><button type="button" name="delete_btn" data-id3="' . $row["iduser"] . '" class="btn btn-xs btn-danger btn_delete">x</button></td>  
                 </tr>  
            ';
@@ -439,7 +442,7 @@ class Admin extends CI_Controller {
             
         } else {
             $output .= '<tr>  
-                          <td colspan="4">Data not Found</td>  
+                          <td colspan="5">Data not Found</td>  
                      </tr>';
         }
         $output .= '</table>  
