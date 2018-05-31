@@ -94,9 +94,20 @@ WHERE iduser='.$iduser. ' and user_iduser='.$iduser. ' and idconference =confere
     }
     public function myprojectofconf($idconference){
         $query = $this->db->query("SELECT * FROM conference, conference_has_project, project, user, autor
-where idconference=conference_idconference and idproject=conference_has_project.project_idproject and idproject=autor.project_idproject and iduser=autor.user_iduser and project.core=user.iduser  and idconference=".$idconference."");
+where idconference=conference_idconference and idproject=conference_has_project.project_idproject and idproject=autor.project_idproject and iduser=autor.user_iduser and project.core=user.iduser  and idconference=".$idconference." and status!='5'");
         $result = $query->result_array(); 
         return $result;
     }
+    public function delete_projectformconf($param) {
+        $this->db->where('idproject', $param);
+        $this->db->set("status", "5");
+        $this->db->update('project');
+    }
+     public function add_projectformconf() {
+         $query = $this->db->query("SELECT * FROM conference, conference_has_project, project, user, autor
+where idconference=conference_idconference and idproject=conference_has_project.project_idproject and idproject=autor.project_idproject and iduser=autor.user_iduser and project.core=user.iduser  and idconference=".$idconference." and status='5'");
 
-}
+         $result = $query->result_array(); 
+        return $result;
+     }
+ }

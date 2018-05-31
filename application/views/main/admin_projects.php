@@ -143,7 +143,7 @@
            if(confirm("Are you sure you want to delete this?"))  
            {  
                 $.ajax({  
-                     url:"delete.php",  
+                     url:"<?php echo base_url() ?>Admin/deleteprojectformconf",  
                      method:"POST",  
                      data:{id:id},  
                      dataType:"text",  

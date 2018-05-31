@@ -406,13 +406,16 @@ class Admin extends CI_Controller {
 
     public function selectprojectofconf() {
         $katran = $this->input->post('idconference');
-
+//        $addpro=$this->Search_model->add_projectformconf();
         $output = "";
         $result = $this->Search_model->myprojectofconf($katran);
         $output .= '  
       <div class="table-responsive">  
            <table class="table table-bordered">  
-                <tr>  
+                
+
+
+                    <tr>  
                      <th width="5%">ID</th>  
                      <th width="15%">First Name</th>  
                      <th width="15%">Last Name</th>  
@@ -435,13 +438,13 @@ class Admin extends CI_Controller {
                 $output .= '  
                 <tr>  
                      <td>' . $row["iduser"] . '</td>  
-                     <td class="first_name" data-id1="' . $row["iduser"] . '" >' . $row["first_name"] . '</td>  
-                     <td class="last_name" data-id2="' . $row["iduser"] . '" >' . $row["last_name"] . '</td>  
-                     <td class="last_name" data-id2="' . $row["iduser"] . '" >' . $row["project_name"] . '</td> 
+                     <td class="first_name" data-id1="' . $row["idproject"] . '" >' . $row["first_name"] . '</td>  
+                     <td class="last_name" data-id2="' . $row["idproject"] . '" >' . $row["last_name"] . '</td>  
+                     <td class="last_name" data-id2="' . $row["idproject"] . '" >' . $row["project_name"] . '</td> 
                       <td><form method="post" action="<?php echo site_url("Admin/projectinfo"); ?>
                             <button type="submit" value="' . $row["idproject"] . '" class="btn btn-xs btn-info ">Info</button>
                            </form></td>
-                     <td><button type="button" name="delete_btn" data-id3="' . $row["iduser"] . '" class="btn btn-xs btn-danger btn_delete">x</button></td>  
+                     <td><button type="button" name="delete_btn" data-id3="' . $row["idproject"] . '" class="btn btn-xs btn-danger btn_delete">x</button></td>  
                 </tr>  
            ';
             }
@@ -453,6 +456,11 @@ class Admin extends CI_Controller {
         $output .= '</table>  
       </div>';
         echo $output;
+    }
+    public function deleteprojectformconf() {
+        $idproject = $this->input->post('id');
+         $this->Search_model->delete_projectformconf($idproject);
+         echo 'Project Deleted from Conference'; 
     }
 
 }
