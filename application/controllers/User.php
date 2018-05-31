@@ -255,8 +255,10 @@ class User extends CI_Controller {
         $config['upload_path'] = './userProject/'. $idproject .'/';
         $config['allowed_types'] = 'pdf|doc|docx||txt|';
         $config['max_size'] = 2048;
-        $config['file_name'] = "project_" . $idproject;
+        $time= date("d_m_Y_H_i_s");
+        $config['file_name'] = "project_" . $idproject."_".$time;
         
+        $this->ModelRegistration->myNewFile($idproject, $project_name, $time);
         $this->load->library('upload', $config);
         $this->upload->do_upload('fileUpload');
         
