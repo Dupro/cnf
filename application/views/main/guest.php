@@ -2,7 +2,7 @@
 
 
 
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<div id="main" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active" id="carosel">
             <img class="d-block h-50 w-100" src="https://www.iaspaper.net/wp-content/uploads/2015/06/International-conferences-on-United-NationsIndia-Indian-Ocean.png" alt="First slide">

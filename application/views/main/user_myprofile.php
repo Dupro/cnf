@@ -1,4 +1,5 @@
 <h3 style="text-align:center">My profile</h3>
+
 <h4>Hello: <?php
     foreach ($mydata as $userdata) {
         echo $userdata['username'];

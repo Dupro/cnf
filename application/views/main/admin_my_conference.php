@@ -9,9 +9,7 @@
   <a id="main" href="<?php echo site_url("Admin/reviewerInvitation"); ?>"><h5>Reviewer invitation</h5></a><br>
   <a id="main" href="<?php echo site_url("Admin/reviewerEmailInvitation"); ?>"><h5>Reviewer Email invitation</h5></a><br>
 </div>
-    <h1>rfgsdfgsdf</h1>
-
-
+   
 <div class="col-9">
     <div class="card-deck">
     <?php 
@@ -37,5 +35,5 @@
 		</div>
 	</div>
    </div>
-<br/> <div class="d-flex justify-content-center" ><?php echo $links; ?></div>
+<br/> <div><div id="main" class="d-flex justify-content-center" ><?php echo $links; ?></div></div>
      

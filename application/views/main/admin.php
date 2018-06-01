@@ -2,7 +2,7 @@
 
 
 
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<div id="main" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active" id="carosel">
             <img class="d-block h-50 w-100" src="http://79.170.44.155/crabtreehall.com/wp-content/uploads/2011/06/meetings.jpg" alt="First slide">

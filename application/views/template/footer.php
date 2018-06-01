@@ -1,6 +1,6 @@
-<div class="row">
+<div id="futer" class="row">
     
-<footer class="page-footer font-small unique-color-dark" style="background:dark;">
+<footer class="page-footer font-small unique-color-dark">
  
     
 
@@ -80,6 +80,5 @@
 
 </footer>
 </div>
-
     </body>
 </html>
