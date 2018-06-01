@@ -243,7 +243,9 @@ class Admin extends CI_Controller {
 
     // OVO TEK TREBA DA SE RADI
     public function reviewerInvitation() {
-
+        
+        $users= $this->Search_model->users();
+        $data['users'] = $users;
         $mydata = $this->Search_model->conference();
         $data['mydata'] = $mydata;
         $conference_data = $this->Search_model->conference();
