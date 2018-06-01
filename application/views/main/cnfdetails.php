@@ -1,19 +1,21 @@
 <div class="row">
     <div class="col-sm-6">
         <ul class="list-group">
+           
             <?php
             if ($confinfo === NULL) {
                 echo "Nema upisanih konferencija u bazi";
             } else {
                 foreach ($confinfo as $el) {
                     ?>
+            
                     <li class="list-group-item active"><strong>Conference name: <?php echo $el['title']; ?></strong></li>
                     <li class="list-group-item"><strong>Place: <?php echo $el['place']; ?></strong></li>
-                    <li class="list-group-item"><strong>Time: <?php echo $el['event_begin']; ?></strong></li>
-                    <li class="list-group-item"><strong>Receive time:</strong></li>
-                    <li class="list-group-item"><strong>Area:</strong></li>
-                    <li class="list-group-item"><strong>Key words:</strong></li>
-                    <li class="list-group-item"><strong>Abstract:</strong></li>
+                    <li class="list-group-item"><strong>Event begin: <?php echo $el['event_begin']; ?></strong></li>
+                    <li class="list-group-item"><strong>Event end:<?php echo $el['event_end']; ?></strong></li>
+                    <li class="list-group-item"><strong>Application begin:<?php echo $el['application_begin']; ?></strong></li>
+                    <li class="list-group-item"><strong>Application end:<?php echo $el['application_end']; ?></strong></li>
+                    <li class="list-group-item"><strong>Project per autor:<?php echo $el['projects_per_autor']; ?></strong></li>
                     <?php
                 }
             }
