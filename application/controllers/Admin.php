@@ -255,6 +255,14 @@ class Admin extends CI_Controller {
         $this->load->view("forms/admin_reviewer_invitation.php", $data);
         $this->load->view("template/footer.php");
     }
+    
+//    TO DO
+    public function sendInv(){
+        
+        
+        
+        redirect ("Admin/reviewerInvitation");
+    }
 
     public function addnewConference() {
 

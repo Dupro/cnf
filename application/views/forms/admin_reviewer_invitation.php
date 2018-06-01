@@ -1,6 +1,6 @@
 
 <h3 style="text-align:center">Reviewer invitation</h3>
-<form name = "reviewerInvitation" action = "<?php echo site_url('Admin/reviewerInvitation') ?>" method = "post">    
+<form name = "reviewerInvitation" action = "<?php echo site_url('Admin/sendInv') ?>" method = "post">    
     <div class="form-group">
     <label for="exampleFormControlSelect2">Users</label>
     <input class="form-control" type="text" name="conferencename" value="<?php echo set_value('conference') ?>"/>
@@ -28,6 +28,5 @@
   <label for="comment">Message:</label>
   <textarea class="form-control" rows="5" id="comment"></textarea>
 </div>
-    
+    <input type="submit" class="btn btn-success" value="Send">
 </form>
-<button type="button" class="btn btn-success">Send</button>
