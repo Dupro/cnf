@@ -151,10 +151,10 @@ class Guest extends CI_Controller {
         $data['confdata'] = $conference_data;
         $controller = "";
         $data['controller'] = $controller;
-        $data['controller'] = "Guest";
+        
         $datacon = $this->Search_model->getInfoConf($idconf);
         $data['confinfo'] = $datacon;
-        $this->load->view("template/header_guest.php", $data);
+        $this->load->view("template/header_" . $this->controller . ".php", $data);
         $this->load->view("forms/login.php");
         $this->load->view("forms/registration.php");
         $this->load->view("main/cnfdetails.php", $data);

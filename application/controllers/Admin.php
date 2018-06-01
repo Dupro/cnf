@@ -155,8 +155,19 @@ class Admin extends CI_Controller {
 
         $data['info'] = '$info_vesti';
         $this->load->view("template/header_" . $this->controller . ".php", $data);
-        $this->load->view("forms/login.php");
-        $this->load->view("forms/registration.php");
+        $this->load->view("main/cnfdetails.php", $data);
+        $this->load->view("template/footer.php");
+    }
+    
+     public function dataconf($idconf) { //podaci o konferencijam
+        $conference_data = $this->Search_model->conference();
+        $data['confdata'] = $conference_data;
+        $controller = "";
+        $data['controller'] = $controller;
+        
+        $datacon = $this->Search_model->getInfoConf($idconf);
+        $data['confinfo'] = $datacon;
+        $this->load->view("template/header_" . $this->controller . ".php", $data);
         $this->load->view("main/cnfdetails.php", $data);
         $this->load->view("template/footer.php");
     }
@@ -244,7 +255,9 @@ class Admin extends CI_Controller {
 
     // OVO TEK TREBA DA SE RADI
     public function reviewerInvitation() {
-
+        
+        $users= $this->Search_model->users();
+        $data['users'] = $users;
         $mydata = $this->Search_model->conference();
         $data['mydata'] = $mydata;
         $conference_data = $this->Search_model->conference();
