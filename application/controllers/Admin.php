@@ -159,6 +159,20 @@ class Admin extends CI_Controller {
         $this->load->view("main/cnfdetails.php", $data);
         $this->load->view("template/footer.php");
     }
+    
+     public function dataconf($idconf) { //podaci o konferencijam
+        $conference_data = $this->Search_model->conference();
+        $data['confdata'] = $conference_data;
+        $controller = "";
+        $data['controller'] = $controller;
+        
+        $datacon = $this->Search_model->getInfoConf($idconf);
+        $data['confinfo'] = $datacon;
+        $this->load->view("template/header_admin.php", $data);
+      
+        $this->load->view("main/cnfdetails.php", $data);
+        $this->load->view("template/footer.php");
+    }
 
     public function myConferences() {
         $idUser = $this->session->userdata("user")->iduser;
