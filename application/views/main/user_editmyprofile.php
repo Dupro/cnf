@@ -30,18 +30,19 @@
                 <?php echo form_error("password", "<font color='red'>", "</font>"); ?>
                                                                                                                     <!--Confirm your Password:<input class="form-control" type="password" name="password"/>-->
                 <?php // echo form_error("password", "<font color='red'>", "</font>");    ?>
-                First name:<input class="form-control" type="text" name="first_name" value="<?php echo $userdata['first_name'] ?>"/>
-                <?php echo form_error("first_name", "<font color='red'>", "</font>"); ?>
-                Last name:<input class="form-control" type="text" name="last_name" value="<?php echo $userdata['last_name'] ?>"/>
-                <?php echo form_error("last_name", "<font color='red'>", "</font>"); ?>
-                Phone number:<input class="form-control" type="text" name="phone_number" value="<?php echo $userdata['phone_number'] ?>"/>
-                <?php echo form_error("phone_number", "<font color='red'>", "</font>"); ?>
-                Email:<input class="form-control" type="text" name="email" value="<?php echo $userdata['email'] ?>"/>
-                <?php echo form_error("email", "<font color='red'>", "</font>"); ?>
-                Organisation:<input class="form-control" type="text" name="organisation" value="<?php echo $userdata['organisation'] ?>"/>
-                <?php echo form_error("organisation", "<font color='red'>", "</font>"); ?>
-                Date of birth:<input class="form-control" type="date" name="date_of_birth" value="<?php echo $userdata['date_of_birth'] ?>"/>
-                <?php echo form_error("date_of_birth", "<font color='red'>", "</font>"); ?>
+                First name: <?php echo form_error("first_name", "<font color='red'>", "</font>"); ?>
+                <input class="form-control" type="text" name="first_name" value="<?php echo $userdata['first_name'] ?>"/> 
+                Last name: <?php echo form_error("last_name", "<font color='red'>", "</font>"); ?>
+                <input class="form-control" type="text" name="last_name" value="<?php echo $userdata['last_name'] ?>"/> 
+                Phone number: <?php echo form_error("phone_number", "<font color='red'>", "</font>"); ?>
+                <input class="form-control" type="text" name="phone_number" value="<?php echo $userdata['phone_number'] ?>"/> 
+                Email: <?php echo form_error("email", "<font color='red'>", "</font>"); ?>
+                <input class="form-control" type="text" name="email" value="<?php echo $userdata['email'] ?>"/>
+                Organisation: <?php echo form_error("organisation", "<font color='red'>", "</font>"); ?>
+                <input class="form-control" type="text" name="organisation" value="<?php echo $userdata['organisation'] ?>"/> 
+                Date of birth: <?php echo form_error("date_of_birth", "<font color='red'>", "</font>"); ?>
+                <input class="form-control" type="date" name="date_of_birth" value="<?php echo $userdata['date_of_birth'] ?>"/>
+                
             <?php } ?>
                 <br>
             <div class="modal-footer">

@@ -36,13 +36,17 @@
                     }
                 </script>
 
-                First name:<input class="form-control bg-white text-body" type="text" id="first_name" name="first_name" value="<?php echo $userdata['first_name']; ?>"readonly="TRUE"/>
-                <?php echo form_error("first_name", "<font color='red'>", "</font>"); ?>
+                First name: 
+             
+                <input class="form-control bg-white text-body" type="text" id="first_name" name="first_name" value="<?php echo $userdata['first_name']; ?>"readonly="TRUE"/>
+                <?php echo form_error("first_name", "<font color='red'>", "</font>");?>
                 Last name:<input class="form-control bg-white text-body" type="text" id="last_name" name="last_name" value="<?php echo $userdata['last_name']; ?>"readonly="TRUE"/>
                 <?php echo form_error("last_name", "<font color='red'>", "</font>"); ?>
                 Phone number:<input class="form-control bg-white text-body" type="text" name="phone_number" value="<?php echo $userdata['phone_number']; ?>"readonly=""/>
                 <?php echo form_error("phone_number", "<font color='red'>", "</font>"); ?>
-                Email:<input class="form-control bg-white text-body" type="text" name="email" value="<?php echo $userdata['email']; ?>" readonly/>
+                Email:
+                <?php echo "<font color='blue'>" . $successEmail . "</font>"; ?>
+                <input class="form-control bg-white text-body" type="text" name="email" value="<?php echo $userdata['email']; ?>" readonly/>
                 <?php echo form_error("email", "<font color='red'>", "</font>");
                 ?>
                 Organisation:<input class="form-control bg-white text-body" type="text" name="organisation" value="<?php echo $userdata['organisation']; ?>"readonly/>

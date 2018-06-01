@@ -76,6 +76,7 @@ class User extends CI_Controller {
     public function myProfile() {
         $data['controller'] = "User";
         $data['successPW'] = $this->session->flashdata('successPW');
+        $data['successEmail']= $this->session->flashdata('successEmail');
         $idUser = $this->session->userdata("user")->username;
 
         $mydata = $this->ModelUser->myProfile($idUser);
