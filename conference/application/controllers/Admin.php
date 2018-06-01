@@ -1,0 +1,466 @@
+<?php
+
+class Admin extends CI_Controller {
+
+    public function __construct() {
+        parent:: __construct();
+
+        $this->load->model("ModelUser");
+        $this->load->model('ModelRegistration');
+        $this->load->model("Search_model");
+        $this->load->library('session');
+
+        if ($this->session->userdata('user') == NULL) {
+            redirect("Guest");
+        }
+        $this->session->flashdata('successPW');
+        $this->session->flashdata('successSentEmail');
+
+
+        if ($this->session->userdata('user') == NULL) {
+            $this->controller = "guest";
+        } else if ($this->session->userdata('user')->coordinator == "1") {
+            $this->controller = "admin";
+        } else {
+            $this->controller = "user";
+            redirect("User");
+        }
+    }
+
+    public function loadView($data, $mainPart) {
+
+        $this->load->view("template/header_" . $this->controller . ".php", $data);
+        $this->load->view($mainPart, $data);
+        $this->load->view("template/footer.php");
+    }
+
+    public function index() {
+        if ($this->uri->segment(3))
+            $indexnum = $this->uri->segment(3);
+        else
+            $indexnum = 0;
+
+        $limit = 3;
+        $conferencenum = $this->db->count_all('conference');
+        $data['confdatapag'] = $this->Search_model->conference($limit, $indexnum);
+
+        $this->load->library('pagination'); // ovo moze i u  config/autoload.php da se doda
+        $this->config->load('bootstrap_pagination'); //moze i u autoload.php
+
+        $config_pagination = $this->config->item('pagination');
+        $config_pagination['base_url'] = site_url("Admin/index");
+        $config_pagination['total_rows'] = $conferencenum;
+        $config_pagination['per_page'] = $limit;
+        $config_pagination['next_link'] = 'Next';
+        $config_pagination['prev_link'] = 'Prev';
+
+        $this->pagination->initialize($config_pagination);
+        $data['links'] = $this->pagination->create_links();
+
+        $data['controller'] = "Admin";
+        $data['info'] = '$info_vesti';
+        $this->load->view("template/header_" . $this->controller . ".php", $data);
+        $this->load->view("forms/login.php");
+        $this->load->view("forms/registration.php");
+        $this->load->view("main/guest.php", $data);
+        $this->load->view("template/footer.php");
+    }
+
+    public function myProfile() {
+        $data['controller'] = "Admin";
+        $data['successPW'] = $this->session->flashdata('successPW');
+        $idUser = $this->session->userdata("user")->username;
+
+        $mydata = '';
+        $mydata = $this->ModelUser->myProfile($idUser);
+        $data['mydata'] = $mydata;
+        $this->loadView($data, "main/user_myprofile.php");
+    }
+
+    public function logout() {
+        $this->session->unset_userdata("User");
+        $this->session->sess_destroy();
+        redirect("Guest/index");
+    }
+
+    public function addImage() {
+        $this->loadView(array(), "user_myprofile.php");
+    }
+
+    public function addingImage() {
+        $userID = $this->session->userdata('user')->iduser;
+        $config['upload_path'] = './image/profile/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 2048;
+        $config['max_width'] = 2048;
+        $config['max_height'] = 2048;
+        $config['file_name'] = "profile_" . $userID;
+
+        $this->load->library('upload', $config);
+        if (!file_exists("image/profile/profile_" . $userID . ".jpg")) {
+            $this->upload->do_upload('image');
+            redirect("Admin/myProfile");
+        } else if (file_exists("image/profile/profile_" . $userID . ".jpg")) {
+            unlink('image/profile/' . "profile_" . $userID . ".jpg");
+            $this->upload->do_upload('image');
+            redirect("Admin/myProfile");
+        } else
+            $this->upload->do_upload('image');
+        redirect("Admin/myProfile");
+    }
+
+    public function showImage($idUser) {
+        $user = $this->ModelUser->myProfile($idUser);
+        $data['user'] = $user;
+        $data['controller'] = "Admin";
+
+        $this->loadView($data, "user_myprofile.php");
+    }
+
+    public function conferences() {
+
+        if ($this->uri->segment(3))
+            $indexnum = $this->uri->segment(3);
+        else
+            $indexnum = 0;
+
+        $limit = 3;
+        $conferencenum = $this->db->count_all('conference');
+        $data['confdatapag'] = $this->Search_model->conference($limit, $indexnum);
+
+        $this->load->library('pagination'); // ovo moze i u  config/autoload.php da se doda
+        $this->config->load('bootstrap_pagination'); //moze i u autoload.php
+
+        $config_pagination = $this->config->item('pagination');
+        $config_pagination['base_url'] = site_url("Admin/conferences");
+        $config_pagination['total_rows'] = $conferencenum;
+        $config_pagination['per_page'] = $limit;
+        $config_pagination['next_link'] = 'Next';
+        $config_pagination['prev_link'] = 'Prev';
+
+        $this->pagination->initialize($config_pagination);
+        $data['links'] = $this->pagination->create_links();
+
+        $data['controller'] = "Admin";
+        $data['info'] = '$info_vesti';
+        $this->load->view("template/header_" . $this->controller . ".php", $data);
+//        $this->load->view("forms/login.php");
+//        $this->load->view("forms/registration.php");
+        $this->load->view("main/guest.php", $data);
+        $this->load->view("template/footer.php");
+    }
+
+    public function conferenceview() {
+
+        $data['info'] = '$info_vesti';
+        $this->load->view("template/header_" . $this->controller . ".php", $data);
+        $this->load->view("forms/login.php");
+        $this->load->view("forms/registration.php");
+        $this->load->view("main/cnfdetails.php", $data);
+        $this->load->view("template/footer.php");
+    }
+
+    public function myConferences() {
+        $idUser = $this->session->userdata("user")->iduser;
+        if ($this->uri->segment(3))
+            $indexnum = $this->uri->segment(3);
+        else
+            $indexnum = 0;
+
+        $limit = 4;
+        $conferencenum = $this->db->count_all('conference');
+        $data['confdatapag'] = $this->Search_model->myconference($idUser, $limit, $indexnum);
+
+        $this->load->library('pagination'); // ovo moze i u  config/autoload.php da se doda
+        $this->config->load('bootstrap_pagination'); //moze i u autoload.php
+
+        $config_pagination = $this->config->item('pagination');
+        $config_pagination['base_url'] = site_url("Admin/myConferences");
+        $config_pagination['total_rows'] = 5;
+        $config_pagination['per_page'] = $limit;
+        $config_pagination['next_link'] = 'Next';
+        $config_pagination['prev_link'] = 'Prev';
+
+        $this->pagination->initialize($config_pagination);
+        $data['links'] = $this->pagination->create_links();
+        $conference_data = $this->Search_model->conference();
+        $data['confdata'] = $conference_data;
+        $controller = "";
+        $data['controller'] = $controller;
+
+
+        $iduser = $this->session->userdata("user")->iduser;
+        $myconf = $this->ModelUser->modelMyConferences($iduser);
+        $data['myconf'] = $myconf;
+        $this->loadView($data, "main/admin_my_conference.php");
+    }
+
+    public function reviewerEmailInvitation() {
+        $data['successSentEmail'] = $this->session->flashdata('successSentEmail');
+        $this->loadView($data, "forms/admin_reviewer_email_invitation.php");
+    }
+
+    public function sendEmail() {
+        $this->form_validation->set_rules('senderEmail', 'Sender Email', 'required|trim');
+        $this->form_validation->set_rules('passwordEmail', 'Email password', 'required|trim');
+        $this->form_validation->set_rules('recipientEmail', 'Recipient Email', 'required|trim');
+        $this->form_validation->set_message("required", "Field {field} is empty.");
+        if ($this->form_validation->run() == FALSE) {
+//             // ne treba redirect jer na refresh treba da proba da opet nesto doda
+        } else {
+            $first_name = $this->session->userdata('user')->first_name;
+            $last_name = $this->session->userdata('user')->last_name;
+            $full_name = $first_name . " " . $last_name;
+            $senderEmail = $this->input->post("senderEmail");
+            $passwordEmail = $this->input->post("passwordEmail");
+            $recipientEmail = $this->input->post("recipientEmail");
+            $subject = $this->input->post("subject");
+            $messageEmail = $this->input->post("messageEmail");
+        }
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_crypto' => 'tls',
+            'smtp_host' => 'smtp.gmail.com',
+            'smtp_port' => 587,
+            'smtp_user' => $senderEmail,
+            'smtp_pass' => $passwordEmail,
+            'mailtype' => 'html',
+            'charset' => 'utf-8',
+            'wordwrap' => TRUE
+        );
+        $this->load->library('email', $config);
+        $this->email->from($senderEmail, $full_name);
+        $this->email->to($recipientEmail);
+        $this->email->subject($subject);
+        $this->email->message($messageEmail);
+        $this->email->set_newline("\r\n");
+        $this->email->send();
+        $this->email->print_debugger();
+        $successSentEmail = $this->session->set_flashdata('successSentEmail', 'You have successfully sent a email!');
+        $successSentEmail;
+        redirect('Admin/reviewerEmailInvitation');
+    }
+
+    // OVO TEK TREBA DA SE RADI
+    public function reviewerInvitation() {
+
+        $mydata = $this->Search_model->conference();
+        $data['mydata'] = $mydata;
+        $conference_data = $this->Search_model->conference();
+        $data['confdata'] = $conference_data;
+        $data['controller'] = "Admin";
+
+        $this->load->view("template/header_" . $this->controller . ".php", $data);
+
+        $this->load->view("forms/admin_reviewer_invitation.php", $data);
+        $this->load->view("template/footer.php");
+    }
+
+    public function addnewConference() {
+
+        $conference_data = $this->Search_model->conference();
+        $field_data = $this->Search_model->all_field();
+        $data['field_data'] = $field_data;
+        $data['confdata'] = $conference_data;
+        $data['controller'] = "Admin";
+
+        $this->load->view("template/header_" . $this->controller . ".php", $data);
+//        $this->load->view("main/admin.php", $data);
+        $this->load->view("main/admin_addnew_conference.php", $data);
+        $this->load->view("template/footer.php");
+    }
+
+    public function createConference($message = NULL) {
+        $data = array();
+        if ($message)
+            $data['message'] = $message;
+
+        $this->form_validation->set_rules('title', 'Conference name', 'required|min_length[6]');
+        $this->form_validation->set_rules('place', 'Place', 'required');
+        $this->form_validation->set_rules('event_begin', 'Event Begin', 'required');
+        $this->form_validation->set_rules('event_end', 'Event end', 'required');
+        $this->form_validation->set_rules('application_begin', 'Application begin', 'required');
+        $this->form_validation->set_rules('application_end', 'Application end', 'required');
+        $this->form_validation->set_rules('projects_per_autor', 'Projects per autor', 'required');
+        $this->form_validation->set_rules('field', 'Field', 'required');
+        $this->form_validation->set_message("required", "Field {field} is empty.");
+
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->addnewConference(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
+        } else {
+            //ispravno
+            $title = $this->input->post("title");
+            $place = $this->input->post("place");
+            $event_begin = $this->input->post("event_begin");
+            $event_end = $this->input->post("event_end");
+            $application_begin = $this->input->post("application_begin");
+            $application_end = $this->input->post("application_end");
+            $projects_per_autor = $this->input->post("projects_per_autor");
+            $idfield = $this->input->post("field");
+            $idconf = $this->ModelRegistration->newConference($title, $place, $event_begin, $event_end, $application_begin, $application_end, $projects_per_autor);
+
+            $this->ModelRegistration->confHasField($idfield, $idconf);
+            $iduser = $this->session->userdata('user')->iduser;
+            $successAddConf = $this->session->set_flashdata('successAddConf', 'You have successfully created a new conference!');
+            $this->ModelRegistration->userHasConference($idconf, $iduser);
+
+
+            $config['upload_path'] = './image/conference/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 2048;
+            $config['max_width'] = 2048;
+            $config['max_height'] = 1080;
+            $config['file_name'] = "conference_" . $idconf;
+
+            $this->load->library('upload', $config);
+            if (!file_exists("image/conference/conference_" . $idconf . ".jpg")) {
+                $this->upload->do_upload('imageConf');
+            } else if (file_exists("image/conference/conference_" . $idconf . ".jpg")) {
+                unlink('image/conference/' . "conference_" . $idconf . ".jpg");
+                $this->upload->do_upload('imageConf');
+            }
+            $successAddConf;
+            redirect("Admin/index");
+        }
+    }
+
+//    DODAVANJE SLIKE U CONF
+    public function addConfImage() {
+        $this->loadView(array(), "user_myprofile.php");
+    }
+
+    public function addingConfImage() {
+        $userID = $this->session->userdata('user')->iduser;
+        $config['upload_path'] = './image/profile/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 2000;
+        $config['max_width'] = 2048;
+        $config['max_height'] = 1024;
+        $config['file_name'] = "profile_" . $userID;
+
+        $this->load->library('upload', $config);
+        if (!file_exists("image/profile/profile_" . $userID . ".jpg")) {
+            $this->upload->do_upload('image');
+            redirect("User/myProfile");
+        } else if (file_exists("image/profile/profile_" . $userID . ".jpg")) {
+            unlink('image/profile/' . "profile_" . $userID . ".jpg");
+            $this->upload->do_upload('image');
+            redirect("User/myProfile");
+        } else
+            $this->upload->do_upload('image');
+        redirect("User/myProfile");
+    }
+
+//    TO DO
+    public function projects() {
+        $iduser = $this->session->userdata("user")->iduser;
+        $myconf = $this->ModelUser->modelMyConferences($iduser);
+        $data['myconf'] = $myconf;
+        $data['controller'] = "Admin";
+        $this->load->view("template/header_admin.php");
+        $this->load->view("main/admin_projects.php", $data);
+        $this->load->view("template/footer.php");
+    }
+
+    // public function addnewconf() {
+    //$data['controller'] = "Admin";
+    //$this->load->view("template/header_admin.php");
+    //$this->load->view("main/admin_addnew_conference.php");
+    //$this->load->view("template/footer.php");
+    // }
+    public function projectofconf() {
+        $idconference = $this->input->post('idconference');
+        $projectofconf = $this->ModelUser->projectofconf($idconference);
+        if (count($projectofconf) > 0) {
+            $pro_table = 'nesto';
+
+            foreach ($projectofconf as $field) {
+                $pro_table .= '<tr>';
+                $pro_table .= '<td value="' . $field->idproject . '">' . $field->project_name . '</>';
+                $pro_table .= '</tr>';
+            }
+            echo $pro_table;
+        }
+    }
+
+    public function editMyProfile() {
+        if ($this->input->post("submitMyEditProfile") !== NULL) {
+            $iduser = $this->session->userdata("user")->iduser;
+            $first_name = $this->input->post("first_name");
+            $last_name = $this->input->post("last_name");
+            $phone_number = $this->input->post("phone_number");
+            $email = $this->input->post("email");
+            $organisation = $this->input->post("organisation");
+            $date_of_birth = $this->input->post("date_of_birth");
+            $this->ModelRegistration->changeMyProfile($iduser, $first_name, $last_name, $phone_number, $email, $organisation, $date_of_birth);
+            redirect("Admin/myProfile");
+        } else {
+            $idUser = $this->session->userdata("user")->username;
+            $mydata = $this->ModelUser->myProfile($idUser);
+            $data['mydata'] = $mydata;
+            $data['controller'] = "Admin";
+            $this->loadView($data, "main/user_editmyprofile.php");
+        }
+    }
+
+    public function selectprojectofconf() {
+        $katran = $this->input->post('idconference');
+//        $addpro=$this->Search_model->add_projectformconf();
+        $output = "";
+        $result = $this->Search_model->myprojectofconf($katran);
+        $output .= '  
+      <div class="table-responsive">  
+           <table class="table table-bordered">  
+                
+
+
+                    <tr>  
+                     <th width="5%">ID</th>  
+                     <th width="15%">First Name</th>  
+                     <th width="15%">Last Name</th>  
+                     <th width="40%">Project Name</th>  
+                     <td width="5%"></td>
+                     <td width="5%"></td>
+                </tr>';
+        if ($result !== 0) {
+            $output .= '  
+           <tr>  
+                <td></td>  
+                <td id="first_name" ></td>  
+                <td id="last_name"></td>  
+                <td id="project_name" ></td>  
+                <td></td>  
+                <td><button type="button" name="btn_add" id="btn_add" class="btn btn-xs btn-success">+</button></td>  
+           </tr>  
+      ';
+            foreach ($result as $row) {
+                $output .= '  
+                <tr>  
+                     <td>' . $row["iduser"] . '</td>  
+                     <td class="first_name" data-id1="' . $row["idproject"] . '" >' . $row["first_name"] . '</td>  
+                     <td class="last_name" data-id2="' . $row["idproject"] . '" >' . $row["last_name"] . '</td>  
+                     <td class="last_name" data-id2="' . $row["idproject"] . '" >' . $row["project_name"] . '</td> 
+                      <td><form method="post" action="<?php echo site_url("Admin/projectinfo"); ?>
+                            <button type="submit" value="' . $row["idproject"] . '" class="btn btn-xs btn-info ">Info</button>
+                           </form></td>
+                     <td><button type="button" name="delete_btn" data-id3="' . $row["idproject"] . '" class="btn btn-xs btn-danger btn_delete">x</button></td>  
+                </tr>  
+           ';
+            }
+        } else {
+            $output .= '<tr>  
+                          <td colspan="5">Data not Found</td>  
+                     </tr>';
+        }
+        $output .= '</table>  
+      </div>';
+        echo $output;
+    }
+    public function deleteprojectformconf() {
+        $idproject = $this->input->post('id');
+         $this->Search_model->delete_projectformconf($idproject);
+         echo 'Project Deleted from Conference'; 
+    }
+
+}

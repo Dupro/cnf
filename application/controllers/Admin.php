@@ -118,7 +118,7 @@ class Admin extends CI_Controller {
     }
 
     public function conferences() {
-        
+
         if ($this->uri->segment(3))
             $indexnum = $this->uri->segment(3);
         else
@@ -169,7 +169,7 @@ class Admin extends CI_Controller {
 
         $limit = 4;
         $conferencenum = $this->db->count_all('conference');
-        $data['confdatapag'] = $this->Search_model->myconference($idUser,$limit,$indexnum);
+        $data['confdatapag'] = $this->Search_model->myconference($idUser, $limit, $indexnum);
 
         $this->load->library('pagination'); // ovo moze i u  config/autoload.php da se doda
         $this->config->load('bootstrap_pagination'); //moze i u autoload.php
@@ -383,6 +383,7 @@ class Admin extends CI_Controller {
             echo $pro_table;
         }
     }
+
     public function editMyProfile() {
         if ($this->input->post("submitMyEditProfile") !== NULL) {
             $iduser = $this->session->userdata("user")->iduser;
@@ -404,47 +405,62 @@ class Admin extends CI_Controller {
     }
 
     public function selectprojectofconf() {
-//        $katran=$this->input->post('query');
-//        alert $katran;
-        $output="";
-        $result =$this->Search_model->users();
+        $katran = $this->input->post('idconference');
+//        $addpro=$this->Search_model->add_projectformconf();
+        $output = "";
+        $result = $this->Search_model->myprojectofconf($katran);
         $output .= '  
       <div class="table-responsive">  
            <table class="table table-bordered">  
-                <tr>  
-                     <th width="10%">Id</th>  
-                     <th width="40%">First Name</th>  
-                     <th width="40%">Last Name</th>  
-                     <th width="10%">Delete</th>  
+                
+
+
+                    <tr>  
+                     <th width="5%">ID</th>  
+                     <th width="15%">First Name</th>  
+                     <th width="15%">Last Name</th>  
+                     <th width="40%">Project Name</th>  
+                     <td width="5%"></td>
+                     <td width="5%"></td>
                 </tr>';
         if ($result !== 0) {
             $output .= '  
            <tr>  
                 <td></td>  
-                <td id="first_name" contenteditable></td>  
-                <td id="last_name" contenteditable></td>  
+                <td id="first_name" ></td>  
+                <td id="last_name"></td>  
+                <td id="project_name" ></td>  
+                <td></td>  
                 <td><button type="button" name="btn_add" id="btn_add" class="btn btn-xs btn-success">+</button></td>  
            </tr>  
       ';
-           foreach ( $result as $row ) {
+            foreach ($result as $row) {
                 $output .= '  
                 <tr>  
                      <td>' . $row["iduser"] . '</td>  
-                     <td class="first_name" data-id1="' . $row["iduser"] . '" contenteditable>' . $row["first_name"] . '</td>  
-                     <td class="last_name" data-id2="' . $row["iduser"] . '" contenteditable>' . $row["last_name"] . '</td>  
-                     <td><button type="button" name="delete_btn" data-id3="' . $row["iduser"] . '" class="btn btn-xs btn-danger btn_delete">x</button></td>  
+                     <td class="first_name" data-id1="' . $row["idproject"] . '" >' . $row["first_name"] . '</td>  
+                     <td class="last_name" data-id2="' . $row["idproject"] . '" >' . $row["last_name"] . '</td>  
+                     <td class="last_name" data-id2="' . $row["idproject"] . '" >' . $row["project_name"] . '</td> 
+                      <td><form method="post" action="<?php echo site_url("Admin/projectinfo"); ?>
+                            <button type="submit" value="' . $row["idproject"] . '" class="btn btn-xs btn-info ">Info</button>
+                           </form></td>
+                     <td><button type="button" name="delete_btn" data-id3="' . $row["idproject"] . '" class="btn btn-xs btn-danger btn_delete">x</button></td>  
                 </tr>  
            ';
             }
-            
         } else {
             $output .= '<tr>  
-                          <td colspan="4">Data not Found</td>  
+                          <td colspan="5">Data not Found</td>  
                      </tr>';
         }
         $output .= '</table>  
       </div>';
         echo $output;
     }
-    
+    public function deleteprojectformconf() {
+        $idproject = $this->input->post('id');
+         $this->Search_model->delete_projectformconf($idproject);
+         echo 'Project Deleted from Conference'; 
+    }
+
 }

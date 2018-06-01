@@ -1,80 +1,63 @@
-</div>
-<footer class="page-footer font-small unique-color-dark pt-0">
-
+<div class="row">
+    
+<footer class="page-footer font-small unique-color-dark" style="background:dark;">
+ 
     
 
     <!--Footer Links-->
-    <div class="container mt-5 mb-4 text-center text-md-left">
+    <div class="container mt-4 mb-4 text-center text-md-left">
         <div class="row mt-3">
 
             <!--First column-->
             <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
-                <h6 class="text-uppercase font-weight-bold">
-                    <strong>Company name</strong>
+                <h6 id="fl" class="text-uppercase font-weight-semibold">
+                    <strong>MY GROUP 6</strong>
                 </h6>
-                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
-                    amet, consectetur adipisicing elit.</p>
+                <hr class="deep-purple accent-2 mb-4 mt-0  mx-auto">
+                <p>We are experienced organizers of conferences, exhibitions and workshops. Our conferences offer world class content, great delegate experience and exceptional networking opportunities.</p>
             </div>
             <!--/.First column-->
 
             <!--Second column-->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                <h6 class="text-uppercase font-weight-bold">
-                    <strong>Products</strong>
-                </h6>
-                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                <p>
-                    <a href="#!">MDBootstrap</a>
-                </p>
-                <p>
-                    <a href="#!">MDWordPress</a>
-                </p>
-                <p>
-                    <a href="#!">BrandFlow</a>
-                </p>
-                <p>
-                    <a href="#!">Bootstrap Angular</a>
-                </p>
-            </div>
-            <!--/.Second column-->
-
-            <!--Third column-->
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                <h6 class="text-uppercase font-weight-bold">
+                <h6 id="fl" class="text-uppercase font-weight-semibold">
                     <strong>Useful links</strong>
                 </h6>
-                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <hr class="deep-purple accent-2 mb-4 mt-0  mx-auto">
                 <p>
-                    <a href="#!">Your Account</a>
+                    <a href="#!">Home</a>
                 </p>
                 <p>
-                    <a href="#!">Become an Affiliate</a>
+                    <a href="#!">Conferences</a>
                 </p>
                 <p>
-                    <a href="#!">Shipping Rates</a>
+                    <a href="#!">Login</a>
                 </p>
                 <p>
                     <a href="#!">Help</a>
                 </p>
             </div>
+            <!--/.Second column-->
+
+            <!--Third column-->
+           <div class="col-md-8 col-lg-6 col-xl-3">
+                <h6 id="fl" class="text-uppercase font-weight-semibold">
+                    <strong>Contact</strong>
+                </h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0  mx-auto">
+                <p>
+                    <i class="fa fa-home mr-3"><i class="glyphicon glyphicon-map-marker"></i></i> New York, NY 10012, US</p>
+                <p>
+                    <i class="fa fa-envelope mr-3"><i class="glyphicon glyphicon-envelope"></i></i> info@example.com</p>
+                <p>
+                    <i class="fa fa-phone mr-3"><i class="glyphicon glyphicon-phone"></i></i> + 01 234 567 88</p>
+                <p>
+                    <i class="fa fa-print mr-3"><i class="glyphicon glyphicon-phone"></i></i> + 01 234 567 89</p>
+            </div>
             <!--/.Third column-->
 
             <!--Fourth column-->
-            <div class="col-md-4 col-lg-3 col-xl-3">
-                <h6 class="text-uppercase font-weight-bold">
-                    <strong>Contact</strong>
-                </h6>
-                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                <p>
-                    <i class="fa fa-home mr-3"></i> New York, NY 10012, US</p>
-                <p>
-                    <i class="fa fa-envelope mr-3"></i> info@example.com</p>
-                <p>
-                    <i class="fa fa-phone mr-3"></i> + 01 234 567 88</p>
-                <p>
-                    <i class="fa fa-print mr-3"></i> + 01 234 567 89</p>
-            </div>
+           
             <!--/.Fourth column-->
 
         </div>
@@ -82,11 +65,11 @@
     <!--/.Footer Links-->
 
     <!-- Copyright-->
-    <div style="background-color: #6351ce;" class="footer-copyright py-3 text-center">
+    <div  class="footer-copyright py-3 text-center">
         © 2018 Copyright:
         <a href="https://mdbootstrap.com/material-design-for-bootstrap/">
         
-                <strong class="futerfont"> Group </strong>
+                <strong class="futerfont"> MyGroup6 </strong>
          
         </a>
     </div>
@@ -94,6 +77,9 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url("assets/js/popper.js"); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
+
 </footer>
+</div>
+
     </body>
 </html>

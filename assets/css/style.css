@@ -7,15 +7,68 @@ and open the template in the editor.
     Created on : 09.05.2018., 23.55.36
     Author     : WIN10_SHOMI
 */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#html,body{
+   height: 100%;
+}
+#container{
+   min-height: 100%;
+}
+#div{
+   overflow:auto;
+   padding-bottom: 100px;
+}
+footer {
+    
+    background-position: center center;
+    background-repeat: repeat;
+    bottom: 0;
+    background:linear-gradient(lightgrey, darkgray);
+    left: 0;
+    position: relative;
+    width: 100%;
+    margin-top: -100px;
+    clear:both;
+}
+.futerfont{
+  color:green;  
+}
 
-.futerfont {
-    color:white;
-    
-}
-.futerfont {
-    color:white;
-    
-}
 label {
     cursor: default;
 }
+
+.sidenav a {
+    padding: 10px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 22px;
+    color: darkgreen;
+    display: block;
+    transition: 0.3s;
+    border-bottom-right-radius: 3px;
+    background: #c8e0ac;
+    border-image-width: 23px;
+    
+}
+.sidenav a:hover{
+    color: green;
+}
+
+nav a {
+color: darkgreen;
+font-size: 25px;
+
+}
+nav a:hover{
+    color: green;
+    
+}
+
+#fl{
+   color: darkgreen; 
+}
+
+
