@@ -15,7 +15,7 @@
                     <li class="list-group-item"><strong>Event end:<?php echo $el['event_end']; ?></strong></li>
                     <li class="list-group-item"><strong>Application begin:<?php echo $el['application_begin']; ?></strong></li>
                     <li class="list-group-item"><strong>Application end:<?php echo $el['application_end']; ?></strong></li>
-                    <li class="list-group-item"><strong>Project per autor:<?php echo $el['projects_per_autor']; ?></strong></li>
+                    <li class="list-group-item"><strong>Projects per autor:<?php echo $el['projects_per_autor']; ?></strong></li>
                     <?php
                 }
             }
