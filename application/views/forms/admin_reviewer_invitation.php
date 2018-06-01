@@ -1,7 +1,9 @@
 
 <h3 style="text-align:center">Reviewer invitation</h3>
-<form>
-    <div class="form-group">
+<div class="row">
+    
+<form id="adrewinv">
+    <div  class="form-group">
     <label for="exampleFormControlSelect2">Users</label>
     <input class="form-control" type="text" name="conferencename" value="<?php echo set_value('conference') ?>"/>
      
@@ -26,6 +28,7 @@
   <label for="comment">Mesage:</label>
   <textarea class="form-control" rows="5" id="comment"></textarea>
 </div>
-    
+    <button type="button" class="btn btn-success">Send</button>
 </form>
-<button type="button" class="btn btn-success">Send</button>
+
+</div>

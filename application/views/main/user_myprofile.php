@@ -1,5 +1,6 @@
-<h3 style="text-align:center">My profile</h3>
 
+<h3 style="text-align:center">My profile</h3>
+<div class="row">
 <h4>Hello: <?php
     foreach ($mydata as $userdata) {
         echo $userdata['username'];
@@ -102,4 +103,5 @@
 
 
     </div>
+</div>
 </div>

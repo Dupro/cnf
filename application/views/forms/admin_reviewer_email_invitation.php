@@ -1,5 +1,5 @@
-
-    <form name="reviewerEmailInvitation" action="<?php echo site_url('Admin/sendEmail'); ?>" method="POST">
+<div class="row">
+    <form id="arewminv" name="reviewerEmailInvitation" centered action="<?php echo site_url('Admin/sendEmail'); ?>" method="POST">
     <!-- Ako hocemo da koristimo email koji smo pri registraciji stavili onda ovo polje ne treba unositi -->
     <label for="yourEmail">Your Email:</label> <br>
     <input type="email" class="form-control col-6" id="yourEmail" name="senderEmail" value="<?php echo set_value('senderEmail'); ?>"><br> 
@@ -19,3 +19,4 @@
     <input type="submit" class="btn btn-success" value="Send">
         <?php echo "<font color='blue'>".$successSentEmail."</font>"; ?>
 </form>
+</div>

@@ -1,4 +1,4 @@
-<div> <form name="createConference" action="<?php echo site_url('Admin/createConference'); ?>" method="POST" >
+<div> <form id="addnewconf" name="createConference" action="<?php echo site_url('Admin/createConference'); ?>" method="POST" >
         <div class="form-group">
 
             <label for="conferenceName">Conference name: </label>
@@ -49,7 +49,7 @@
             <?php endforeach; ?>
         </select>
         </div>
-</div><br>
+        <br>
 
             <div>
                 <!--<label for="files" class="btn btn-info">Select Image</label>-->
@@ -59,5 +59,6 @@
         
         <input type="submit" class="btn btn-success" value="Create">
     </form>
+</div>
 </div>
 

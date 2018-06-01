@@ -88,3 +88,36 @@ nav a:hover{
    padding-bottom:50px;
    
 }
+.media{
+   padding-bottom:170px;
+   
+}
+#cnfdtl{
+   padding-bottom:220px;
+   
+}
+#ajsrch{
+   padding-bottom:170px;
+   
+}
+#chpass{
+    padding-bottom:260px;
+   padding-right: 500px;
+   padding-left: 500px;
+   padding-top:80px;
+}
+#arewminv{
+    padding-top:40px;
+    padding-bottom:150px;
+   
+   
+   padding-left: 350px;
+}
+#adrewinv{
+    padding-top:40px;
+    padding-bottom:150px;
+}
+#addnewconf{
+    padding-top:40px;
+    padding-bottom:150px;
+}

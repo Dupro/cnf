@@ -1,4 +1,4 @@
-<div class="row">
+<div id="cnfdtl" class="row">
     <div class="col-sm-6">
         <ul class="list-group">
             <?php
