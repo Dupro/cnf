@@ -1,11 +1,12 @@
-<div id="futer" class="row">
+<div class="row">
+<div id="futer">
     
-<footer class="page-footer font-small unique-color-dark">
+<footer class="page-footer font-small unique-color-dark" style="background:dark;">
  
     
 
     <!--Footer Links-->
-    <div class="container mt-4 mb-4 text-center text-md-left">
+    <div class="container  mb-4 text-center text-md-left">
         <div class="row mt-3">
 
             <!--First column-->
@@ -80,5 +81,7 @@
 
 </footer>
 </div>
+</div>
+
     </body>
 </html>
