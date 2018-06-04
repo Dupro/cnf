@@ -83,9 +83,25 @@ class User extends CI_Controller {
         $data['mydata'] = $mydata;
         $this->loadView($data, "main/user_myprofile.php");
     }
+        public function edit_My_Profile(){
+            $idUser = $this->session->userdata("user")->username;
+            $mydata = $this->ModelUser->myProfile($idUser);
+            $data['mydata'] = $mydata;
+            $data['controller'] = "User";
+            $this->loadView($data, "main/user_editmyprofile.php");
+    }
 
     public function editMyProfile() {
-        if ($this->input->post("submitMyEditProfile") !== NULL) {
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+            $this->form_validation->set_rules('first_name', 'First name', 'required');
+            $this->form_validation->set_rules('last_name', 'Last name', 'required');
+            $this->form_validation->set_rules('phone_number', 'Phone number', 'required');
+            $this->form_validation->set_rules('organisation', 'Organisation', 'required');
+            $this->form_validation->set_rules('date_of_birth', 'Date of birth', 'required');
+            $this->form_validation->set_message('valid_email','Your email address is invalid. Please enter a valid address.');
+            if ($this->form_validation->run()==FALSE)
+                $this->edit_My_Profile();
+        else if ($this->input->post("submitMyEditProfile") !== NULL) {
             $iduser = $this->session->userdata("user")->iduser;
             $first_name = $this->input->post("first_name");
             $last_name = $this->input->post("last_name");
@@ -95,7 +111,8 @@ class User extends CI_Controller {
             $date_of_birth = $this->input->post("date_of_birth");
             $this->ModelRegistration->changeMyProfile($iduser, $first_name, $last_name, $phone_number, $email, $organisation, $date_of_birth);
             redirect("User/myProfile");
-        } else {
+        } 
+        else {
             $idUser = $this->session->userdata("user")->username;
             $mydata = $this->ModelUser->myProfile($idUser);
             $data['mydata'] = $mydata;
