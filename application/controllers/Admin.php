@@ -280,10 +280,17 @@ class Admin extends CI_Controller {
     
 //    TO DO
     public function sendInv(){
+        $this->form_validation->set_rules('usernames', 'Usernames', 'required');
+        $this->form_validation->set_rules('usernames', 'conferenc', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->reviewerInvitation(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
+        } else {
+        $usernames = $this->input->post("usernames");
+        $conferenc = $this->input->post("conferenc");
+        $this->ModelUser->reviewer_invitation($usernames, $conferenc);
+        redirect ("Admin/reviewerInvitation");        
         
-        
-        
-        redirect ("Admin/reviewerInvitation");
+        }
     }
 
     public function addnewConference() {

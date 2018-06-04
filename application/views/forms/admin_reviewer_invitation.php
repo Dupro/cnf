@@ -26,9 +26,9 @@
     </div>
     </div>
     
-    <div class="form-group">
+<!--    <div class="form-group">
   <label for="comment">Message:</label>
   <textarea class="form-control" rows="5" id="comment"></textarea>
-</div>
+</div>-->
     <input type="submit" class="btn btn-success" value="Send">
 </form>

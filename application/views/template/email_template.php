@@ -8,7 +8,8 @@
 <body>
     <p style="Margin-top: 0;color: #565656;font-family: Georgia,serif;font-size: 16px;line-height: 25px;Margin-bottom: 25px">
         Hey
-        <?php echo $userName;?>,</p>
+        <?php echo $username_reviewer;?>,</p>
+        <?php echo $password_reviewer;?>,</p>
     <p style="Margin-top: 0;color: #565656;font-family: Georgia,serif;font-size: 16px;line-height: 25px;Margin-bottom: 25px">
         This is mail demo of How to send email using HTML templates in Codeigniter </p>
     </div>

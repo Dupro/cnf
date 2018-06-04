@@ -81,4 +81,7 @@ WHERE iduser='.$iduser. ' and user_iduser='.$iduser. ' and idconference =confere
         return $result;
         
     }
+    public function reviewer_invitation($usernames, $conferenc) {
+        
+    }
 }
