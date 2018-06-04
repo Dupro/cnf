@@ -147,7 +147,17 @@ class User extends CI_Controller {
         $this->load->view("main/user_new_project.php");
         $this->load->view("template/footer.php");
     }
-
+    
+     public function invitations() {
+         $conference_data = $this->Search_model->conference();
+        $autors = $this->Search_model->users();
+        $data['confdata'] = $conference_data;
+       
+        $data['controller'] = "User";
+        $this->load->view("template/header_" . $this->controller . ".php", $data);
+        $this->load->view("main/user_invitations.php");
+        $this->load->view("template/footer.php");
+     }
     public function review() {
         $data['controller'] = "User";
         $this->load->view("template/header_" . $this->controller . ".php", $data);
