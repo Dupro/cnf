@@ -93,7 +93,7 @@ class Guest extends CI_Controller {
         $this->form_validation->set_message("required", "Field {field} is empty.");
         if ($this->form_validation->run()) {
             $this->ModelUser->username = $this->input->post('username');
-            if (!$this->ModelUser->usernameExist())
+            if (!$this->ModelUser->usernameExist()){
                 $this->login("Incorrect username!");
             redirect("Guest/index");}
             else if (!$this->ModelUser->correctPassword($this->input->post('password'))){
