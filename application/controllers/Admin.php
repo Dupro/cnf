@@ -70,6 +70,7 @@ class Admin extends CI_Controller {
         $data['controller'] = "Admin";
         $data['successPW'] = $this->session->flashdata('successPW');
         $data['successEmail']= $this->session->flashdata('successEmail');
+        $data['successFirst']= $this->session->flashdata('successFirst');
         $idUser = $this->session->userdata("user")->username;
 
         $mydata = '';
@@ -451,7 +452,7 @@ class Admin extends CI_Controller {
             $date_of_birth = $this->input->post("date_of_birth");
             $this->ModelRegistration->changeMyProfile($iduser, $first_name, $last_name, $phone_number, $email, $organisation, $date_of_birth);
             $successEmail= $this->session->set_flashdata('successEmail', 'You have successfully changed your email address.');
-            
+            //$successFirst= $this->session->set_flashdata('successFirst', 'You have successfully changed your first name.');
             redirect("Admin/myProfile");
             }
         } 
