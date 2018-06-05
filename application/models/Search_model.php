@@ -93,7 +93,7 @@ WHERE iduser='.$iduser. ' and user_iduser='.$iduser. ' and idconference =confere
     }
     public function myprojectofconf($idconference){
         $query = $this->db->query("SELECT * FROM conference, conference_has_project, project, user, autor
-where idconference=conference_idconference and idproject=conference_has_project.project_idproject and idproject=autor.project_idproject and iduser=autor.user_iduser and project.core=user.iduser  and idconference=".$idconference." and status!='5'");
+where idconference=conference_idconference and idproject=conference_has_project.project_idproject and idproject=autor.project_idproject and iduser=autor.user_iduser and project.core=user.iduser  and idconference=".$idconference." and status!='5' group by project.idproject");
         $result = $query->result_array(); 
         return $result;
     }
@@ -103,14 +103,24 @@ where idconference=conference_idconference and idproject=conference_has_project.
         $this->db->update('project');
     }
      public function add_projectformconf() {
-         $query = $this->db->query("SELECT * FROM conference, conference_has_project, project, user, autor
-where idconference=conference_idconference and idproject=conference_has_project.project_idproject and idproject=autor.project_idproject and iduser=autor.user_iduser and project.core=user.iduser  and idconference=".$idconference." and status='5'");
+         $this->db->where('idproject', $param);
+        $this->db->set("status", "0");
+        $this->db->update('project');
+     }
+     public function projectinfo($param) {
+         $query = $this->db->query("SELECT * FROM project, user, autor where user_iduser=iduser and project_idproject=idproject and idproject=".$param." group by idproject;");
 
          $result = $query->result_array(); 
         return $result;
      }
-     public function projectinfo($param) {
-         $query = $this->db->query("SELECT * FROM project, user, autor where user.iduser=".$param." project_idproject=idproject");
+     public function coautors($param) {
+         $query = $this->db->query("SELECT * FROM project, user, autor where user_iduser=iduser and project_idproject=idproject and idproject=".$param." and core!=iduser group by iduser");
+
+         $result = $query->result_array(); 
+        return $result;
+     }
+     public function competence($param) {
+     $query = $this->db->query("SELECT * FROM project, user, autor where user_iduser=iduser and project_idproject=idproject and idproject=".$param." and core!=iduser group by iduser");
 
          $result = $query->result_array(); 
         return $result;
