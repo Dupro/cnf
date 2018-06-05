@@ -82,6 +82,10 @@ WHERE iduser='.$iduser. ' and user_iduser='.$iduser. ' and idconference =confere
         
     }
     public function reviewer_invitation($usernames, $conferenc) {
-        
+        $this->db->set ("user_iduser", $usernames);
+        $this->db->set ("conference_idconference", $conferenc);
+        $this->db->insert("reviewer");
+        $this->db->insert_id();
+
     }
 }

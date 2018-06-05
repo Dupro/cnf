@@ -149,8 +149,8 @@ class Admin extends CI_Controller {
         $data['info'] = '$info_vesti';
         $this->load->view("template/header_" . $this->controller . ".php", $data);
         $this->load->view("main/admin_sidebar.php");
-//        $this->load->view("forms/login.php");
-//        $this->load->view("forms/registration.php");
+        $this->load->view("forms/login.php");
+        $this->load->view("forms/registration.php");
         $this->load->view("main/guest.php", $data);
         $this->load->view("template/footer.php");
     }
@@ -287,7 +287,7 @@ class Admin extends CI_Controller {
 //    TO DO
     public function sendInv(){
         $this->form_validation->set_rules('usernames', 'Usernames', 'required');
-        $this->form_validation->set_rules('usernames', 'conferenc', 'required');
+        $this->form_validation->set_rules('conferenc', 'conferenc', 'required');
         if ($this->form_validation->run() == FALSE) {
             $this->reviewerInvitation(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
         } else {

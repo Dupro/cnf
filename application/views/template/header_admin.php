@@ -9,7 +9,7 @@
 
 
         <nav class="navbar navbar-expand-sm sticky-top bg-dark fixed-topnavbar-dark mb-4 py-3" style="background: linear-gradient(darkgray, lightgrey);">
-            <div  class="container" >
+            
                 <a class="navbar-brand" href="<?php echo site_url("Admin/index"); ?>">
                     <img src="<?php echo base_url("image/logo/logo666.jpg"); ?>" alt="Logo" style="width:120px;">
                 </a>
@@ -39,7 +39,7 @@
                     </li>
 
                 </ul>
-            </div>
+           
         </nav>
 
 
