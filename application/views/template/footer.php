@@ -22,7 +22,7 @@
                 </h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0  mx-auto">
                 <p>
-                    <a href="#!">Home</a>
+                    <a href="<?php echo base_url("Guest/index"); ?>">Home</a>
                 </p>
                 <p>
                     <a href="#!">Conferences</a>
