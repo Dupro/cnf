@@ -79,6 +79,7 @@ class User extends CI_Controller {
         $data['controller'] = "User";
         $data['successPW'] = $this->session->flashdata('successPW');
         $data['successEmail']= $this->session->flashdata('successEmail');
+        //$data['successFirst']= $this->session->flashdata('successFirst');
         $idUser = $this->session->userdata("user")->username;
 
         $mydata = $this->ModelUser->myProfile($idUser);
@@ -93,7 +94,8 @@ class User extends CI_Controller {
             $this->loadView($data, "main/user_editmyprofile.php");
     }
 
-    public function editMyProfile() {
+   public function editMyProfile() {
+           //if ($this->input->post("submitMyEditProfile") !== NULL) {
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
             $this->form_validation->set_rules('first_name', 'First name', 'required');
             $this->form_validation->set_rules('last_name', 'Last name', 'required');
@@ -103,7 +105,8 @@ class User extends CI_Controller {
             $this->form_validation->set_message('valid_email','Your email address is invalid. Please enter a valid address.');
             if ($this->form_validation->run()==FALSE)
                 $this->edit_My_Profile();
-        else if ($this->input->post("submitMyEditProfile") !== NULL) {
+            else {
+
             $iduser = $this->session->userdata("user")->iduser;
             $first_name = $this->input->post("first_name");
             $last_name = $this->input->post("last_name");
@@ -112,16 +115,19 @@ class User extends CI_Controller {
             $organisation = $this->input->post("organisation");
             $date_of_birth = $this->input->post("date_of_birth");
             $this->ModelRegistration->changeMyProfile($iduser, $first_name, $last_name, $phone_number, $email, $organisation, $date_of_birth);
-            redirect("User/myProfile");
+            $successEmail= $this->session->set_flashdata('successEmail', 'You have successfully changed your email address.');
+            if ($this->session->userdata('user')->coordinator == "0"){
+               $successEmail;
+                redirect('User/myProfile');     
+                
+            } else {
+               $successEmail;
+                redirect('Admin/myProfile');
+                
+            }
+
+            }
         } 
-        else {
-            $idUser = $this->session->userdata("user")->username;
-            $mydata = $this->ModelUser->myProfile($idUser);
-            $data['mydata'] = $mydata;
-            $data['controller'] = "User";
-            $this->loadView($data, "main/user_editmyprofile.php");
-        }
-    }
 
     public function addImage() {
         $this->loadView(array(), "user_myprofile.php");
