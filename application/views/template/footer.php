@@ -1,8 +1,8 @@
 
 
-  
 </div>
-<br><br>
+</div>
+
 <div id="fut" class="row">
 
             <!--First column-->
@@ -22,13 +22,17 @@
                 </h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0  mx-auto">
                 <p>
-                    <a href="<?php echo base_url("Guest/index"); ?>">Home</a>
+                    <a href="<?php echo base_url("$controller/index"); ?>">Home</a>
                 </p>
                 <p>
-                    <a href="#!">Conferences</a>
+                    <a href="<?php echo base_url("$controller/conferences"); ?>">Conferences</a>
                 </p>
-                <p>
-                    <a href="#!">Login</a>
+                <p><?php if ($controller!='Guest'){
+                    ?><a href="<?php echo site_url("$controller/logout"); ?>">Logout</a>
+                        <?php
+                } else {?>
+                    <a data-toggle="modal" data-target="#LoginModal" href="">Login</a>
+                <?php } ?>
                 </p>
                 <p>
                     <a href="#!">Help</a>
