@@ -124,3 +124,7 @@ nav a:hover{
     padding-top:40px;
     padding-bottom:150px;
 }
+h3{
+    
+    text-shadow: -2px 0 darkgreen, 0 2px darkgreen, 2px 0 darkgreen, 0 -2px darkgreen;
+}

@@ -1,16 +1,13 @@
 
 
-
+<link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img class="d-block h-50 w-100" src="https://mybroadband.co.za/news/wp-content/uploads/2017/08/MyBroadband-Underground.jpg" alt="First slide">
     <div class="carousel-caption">
 
-               <button type="button" href="<?php echo site_url("Guest/dataconf/1"); ?>" class="btn btn-success">More details</button>
-
-                <h3><a href="<?php echo site_url("$controller/dataconf/1"); ?>">Detaljnije informacije</a></h3>
-
+                <h3><a href="<?php echo site_url("$controller/dataconf/1"); ?>" style="color:limegreen">Detaljnije informacije</a></h3>
 
             </div>
     </div>
@@ -18,10 +15,7 @@
       <img class="d-block h-50 w-100" src="https://www.iaspaper.net/wp-content/uploads/2015/06/International-conferences-on-United-NationsIndia-Indian-Ocean.png" alt="Second slide">
     <div class="carousel-caption">
 
-               <button type="button" href="<?php echo site_url("Guest/dataconf/1"); ?>" class="btn btn-success">More details</button>
-
-                <h3><a href="<?php echo site_url("$controller/dataconf/1"); ?>">Detaljnije informacije</a></h3>
-
+                <h3><a href="<?php echo site_url("$controller/dataconf/1"); ?>" style="color:limegreen">Detaljnije informacije</a></h3>
 
             </div>
     </div>
@@ -29,10 +23,7 @@
       <img class="d-block h-50 w-100" src="https://s3.amazonaws.com/rdcms-hsmai/files/production/public/images/ROCroom17.jpg" alt="Third slide">
     <div class="carousel-caption">
 
-               <button type="button" href="<?php echo site_url("Guest/dataconf/1"); ?>" class="btn btn-success">More details</button>
-
-                <h3><a href="<?php echo site_url("$controller/dataconf/1"); ?>">Detaljnije informacije</a></h3>
-
+                <h3><a href="<?php echo site_url("$controller/dataconf/1"); ?>" style="color:limegreen">Detaljnije informacije</a></h3>
 
             </div>
     </div>
