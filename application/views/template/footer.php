@@ -1,12 +1,12 @@
 
+
+  
 </div>
-    <div id="futer">
-       <!--Footer Links-->
-    <div class="  mb-4 text-center text-md-left">
-        <div class="row mt-3">
+<br><br>
+<div id="fut" class="row">
 
             <!--First column-->
-            <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+            <div class="col-md-3 col-lg-4 col-xl-3 ml-4 mb-4">
                 <h6 id="fl" class="text-uppercase font-weight-semibold">
                     <strong>MY GROUP 6</strong>
                 </h6>
@@ -37,7 +37,7 @@
             <!--/.Second column-->
 
             <!--Third column-->
-           <div class="col-md-8 col-lg-6 col-xl-3">
+           <div class="col-md-2 col-lg-2 col-xl-2 mr-4">
                 <h6 id="fl" class="text-uppercase font-weight-semibold">
                     <strong>Contact</strong>
                 </h6>
@@ -58,9 +58,9 @@
             <!--/.Fourth column-->
 
         </div>
-    </div>
+  
 
-</div >
+
 
 
 

@@ -35,6 +35,9 @@ html,body{
     clear:both;
     max-width: 2000px;
 }
+#fut{
+  background:linear-gradient(lightgrey, darkgray);  
+}
 
 .futerfont{
   color:green;
