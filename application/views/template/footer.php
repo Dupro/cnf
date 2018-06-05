@@ -25,7 +25,7 @@
                     <a href="<?php echo base_url("Guest/index"); ?>">Home</a>
                 </p>
                 <p>
-                    <a href="#!">Conferences</a>
+                    <a href="<?php echo base_url("User/conferences"); ?>">Conferences</a>
                 </p>
                 <p>
                     <a href="#!">Login</a>
