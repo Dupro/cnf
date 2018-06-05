@@ -154,6 +154,20 @@
                 });  
            }  
       });  
+//      $(document).on('click', '.btn_info', function(){  
+//           var id=$(this).data("id3");   
+//           {  
+//                $.ajax({  
+//                     url:"<?php // echo base_url() ?>Admin/projectinfo",  
+//                     method:"POST",  
+//                     data:{id:id},  
+//                     dataType:"text",  
+//                     success:function(data){  
+//                          fetch_data();  
+//                     }  
+//                });  
+//           }  
+//      });
  });  
  </script>
  <?php $i++;
