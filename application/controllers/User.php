@@ -56,6 +56,8 @@ class User extends CI_Controller {
         $data['links'] = $this->pagination->create_links();
         $data['controller'] = "User";
         $this->load->view("template/header_" . $this->controller . ".php", $data);
+        $this->load->view("forms/login.php");
+        $this->load->view("forms/registration.php");
         $this->load->view("main/guest.php", $data);
         $this->load->view("template/footer.php");
     }
