@@ -507,7 +507,7 @@ class Admin extends CI_Controller {
                      <td class="last_name" data-id2="' . $row["idproject"] . '" >' . $row["last_name"] . '</td>  
                      <td class="last_name" data-id2="' . $row["idproject"] . '" >' . $row["project_name"] . '</td> 
                       <td><form method="post" action="projectinfo">
-                            <button type="submit" value="' . $row["idproject"] . '" class="btn btn-xs btn-info btn_info">Info</button>
+                            <button name="info" type="submit" value="' . $row["idproject"] . '" class="btn btn-xs btn-info btn_info">Info</button>
                            </form></td>
                      <td><button type="button" name="delete_btn" data-id3="' . $row["idproject"] . '" class="btn btn-xs btn-danger btn_delete">x</button></td>  
                 </tr>  
@@ -528,8 +528,10 @@ class Admin extends CI_Controller {
          echo 'Project Deleted from Conference'; 
     }
     public function projectinfo() {
-        $idproject = $this->input->post('id');
+        $idproject = $this->input->post('info');
         $datainfo=$this->Search_model->projectinfo($idproject);
+        $coautors=$this->Search_model->coautors($idproject);
+        $data['coautor']=$coautors;
         $data['projinfo']=$datainfo;
         $data['controller'] = "Admin";
         
