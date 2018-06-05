@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="row">
 <div id="futer">
     
@@ -63,8 +64,20 @@
 
         </div>
     </div>
-    <!--/.Footer Links-->
+=======
+</div ></div >
 
+
+<footer class="page-footer font-small unique-color-dark pt-0">
+
+    
+
+    <!--Footer Links-->
+    <div style="background-color: #6351ce;" class="footer-copyright py-3 text-center">
+      
+>>>>>>> 09b9f9cb127410f91ddc14b3b085fedb440196fa
+    <!--/.Footer Links-->
+    </div>
     <!-- Copyright-->
     <div  class="footer-copyright py-3 text-center">
         © 2018 Copyright:

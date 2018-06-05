@@ -69,6 +69,8 @@ class Admin extends CI_Controller {
     public function myProfile() {
         $data['controller'] = "Admin";
         $data['successPW'] = $this->session->flashdata('successPW');
+        $data['successEmail']= $this->session->flashdata('successEmail');
+        $data['successFirst']= $this->session->flashdata('successFirst');
         $idUser = $this->session->userdata("user")->username;
 
         $mydata = '';
@@ -154,8 +156,19 @@ class Admin extends CI_Controller {
 
         $data['info'] = '$info_vesti';
         $this->load->view("template/header_" . $this->controller . ".php", $data);
-        $this->load->view("forms/login.php");
-        $this->load->view("forms/registration.php");
+        $this->load->view("main/cnfdetails.php", $data);
+        $this->load->view("template/footer.php");
+    }
+    
+     public function dataconf($idconf) { //podaci o konferencijam
+        $conference_data = $this->Search_model->conference();
+        $data['confdata'] = $conference_data;
+        $controller = "";
+        $data['controller'] = $controller;
+        
+        $datacon = $this->Search_model->getInfoConf($idconf);
+        $data['confinfo'] = $datacon;
+        $this->load->view("template/header_" . $this->controller . ".php", $data);
         $this->load->view("main/cnfdetails.php", $data);
         $this->load->view("template/footer.php");
     }
@@ -230,10 +243,18 @@ class Admin extends CI_Controller {
         );
         $this->load->library('email', $config);
         $this->email->from($senderEmail, $full_name);
+         $data = array(
+
+       'userName'=> $username
+
+         );
+        $this->email->set_newline("\r\n");
         $this->email->to($recipientEmail);
         $this->email->subject($subject);
+        $body = $this->load->view('template/email_template.php',$data,TRUE);
         $this->email->message($messageEmail);
-        $this->email->set_newline("\r\n");
+        $this->email->message($body);
+        
         $this->email->send();
         $this->email->print_debugger();
         $successSentEmail = $this->session->set_flashdata('successSentEmail', 'You have successfully sent a email!');
@@ -243,7 +264,9 @@ class Admin extends CI_Controller {
 
     // OVO TEK TREBA DA SE RADI
     public function reviewerInvitation() {
-
+        
+        $users= $this->Search_model->users();
+        $data['users'] = $users;
         $mydata = $this->Search_model->conference();
         $data['mydata'] = $mydata;
         $conference_data = $this->Search_model->conference();
@@ -254,6 +277,21 @@ class Admin extends CI_Controller {
 
         $this->load->view("forms/admin_reviewer_invitation.php", $data);
         $this->load->view("template/footer.php");
+    }
+    
+//    TO DO
+    public function sendInv(){
+        $this->form_validation->set_rules('usernames', 'Usernames', 'required');
+        $this->form_validation->set_rules('usernames', 'conferenc', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->reviewerInvitation(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
+        } else {
+        $usernames = $this->input->post("usernames");
+        $conferenc = $this->input->post("conferenc");
+        $this->ModelUser->reviewer_invitation($usernames, $conferenc);
+        redirect ("Admin/reviewerInvitation");        
+        
+        }
     }
 
     public function addnewConference() {
@@ -384,8 +422,32 @@ class Admin extends CI_Controller {
         }
     }
 
+<<<<<<< HEAD
     public function editMyProfile() {
         if ($this->input->post("submitMyEditProfile") !== NULL) {
+=======
+    public function edit_My_Profile(){
+            $idUser = $this->session->userdata("user")->username;
+            $mydata = $this->ModelUser->myProfile($idUser);
+            $data['mydata'] = $mydata;
+            $data['controller'] = "Admin";
+            $this->loadView($data, "main/user_editmyprofile.php");
+    }
+        
+        public function editMyProfile() {
+           //if ($this->input->post("submitMyEditProfile") !== NULL) {
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+            $this->form_validation->set_rules('first_name', 'First name', 'required');
+            $this->form_validation->set_rules('last_name', 'Last name', 'required');
+            $this->form_validation->set_rules('phone_number', 'Phone number', 'required');
+            $this->form_validation->set_rules('organisation', 'Organisation', 'required');
+            $this->form_validation->set_rules('date_of_birth', 'Date of birth', 'required');
+            $this->form_validation->set_message('valid_email','Your email address is invalid. Please enter a valid address.');
+            if ($this->form_validation->run()==FALSE)
+                $this->edit_My_Profile();
+            else {
+ 
+>>>>>>> 09b9f9cb127410f91ddc14b3b085fedb440196fa
             $iduser = $this->session->userdata("user")->iduser;
             $first_name = $this->input->post("first_name");
             $last_name = $this->input->post("last_name");
@@ -394,15 +456,12 @@ class Admin extends CI_Controller {
             $organisation = $this->input->post("organisation");
             $date_of_birth = $this->input->post("date_of_birth");
             $this->ModelRegistration->changeMyProfile($iduser, $first_name, $last_name, $phone_number, $email, $organisation, $date_of_birth);
+            $successEmail= $this->session->set_flashdata('successEmail', 'You have successfully changed your email address.');
+            //$successFirst= $this->session->set_flashdata('successFirst', 'You have successfully changed your first name.');
             redirect("Admin/myProfile");
-        } else {
-            $idUser = $this->session->userdata("user")->username;
-            $mydata = $this->ModelUser->myProfile($idUser);
-            $data['mydata'] = $mydata;
-            $data['controller'] = "Admin";
-            $this->loadView($data, "main/user_editmyprofile.php");
-        }
-    }
+            }
+        } 
+   // }
 
     public function selectprojectofconf() {
         $katran = $this->input->post('idconference');
@@ -463,4 +522,8 @@ class Admin extends CI_Controller {
          echo 'Project Deleted from Conference'; 
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 09b9f9cb127410f91ddc14b3b085fedb440196fa

@@ -93,11 +93,13 @@ class Guest extends CI_Controller {
         $this->form_validation->set_message("required", "Field {field} is empty.");
         if ($this->form_validation->run()) {
             $this->ModelUser->username = $this->input->post('username');
-            if (!$this->ModelUser->usernameExist())
+            if (!$this->ModelUser->usernameExist()){
                 $this->login("Incorrect username!");
-
-            else if (!$this->ModelUser->correctPassword($this->input->post('password')))
+            redirect("Guest/index");}
+            else if (!$this->ModelUser->correctPassword($this->input->post('password'))){
                 $this->login("Incorrect password!");
+            
+            redirect("Guest/index");}
             else if ($this->ModelUser->coordinatorExist() == TRUE) {
                 $this->session->set_userdata('user', $this->ModelUser);
                 redirect("Admin/index");
@@ -151,10 +153,10 @@ class Guest extends CI_Controller {
         $data['confdata'] = $conference_data;
         $controller = "";
         $data['controller'] = $controller;
-        $data['controller'] = "Guest";
+        
         $datacon = $this->Search_model->getInfoConf($idconf);
         $data['confinfo'] = $datacon;
-        $this->load->view("template/header_guest.php", $data);
+        $this->load->view("template/header_" . $this->controller . ".php", $data);
         $this->load->view("forms/login.php");
         $this->load->view("forms/registration.php");
         $this->load->view("main/cnfdetails.php", $data);

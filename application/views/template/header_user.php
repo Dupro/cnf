@@ -32,6 +32,9 @@
                         <a class="nav-link" href="<?php echo site_url("User/newProject"); ?>">New project</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="<?php echo site_url("User/invitations"); ?>">Invitations</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="<?php echo site_url("User/review"); ?>">Review</a>
                     </li>
                     <li class="nav-item ">
