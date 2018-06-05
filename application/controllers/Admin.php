@@ -506,8 +506,8 @@ class Admin extends CI_Controller {
                      <td class="first_name" data-id1="' . $row["idproject"] . '" >' . $row["first_name"] . '</td>  
                      <td class="last_name" data-id2="' . $row["idproject"] . '" >' . $row["last_name"] . '</td>  
                      <td class="last_name" data-id2="' . $row["idproject"] . '" >' . $row["project_name"] . '</td> 
-                      <td><form method="post" action="<?php echo site_url("Admin/projectinfo"); ?>
-                            <button type="submit" value="' . $row["idproject"] . '" class="btn btn-xs btn-info ">Info</button>
+                      <td><form method="post" action="projectinfo">
+                            <button type="submit" value="' . $row["idproject"] . '" class="btn btn-xs btn-info btn_info">Info</button>
                            </form></td>
                      <td><button type="button" name="delete_btn" data-id3="' . $row["idproject"] . '" class="btn btn-xs btn-danger btn_delete">x</button></td>  
                 </tr>  
@@ -527,9 +527,14 @@ class Admin extends CI_Controller {
          $this->Search_model->delete_projectformconf($idproject);
          echo 'Project Deleted from Conference'; 
     }
-
-
+    public function projectinfo() {
+        $idproject = $this->input->post('id');
+        $datainfo=$this->Search_model->projectinfo($idproject);
+        $data['projinfo']=$datainfo;
+        $data['controller'] = "Admin";
+        
+        $this->loadView($data, "main/admin_project_info.php");
 }
 
-
+}
 

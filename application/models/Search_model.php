@@ -109,4 +109,10 @@ where idconference=conference_idconference and idproject=conference_has_project.
          $result = $query->result_array(); 
         return $result;
      }
+     public function projectinfo($param) {
+         $query = $this->db->query("SELECT * FROM project, user, autor where user.iduser=".$param." project_idproject=idproject");
+
+         $result = $query->result_array(); 
+        return $result;
+     }
  }
