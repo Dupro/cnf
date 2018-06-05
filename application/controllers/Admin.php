@@ -30,6 +30,7 @@ class Admin extends CI_Controller {
     public function loadView($data, $mainPart) {
 
         $this->load->view("template/header_" . $this->controller . ".php", $data);
+                $this->load->view("main/admin_sidebar.php");
         $this->load->view($mainPart, $data);
         $this->load->view("template/footer.php");
     }
@@ -60,6 +61,7 @@ class Admin extends CI_Controller {
         $data['controller'] = "Admin";
         $data['info'] = '$info_vesti';
         $this->load->view("template/header_" . $this->controller . ".php", $data);
+        $this->load->view("main/admin_sidebar.php");
         $this->load->view("forms/login.php");
         $this->load->view("forms/registration.php");
         $this->load->view("main/guest.php", $data);
@@ -146,6 +148,7 @@ class Admin extends CI_Controller {
         $data['controller'] = "Admin";
         $data['info'] = '$info_vesti';
         $this->load->view("template/header_" . $this->controller . ".php", $data);
+                $this->load->view("main/admin_sidebar.php");
 //        $this->load->view("forms/login.php");
 //        $this->load->view("forms/registration.php");
         $this->load->view("main/guest.php", $data);
@@ -422,10 +425,9 @@ class Admin extends CI_Controller {
         }
     }
 
-<<<<<<< HEAD
-    public function editMyProfile() {
-        if ($this->input->post("submitMyEditProfile") !== NULL) {
-=======
+
+    
+
     public function edit_My_Profile(){
             $idUser = $this->session->userdata("user")->username;
             $mydata = $this->ModelUser->myProfile($idUser);
@@ -447,7 +449,7 @@ class Admin extends CI_Controller {
                 $this->edit_My_Profile();
             else {
  
->>>>>>> 09b9f9cb127410f91ddc14b3b085fedb440196fa
+
             $iduser = $this->session->userdata("user")->iduser;
             $first_name = $this->input->post("first_name");
             $last_name = $this->input->post("last_name");
@@ -522,8 +524,8 @@ class Admin extends CI_Controller {
          echo 'Project Deleted from Conference'; 
     }
 
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> 09b9f9cb127410f91ddc14b3b085fedb440196fa
+
+
+

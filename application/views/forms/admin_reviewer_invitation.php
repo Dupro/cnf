@@ -1,5 +1,5 @@
 <h3 style="text-align:center">Reviewer invitation</h3>
-<<<<<<< HEAD
+
 <div class="row">
     
 <form id="adrewinv">
@@ -11,7 +11,7 @@
   </div>
    
    
-=======
+
 <form name = "reviewerInvitation" action = "<?php echo site_url('Admin/sendInv') ?>" method = "post">    
     <div class="form-group">
         <label for="usernames">Users</label>
@@ -23,7 +23,7 @@
         </select>
     </div>
 
->>>>>>> 09b9f9cb127410f91ddc14b3b085fedb440196fa
+
     <div class="form-group">
         <div class="row"> 
             <div class="col-sm-12" ><label for="conferenc">Conferences</label>
@@ -43,14 +43,13 @@
 <!--    <div class="form-group">
   <label for="comment">Message:</label>
   <textarea class="form-control" rows="5" id="comment"></textarea>
-<<<<<<< HEAD
+
 </div>
     <button type="button" class="btn btn-success">Send</button>
 </form>
 
 </div>
-=======
+
 </div>-->
     <input type="submit" class="btn btn-success" value="Send">
 </form>
->>>>>>> 09b9f9cb127410f91ddc14b3b085fedb440196fa

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+<div class="container">
 <div class="row">
 <div id="futer">
     
@@ -64,7 +64,7 @@
 
         </div>
     </div>
-=======
+
 </div ></div >
 
 
@@ -75,7 +75,7 @@
     <!--Footer Links-->
     <div style="background-color: #6351ce;" class="footer-copyright py-3 text-center">
       
->>>>>>> 09b9f9cb127410f91ddc14b3b085fedb440196fa
+
     <!--/.Footer Links-->
     </div>
     <!-- Copyright-->
@@ -91,7 +91,7 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url("assets/js/popper.js"); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
-
+</div>
 </footer>
 </div>
 </div>

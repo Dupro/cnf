@@ -7,33 +7,33 @@
         <div class="carousel-item active" id="carosel">
             <img class="d-block h-50 w-100" src="https://www.iaspaper.net/wp-content/uploads/2015/06/International-conferences-on-United-NationsIndia-Indian-Ocean.png" alt="First slide">
             <div class="carousel-caption">
-<<<<<<< HEAD
+
                 <button type="button" href="<?php echo site_url("Guest/dataconf/1"); ?>" class="btn btn-success">More details</button>
-=======
+
                 <h3><a href="<?php echo site_url("$controller/dataconf/1"); ?>">Detaljnije informacije</a></h3>
->>>>>>> 09b9f9cb127410f91ddc14b3b085fedb440196fa
+
 
             </div>
         </div>
         <div class="carousel-item">
             <img class="d-block h-50 w-100" src="https://mybroadband.co.za/news/wp-content/uploads/2017/08/MyBroadband-Underground.jpg" alt="Second slide">
             <div class="carousel-caption">
-<<<<<<< HEAD
+
                <button type="button" href="<?php echo site_url("Guest/dataconf/1"); ?>" class="btn btn-success">More details</button>
-=======
+
                 <h3><a href="<?php echo site_url("$controller/dataconf/1"); ?>">Detaljnije informacije</a></h3>
->>>>>>> 09b9f9cb127410f91ddc14b3b085fedb440196fa
+
 
             </div>
         </div>
         <div class="carousel-item">
             <img class="d-block h-50 w-100" src="https://s3.amazonaws.com/rdcms-hsmai/files/production/public/images/ROCroom17.jpg" alt="Third slide">
             <div class="carousel-caption">
-<<<<<<< HEAD
+
                 <button type="button" href="<?php echo site_url("Guest/dataconf/1"); ?>" class="btn btn-success">More details</button>
-=======
+
                 <h3> <a href="<?php echo site_url("$controller/dataconf/1"); ?>">Detaljnije informacije</a></h3>
->>>>>>> 09b9f9cb127410f91ddc14b3b085fedb440196fa
+
 
             </div>
         </div>

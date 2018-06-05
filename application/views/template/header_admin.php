@@ -42,21 +42,21 @@
             </div>
         </nav>
 
-<<<<<<< HEAD
+
        <!--  <div class="col-2 position-fixed">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link" id="v-pills-home-tab"  href="<?php echo site_url("Admin/projects"); ?>" role="tab" aria-controls="v-pills-home" >Project</a>
                 <a class="nav-link" id="v-pills-profile-tab"  href="<?php echo site_url("Admin/addnewConference"); ?>" role="tab" aria-controls="v-pills-profile" >Add new conference</a>
                 <a class="nav-link" id="v-pills-messages-tab" href="<?php echo site_url("Admin/reviewerInvitation"); ?>" role="tab" aria-controls="v-pills-messages" aria-selected="false">Reviewer invitation</a>
                 <a class="nav-link" id="v-pills-messages-tab" href="<?php echo site_url("Admin/reviewerEmailInvitation"); ?>" role="tab" aria-controls="v-pills-messages" aria-selected="false">Reviewer Email invitation</a>
-=======
+
         <div class="col-2 position-fixed">
             <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link btn btn btn-primary mb-2" id="v-pills-home-tab"  href="<?php echo site_url("Admin/projects"); ?>" role="tab" aria-controls="v-pills-home" >Project</a>
                 <a class="nav-link btn btn btn-primary mb-2" id="v-pills-profile-tab"  href="<?php echo site_url("Admin/addnewConference"); ?>" role="tab" aria-controls="v-pills-profile" >Add new conference</a>
                 <a class="nav-link btn btn btn-primary mb-2" id="v-pills-messages-tab" href="<?php echo site_url("Admin/reviewerInvitation"); ?>" role="tab" aria-controls="v-pills-messages" aria-selected="false">Reviewer invitation</a>
                 <a class="nav-link btn btn btn-primary" id="v-pills-messages-tab" href="<?php echo site_url("Admin/reviewerEmailInvitation"); ?>" role="tab" aria-controls="v-pills-messages" aria-selected="false">Reviewer Email invitation</a>
->>>>>>> 09b9f9cb127410f91ddc14b3b085fedb440196fa
+
             </div>
         </div>-->
 
