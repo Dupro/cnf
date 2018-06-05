@@ -68,7 +68,7 @@
         <input type="file" class="form-control-file" id="exampleFormControlFile1" name="fileUpload">
     </div>
     <button type="submit" class="btn btn-success" >Send</button>
-</form>
+</form><br>
 <!--<form>
     <div class="form-group">
         <label for="exampleFormControlFile1">Choose file</label>

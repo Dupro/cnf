@@ -2,7 +2,7 @@
 
 </div>
 </div>
-<br><br>
+
 <div id="fut" class="row">
 
             <!--First column-->

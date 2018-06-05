@@ -38,6 +38,7 @@ html,body{
 #fut{
   background:linear-gradient(lightgrey, darkgray);  
   flex: none; /* 2 */
+  padding-top: 15px;
 }
 
 .futerfont{

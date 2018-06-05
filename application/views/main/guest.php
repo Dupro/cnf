@@ -79,6 +79,6 @@
 </div>
 </div>
 <div id="de" class="row justify-content-center">
-    <div><?php echo $links; ?></div></div><br><br><br><br>
+    <div><?php echo $links; ?></div></div>
 
 
