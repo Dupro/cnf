@@ -1,13 +1,8 @@
-<div class="container">
-<div class="row">
-    <div id="futer">
-    
-<footer class="page-footer font-small unique-color-dark" style="background:dark;">
- 
-    
 
-    <!--Footer Links-->
-    <div class="container  mb-4 text-center text-md-left">
+</div>
+    <div id="futer">
+       <!--Footer Links-->
+    <div class="  mb-4 text-center text-md-left">
         <div class="row mt-3">
 
             <!--First column-->
@@ -65,36 +60,12 @@
         </div>
     </div>
 
-</div ></div >
+</div >
 
 
-<footer class="page-footer font-small unique-color-dark pt-0">
 
-    
 
-    <!--Footer Links-->
-    <div style="background-color: #6351ce;" class="footer-copyright py-3 text-center">
-      
 
-    <!--/.Footer Links-->
-    </div>
-    <!-- Copyright-->
-    <div  class="footer-copyright py-3 text-center">
-        © 2018 Copyright:
-        <a href="https://mdbootstrap.com/material-design-for-bootstrap/">
-        
-                <strong class="futerfont"> MyGroup6 </strong>
-         
-        </a>
-    </div>
-    <!--/.Copyright -->
-<script type="text/javascript" src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url("assets/js/popper.js"); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
-</div>
-</footer>
-</div>
-</div>
 
     </body>
 </html>
