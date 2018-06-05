@@ -287,7 +287,7 @@ class Admin extends CI_Controller {
 //    TO DO
     public function sendInv(){
         $this->form_validation->set_rules('usernames', 'Usernames', 'required');
-        $this->form_validation->set_rules('usernames', 'conferenc', 'required');
+        $this->form_validation->set_rules('conferenc', 'conferenc', 'required');
         if ($this->form_validation->run() == FALSE) {
             $this->reviewerInvitation(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
         } else {

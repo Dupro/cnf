@@ -34,7 +34,6 @@ p.project_name LIKE '%{$var}%'");
     }
 
     public function users() {
-
         $query = $this->db->get("user");
         $result = $query->result_array();
         return $result;
