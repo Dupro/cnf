@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
         <title>Welcome</title>
     </head>
-    <body>
+    <body class="Site">
         
 <div>
         <nav nav class="navbar navbar-expand-sm sticky-top bg-dark fixed-topnavbar-dark mb-4 py-3" style="background: linear-gradient(darkgray, lightgrey);">
@@ -48,5 +48,5 @@
             
         </nav>
 </div>
-
+        <div class="Site-content">
         <div class="container">

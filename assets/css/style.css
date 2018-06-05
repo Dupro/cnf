@@ -25,18 +25,19 @@ html,body{
   
 }
 
-#futer {
+/*#futer {
    
     background:linear-gradient(lightgrey, darkgray);
    padding-right: 0px;
    padding-left: 0px;
     position: absolute;
-     /*margin-top: -200px;*/
+     margin-top: -200px;
     clear:both;
     width: 99%;
-}
+}*/
 #fut{
   background:linear-gradient(lightgrey, darkgray);  
+  flex: none; /* 2 */
 }
 
 .futerfont{
@@ -123,4 +124,14 @@ nav a:hover{
 #addnewconf{
     padding-top:40px;
     padding-bottom:150px;
+}
+
+.Site {
+  display: flex;
+  height: 100%; /* 1, 3 */
+  flex-direction: column;
+}
+
+.Site-content {
+  flex: 1;
 }
