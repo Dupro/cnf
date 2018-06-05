@@ -5,9 +5,9 @@
         <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
         <title>Welcome</title>
     </head>
-    <body>
+    <body class="Site">
 
-
+        <div>
         <nav class="navbar navbar-expand-sm sticky-top bg-dark fixed-topnavbar-dark mb-4 py-3" style="background: linear-gradient(darkgray, lightgrey);">
             
                 <a class="navbar-brand" href="<?php echo site_url("Admin/index"); ?>">
@@ -43,24 +43,8 @@
         </nav>
 
 
-       <!--  <div class="col-2 position-fixed">
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link" id="v-pills-home-tab"  href="<?php echo site_url("Admin/projects"); ?>" role="tab" aria-controls="v-pills-home" >Project</a>
-                <a class="nav-link" id="v-pills-profile-tab"  href="<?php echo site_url("Admin/addnewConference"); ?>" role="tab" aria-controls="v-pills-profile" >Add new conference</a>
-                <a class="nav-link" id="v-pills-messages-tab" href="<?php echo site_url("Admin/reviewerInvitation"); ?>" role="tab" aria-controls="v-pills-messages" aria-selected="false">Reviewer invitation</a>
-                <a class="nav-link" id="v-pills-messages-tab" href="<?php echo site_url("Admin/reviewerEmailInvitation"); ?>" role="tab" aria-controls="v-pills-messages" aria-selected="false">Reviewer Email invitation</a>
+</div>
 
-        <div class="col-2 position-fixed">
-            <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link btn btn btn-primary mb-2" id="v-pills-home-tab"  href="<?php echo site_url("Admin/projects"); ?>" role="tab" aria-controls="v-pills-home" >Project</a>
-                <a class="nav-link btn btn btn-primary mb-2" id="v-pills-profile-tab"  href="<?php echo site_url("Admin/addnewConference"); ?>" role="tab" aria-controls="v-pills-profile" >Add new conference</a>
-                <a class="nav-link btn btn btn-primary mb-2" id="v-pills-messages-tab" href="<?php echo site_url("Admin/reviewerInvitation"); ?>" role="tab" aria-controls="v-pills-messages" aria-selected="false">Reviewer invitation</a>
-                <a class="nav-link btn btn btn-primary" id="v-pills-messages-tab" href="<?php echo site_url("Admin/reviewerEmailInvitation"); ?>" role="tab" aria-controls="v-pills-messages" aria-selected="false">Reviewer Email invitation</a>
-
-            </div>
-        </div>-->
-
-
-
+        <div class="Site-content">
         <div class="container">
 
