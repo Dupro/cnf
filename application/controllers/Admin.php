@@ -148,7 +148,7 @@ class Admin extends CI_Controller {
         $data['controller'] = "Admin";
         $data['info'] = '$info_vesti';
         $this->load->view("template/header_" . $this->controller . ".php", $data);
-                $this->load->view("main/admin_sidebar.php");
+        $this->load->view("main/admin_sidebar.php");
 //        $this->load->view("forms/login.php");
 //        $this->load->view("forms/registration.php");
         $this->load->view("main/guest.php", $data);
@@ -172,6 +172,7 @@ class Admin extends CI_Controller {
         $datacon = $this->Search_model->getInfoConf($idconf);
         $data['confinfo'] = $datacon;
         $this->load->view("template/header_" . $this->controller . ".php", $data);
+        $this->load->view("main/admin_sidebar.php");
         $this->load->view("main/cnfdetails.php", $data);
         $this->load->view("template/footer.php");
     }
@@ -214,6 +215,7 @@ class Admin extends CI_Controller {
     public function reviewerEmailInvitation() {
         $data['successSentEmail'] = $this->session->flashdata('successSentEmail');
         $this->loadView($data, "forms/admin_reviewer_email_invitation.php");
+        $this->load->view("main/admin_sidebar.php");
     }
 
     public function sendEmail() {
@@ -277,7 +279,7 @@ class Admin extends CI_Controller {
         $data['controller'] = "Admin";
 
         $this->load->view("template/header_" . $this->controller . ".php", $data);
-
+        $this->load->view("main/admin_sidebar.php");
         $this->load->view("forms/admin_reviewer_invitation.php", $data);
         $this->load->view("template/footer.php");
     }
@@ -306,6 +308,7 @@ class Admin extends CI_Controller {
         $data['controller'] = "Admin";
 
         $this->load->view("template/header_" . $this->controller . ".php", $data);
+        $this->load->view("main/admin_sidebar.php");
 //        $this->load->view("main/admin.php", $data);
         $this->load->view("main/admin_addnew_conference.php", $data);
         $this->load->view("template/footer.php");
@@ -400,6 +403,7 @@ class Admin extends CI_Controller {
         $data['myconf'] = $myconf;
         $data['controller'] = "Admin";
         $this->load->view("template/header_admin.php");
+        $this->load->view("main/admin_sidebar.php");
         $this->load->view("main/admin_projects.php", $data);
         $this->load->view("template/footer.php");
     }

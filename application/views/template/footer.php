@@ -1,6 +1,6 @@
 <div class="container">
 <div class="row">
-<div id="futer">
+    <div id="futer">
     
 <footer class="page-footer font-small unique-color-dark" style="background:dark;">
  
