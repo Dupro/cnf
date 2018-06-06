@@ -115,11 +115,12 @@ class Guest extends CI_Controller {
     public function registerUser() {
         $this->form_validation->set_rules('username', 'Username', 'required|min_length[6]|max_length[20]');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[12]|alpha_numeric|password_check[1,1,1,1]');
-        $this->form_validation->set_rules('first_name', 'First_name', 'required');
-        $this->form_validation->set_rules('last_name', 'Last_name', 'required');
-        $this->form_validation->set_rules('phone_number', 'Phone_number', 'required');
+        $this->form_validation->set_rules('first_name', 'First name', 'required');
+        $this->form_validation->set_rules('last_name', 'Last name', 'required');
+        $this->form_validation->set_rules('phone_number', 'Phone number', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('organisation', 'Organisation', 'required');
+        $this->form_validation->set_rules('date_of_birth', 'Date of birth', 'required');
         if ($this->form_validation->run() == FALSE) {
             $this->index(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
         } else {
