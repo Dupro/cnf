@@ -22,13 +22,13 @@
                 </h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0  mx-auto">
                 <p>
-                    <a href="<?php echo base_url("$controller/index"); ?>">Home</a>
+                    <a href="<?php echo base_url("$this->controller/index"); ?>">Home</a>
                 </p>
                 <p>
-                    <a href="<?php echo base_url("$controller/conferences"); ?>">Conferences</a>
+                    <a href="<?php echo base_url("$this->controller/conferences"); ?>">Conferences</a>
                 </p>
-                <p><?php if ($controller!='Guest'){
-                    ?><a href="<?php echo site_url("$controller/logout"); ?>">Logout</a>
+                <p><?php if ($this->controller!='guest'){
+                    ?><a href="<?php echo site_url("$this->controller/logout"); ?>">Logout</a>
                         <?php
                 } else {?>
                     <a data-toggle="modal" data-target="#LoginModal" href="">Login</a>

@@ -17,24 +17,24 @@
                         if (isset($message))
                             echo "<font color='red'>$message</font><br>";
                         ?>
-                        Username:<input title="Enter your username" class="form-control" type="text" name="username"  value="<?php echo set_value('username') ?>"/>
-                        <?php echo form_error("username", "<font color='red'>", "</font>"); ?>
-                        Password:<input title="Password must contain at least 6 and max 12 characters, including at least one UPPER/lowercase and number and first character must be a letter" class="form-control" type="password" name="password"/>
-                        <?php echo form_error("password", "<font color='red'>", "</font>"); ?>
+                        Username: <?php echo form_error("username", "<font color='red'>", "</font>"); ?>
+                        <input title="Enter your username" class="form-control" type="text" name="username"  value="<?php echo set_value('username') ?>"/>
+                        Password: <?php echo form_error("password", "<font color='red'>", "</font>"); ?>
+                        <input title="Password must contain at least 6 and max 12 characters, including at least one UPPER/lowercase and number and first character must be a letter" class="form-control" type="password" name="password"/>   
                     <!--Confirm your Password:<input class="form-control" type="password" name="password"/>-->
                         <?php // echo form_error("password", "<font color='red'>", "</font>");  ?>
-                        First name:<input class="form-control" type="text" name="first_name" value="<?php echo set_value('first_name') ?>"/>
-                        <?php echo form_error("first_name", "<font color='red'>", "</font>"); ?>
-                        Last name:<input class="form-control" type="text" name="last_name" value="<?php echo set_value('last_name') ?>"/>
-                        <?php echo form_error("last_name", "<font color='red'>", "</font>"); ?>
-                        Phone number:<input class="form-control" type="text" name="phone_number" value="<?php echo set_value('phone_number') ?>"/>
-                        <?php echo form_error("phone_number", "<font color='red'>", "</font>"); ?>
-                        Email:<input class="form-control" type="text" name="email" value="<?php echo set_value('email') ?>"/>
-                        <?php echo form_error("email", "<font color='red'>", "</font>"); ?>
-                        Organisation:<input class="form-control" type="text" name="organisation" value="<?php echo set_value('organisation') ?>"/>
-                        <?php echo form_error("organisation", "<font color='red'>", "</font>"); ?>
-                        Date of birth:<input class="form-control" type="date" name="date_of_birth" value="<?php echo set_value('date_of_birth') ?>"/>
-<?php echo form_error("date_of_birth", "<font color='red'>", "</font>"); ?>
+                        First name:<?php echo form_error("first_name", "<font color='red'>", "</font>"); ?>
+                        <input class="form-control" type="text" name="first_name" value="<?php echo set_value('first_name') ?>"/>
+                        Last name: <?php echo form_error("last_name", "<font color='red'>", "</font>"); ?>
+                        <input class="form-control" type="text" name="last_name" value="<?php echo set_value('last_name') ?>"/>
+                        Phone number: <?php echo form_error("phone_number", "<font color='red'>", "</font>"); ?>
+                        <input class="form-control" type="text" name="phone_number" value="<?php echo set_value('phone_number') ?>"/>
+                        Email: <?php echo form_error("email", "<font color='red'>", "</font>"); ?>
+                        <input class="form-control" type="text" name="email" value="<?php echo set_value('email') ?>"/>
+                        Organisation: <?php echo form_error("organisation", "<font color='red'>", "</font>"); ?>
+                        <input class="form-control" type="text" name="organisation" value="<?php echo set_value('organisation') ?>"/> 
+                        Date of birth: <?php echo form_error("date_of_birth", "<font color='red'>", "</font>"); ?>
+                        <input class="form-control" type="date" name="date_of_birth" value="<?php echo set_value('date_of_birth') ?>"/>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
