@@ -140,7 +140,11 @@
                 });  
              
       });  
- });
+ });  
+function myFun1() {
+    var x = document.getElementById("inputGroupSelect04");
+    document.getElementById("btn_add")=document.getElementById("inputGroupSelect04");
+}
  </script>
  <?php $i++;
 }

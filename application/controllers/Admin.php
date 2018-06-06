@@ -507,8 +507,27 @@ class Admin extends CI_Controller {
         if ($result !== 0) {
             foreach ($result as $row) {
                 $output .= '  
-                <tr>  
-                     <td>' . $row["iduser"] . '</td>  
+                <tr'; 
+                $backgroundcolor="";
+                if($row["status"]==0){
+                    $backgroundcolor="#97bbf4";
+                }
+                elseif($row["status"]==1){
+                    $backgroundcolor="#c7ffb5";
+                }
+                 elseif($row["status"]==2){
+                    $backgroundcolor="#fdffba";
+                }
+                 elseif($row["status"]==3){
+                    $backgroundcolor="#ffebbc";
+                }
+                 elseif($row["status"]==4){
+                    $backgroundcolor="#d2afff";
+                }else{
+                    $backgroundcolor="#ffa5a5";
+                }
+              $output .= ' style="background-color:' . $backgroundcolor . '" >  
+                     <td>' . $row["idproject"] . '</td>  
                      <td class="first_name" data-id1="' . $row["idproject"] . '" >' . $row["first_name"] . '</td>  
                      <td class="last_name" data-id2="' . $row["idproject"] . '" >' . $row["last_name"] . '</td>  
                      <td class="last_name" data-id2="' . $row["idproject"] . '" >' . $row["project_name"] . '</td> 
