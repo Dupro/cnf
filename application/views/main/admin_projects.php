@@ -92,29 +92,17 @@
 //      }
       fetch_data();  
       $(document).on('click', '#btn_add', function(){  
-           var first_name = $('#first_name').text();  
-           var last_name = $('#last_name').text();  
-           if(first_name == '')  
-           {  
-                alert("Enter First Name");  
-                return false;  
-           }  
-           if(last_name == '')  
-           {  
-                alert("Enter Last Name");  
-                return false;  
-           }  
-           $.ajax({  
-                url:"insert.php",  
-                method:"POST",  
-                data:{first_name:first_name, last_name:last_name},  
-                dataType:"text",  
-                success:function(data)  
-                {  
-                     alert(data);  
-                     fetch_data();  
-                }  
-           })  
+          var id=$(this).data("id0");  
+                $.ajax({  
+                     url:"<?php echo base_url() ?>Admin/addprojectformconf",  
+                     method:"POST",  
+                     data:{id:id},  
+                     dataType:"text",  
+                     success:function(data){  
+                          
+                          fetch_data();  
+                     }  
+                });   
       });  
       function edit_data(id, text, column_name)  
       {  
@@ -140,19 +128,17 @@
       });  
       $(document).on('click', '.btn_delete', function(){  
            var id=$(this).data("id3");  
-           if(confirm("Are you sure you want to delete this?"))  
-           {  
                 $.ajax({  
                      url:"<?php echo base_url() ?>Admin/deleteprojectformconf",  
                      method:"POST",  
                      data:{id:id},  
                      dataType:"text",  
                      success:function(data){  
-                          alert(data);  
+                          
                           fetch_data();  
                      }  
                 });  
-           }  
+             
       });  
  });  
  </script>

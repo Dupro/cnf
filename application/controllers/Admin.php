@@ -478,16 +478,14 @@ class Admin extends CI_Controller {
    // }
 
     public function selectprojectofconf() {
-        $katran = $this->input->post('idconference');
+        $ididid = $this->input->post('idconference');
 //        $addpro=$this->Search_model->add_projectformconf();
         $output = "";
-        $result = $this->Search_model->myprojectofconf($katran);
+        $result = $this->Search_model->myprojectofconf($ididid);
+        $addinconf = $this->Search_model->addinconfproject($ididid);
         $output .= '  
       <div class="table-responsive">  
            <table class="table table-bordered">  
-                
-
-
                     <tr>  
                      <th width="5%">ID</th>  
                      <th width="15%">First Name</th>  
@@ -496,17 +494,16 @@ class Admin extends CI_Controller {
                      <td width="5%"></td>
                      <td width="5%"></td>
                 </tr>';
+        $output .= '<tr>  <td></td>
+                <td colspan="3"> <div class="input-group">
+  <select class="custom-select" id="inputGroupSelect04">';
+   foreach ($addinconf as $ap) {
+             $output .= '  <option value="'.$ap["idproject"].'">' . $ap["first_name"] . ' ' . $ap["last_name"] . ' :  '. $ap["project_name"] .'</option>';
+                
+              $output .= '  </select></div></td>
+                   <td colspan="2"><button type="button" name="btn_add" data-id0="' . $ap["idproject"] . '" id="btn_add" class="btn btn-xs btn-success">+</button></td>  
+           </tr> ';};
         if ($result !== 0) {
-            $output .= '  
-           <tr>  
-                <td></td>  
-                <td id="first_name" ></td>  
-                <td id="last_name"></td>  
-                <td id="project_name" ></td>  
-                <td></td>  
-                <td><button type="button" name="btn_add" id="btn_add" class="btn btn-xs btn-success">+</button></td>  
-           </tr>  
-      ';
             foreach ($result as $row) {
                 $output .= '  
                 <tr>  
@@ -518,18 +515,15 @@ class Admin extends CI_Controller {
                             <button name="info" type="submit" value="' . $row["idproject"] . '" class="btn btn-xs btn-info btn_info">Info</button>
                            </form></td>
                      <td><button type="button" name="delete_btn" data-id3="' . $row["idproject"] . '" class="btn btn-xs btn-danger btn_delete">x</button></td>  
-                </tr>  
-           ';
-            }
+                </tr>';}
         } else {
             $output .= '<tr>  
                           <td colspan="5">Data not Found</td>  
-                     </tr>';
-        }
+                     </tr>'; }
         $output .= '</table>  
       </div>';
-        echo $output;
-    }
+        echo $output; 
+        }
     public function deleteprojectformconf() {
         $idproject = $this->input->post('id');
          $this->Search_model->delete_projectformconf($idproject);
@@ -545,6 +539,10 @@ class Admin extends CI_Controller {
         
         $this->loadView($data, "main/admin_project_info.php");
 }
-
+    public function addprojectformconf() {
+        $idproject = $this->input->post('id');
+         $this->Search_model->add_projectformconf($idproject);
+         echo 'Project ADDED to Conference'; 
+    }
 }
 
