@@ -215,7 +215,8 @@ class Admin extends CI_Controller {
     public function reviewerEmailInvitation() {
         $data['successSentEmail'] = $this->session->flashdata('successSentEmail');
         $this->loadView($data, "forms/admin_reviewer_email_invitation.php");
-        $this->load->view("main/admin_sidebar.php");
+        
+//        $this->load->view("main/admin_sidebar.php");
     }
 
     public function sendEmail() {
