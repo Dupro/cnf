@@ -132,4 +132,12 @@ where idconference=conference_idconference and idproject=conference_has_project.
          $result = $query->result_array(); 
         return $result;
      }
+     public function infoRewforConf($idconference) {
+         $query = $this->db->query("Select * from user, reviewer, conference, field, conference_has_field, competence
+where iduser=user_iduser and reviewer.conference_idconference=idconference and field_idfield=idfield and conference_has_field.conference_idconference=conference.idconference and
+competence.reviewer_idreviewer=idreviewer and competence.conference_has_field_id_conference_has_field=id_conference_has_field and idconference=".$idconference."");
+
+         $result = $query->result_array(); 
+        return $result;
+     }
  }
