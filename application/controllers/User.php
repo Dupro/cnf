@@ -261,6 +261,28 @@ class User extends CI_Controller {
             echo $pro_select_box;
         }
     }
+    public function get_field_invitations() { // dovlacenje fileda za konferencije u invitations
+        
+        $idconference = $this->input->post('idconference');
+        $field = $this->Search_model->get_province_query($idconference);
+        if (count($field) > 0) {
+            $pro_input_box = '';
+            $pro_input_box .= '<input type="text" id="" hidden="" value="">';
+            $pro_radio_box = '';
+            $pro_radio_box .= '<input type="radio" name="competence" id="" value"">';
+            
+            foreach ($field as $field) {
+                $pro_paragraph_box .= '<input type="text" name="field_' . $field->idfield . '" value="' . $field->name_field . '">';
+                $pro_radio_box .= '<input type="radio" name"competence" id="Not_familiar" value="1">';
+                $pro_radio_box .= '<input type="radio" name"competence" id="Low_knowledge" value="2">';
+                $pro_radio_box .= '<input type="radio" name"competence" id="General_knowledge" value="3">';
+                $pro_radio_box .= '<input type="radio" name"competence" id="Very_good_knowledge" value="4">';
+                $pro_radio_box .= '<input type="radio" name"competence" id="Expert" value="5">';
+            }
+            echo $pro_input_box;
+            echo $pro_radio_box;
+        }
+    }
 
     public function mynewProject() {
         $this->form_validation->set_rules('project_name', 'Project Name', 'required|min_length[4]');
