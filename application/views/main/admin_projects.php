@@ -92,7 +92,7 @@
 //      }
       fetch_data();  
       $(document).on('click', '#btn_add', function(){  
-          var id=$(this).data("id0");  
+          var id=document.getElementById("inputGroupSelect04").value;  
                 $.ajax({  
                      url:"<?php echo base_url() ?>Admin/addprojectformconf",  
                      method:"POST",  
@@ -140,7 +140,7 @@
                 });  
              
       });  
- });  
+ });
  </script>
  <?php $i++;
 }

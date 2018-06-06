@@ -497,13 +497,13 @@ class Admin extends CI_Controller {
                 </tr>';
         $output .= '<tr>  <td></td>
                 <td colspan="3"> <div class="input-group">
-  <select class="custom-select" id="inputGroupSelect04">';
+  <select class="custom-select" id="inputGroupSelect04" >';
    foreach ($addinconf as $ap) {
-             $output .= '  <option value="'.$ap["idproject"].'">' . $ap["first_name"] . ' ' . $ap["last_name"] . ' :  '. $ap["project_name"] .'</option>';
-                
+             $output .= '  <option data-id0="' . $ap["idproject"] . '"value="'.$ap["idproject"].'">' . $ap["first_name"] . ' ' . $ap["last_name"] . ' :  '. $ap["project_name"] .'</option>';
+                };
               $output .= '  </select></div></td>
-                   <td colspan="2"><button type="button" name="btn_add" data-id0="' . $ap["idproject"] . '" id="btn_add" class="btn btn-xs btn-success">+</button></td>  
-           </tr> ';};
+                   <td colspan="2"><button type="button" name="btn_add"  id="btn_add" class="btn btn-xs btn-success">+</button></td>  
+           </tr> ';
         if ($result !== 0) {
             foreach ($result as $row) {
                 $output .= '  
