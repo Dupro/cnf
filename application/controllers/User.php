@@ -78,7 +78,7 @@ class User extends CI_Controller {
     public function myProfile() {
         $data['controller'] = "User";
         $data['successPW'] = $this->session->flashdata('successPW');
-        $data['successEmail']= $this->session->flashdata('successEmail');
+        $data['successEmail'] = $this->session->flashdata('successEmail');
         //$data['successFirst']= $this->session->flashdata('successFirst');
         $idUser = $this->session->userdata("user")->username;
 
@@ -86,26 +86,27 @@ class User extends CI_Controller {
         $data['mydata'] = $mydata;
         $this->loadView($data, "main/user_myprofile.php");
     }
-        public function edit_My_Profile(){
-            $idUser = $this->session->userdata("user")->username;
-            $mydata = $this->ModelUser->myProfile($idUser);
-            $data['mydata'] = $mydata;
-            $data['controller'] = "User";
-            $this->loadView($data, "main/user_editmyprofile.php");
+
+    public function edit_My_Profile() {
+        $idUser = $this->session->userdata("user")->username;
+        $mydata = $this->ModelUser->myProfile($idUser);
+        $data['mydata'] = $mydata;
+        $data['controller'] = "User";
+        $this->loadView($data, "main/user_editmyprofile.php");
     }
 
-   public function editMyProfile() {
-           //if ($this->input->post("submitMyEditProfile") !== NULL) {
-            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-            $this->form_validation->set_rules('first_name', 'First name', 'required');
-            $this->form_validation->set_rules('last_name', 'Last name', 'required');
-            $this->form_validation->set_rules('phone_number', 'Phone number', 'required');
-            $this->form_validation->set_rules('organisation', 'Organisation', 'required');
-            $this->form_validation->set_rules('date_of_birth', 'Date of birth', 'required');
-            $this->form_validation->set_message('valid_email','Your email address is invalid. Please enter a valid address.');
-            if ($this->form_validation->run()==FALSE)
-                $this->edit_My_Profile();
-            else {
+    public function editMyProfile() {
+        //if ($this->input->post("submitMyEditProfile") !== NULL) {
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('first_name', 'First name', 'required');
+        $this->form_validation->set_rules('last_name', 'Last name', 'required');
+        $this->form_validation->set_rules('phone_number', 'Phone number', 'required');
+        $this->form_validation->set_rules('organisation', 'Organisation', 'required');
+        $this->form_validation->set_rules('date_of_birth', 'Date of birth', 'required');
+        $this->form_validation->set_message('valid_email', 'Your email address is invalid. Please enter a valid address.');
+        if ($this->form_validation->run() == FALSE)
+            $this->edit_My_Profile();
+        else {
 
             $iduser = $this->session->userdata("user")->iduser;
             $first_name = $this->input->post("first_name");
@@ -115,19 +116,16 @@ class User extends CI_Controller {
             $organisation = $this->input->post("organisation");
             $date_of_birth = $this->input->post("date_of_birth");
             $this->ModelRegistration->changeMyProfile($iduser, $first_name, $last_name, $phone_number, $email, $organisation, $date_of_birth);
-            $successEmail= $this->session->set_flashdata('successEmail', 'You have successfully changed your email address.');
-            if ($this->session->userdata('user')->coordinator == "0"){
-               $successEmail;
-                redirect('User/myProfile');     
-                
+            $successEmail = $this->session->set_flashdata('successEmail', 'You have successfully changed your email address.');
+            if ($this->session->userdata('user')->coordinator == "0") {
+                $successEmail;
+                redirect('User/myProfile');
             } else {
-               $successEmail;
+                $successEmail;
                 redirect('Admin/myProfile');
-                
             }
-
-            }
-        } 
+        }
+    }
 
     public function addImage() {
         $this->loadView(array(), "user_myprofile.php");
@@ -172,17 +170,17 @@ class User extends CI_Controller {
         $this->load->view("main/user_new_project.php");
         $this->load->view("template/footer.php");
     }
-    
-     public function invitations() {
-         $conference_data = $this->Search_model->conference();
+
+    public function invitations() {
+        $conference_data = $this->Search_model->conference();
         $autors = $this->Search_model->users();
         $data['confdata'] = $conference_data;
-       
         $data['controller'] = "User";
         $this->load->view("template/header_" . $this->controller . ".php", $data);
         $this->load->view("main/user_invitations.php");
         $this->load->view("template/footer.php");
-     }
+    }
+
     public function review() {
         $data['controller'] = "User";
         $this->load->view("template/header_" . $this->controller . ".php", $data);
@@ -212,8 +210,8 @@ class User extends CI_Controller {
     }
 
     public function conferences() {
-        
-         if ($this->uri->segment(3))
+
+        if ($this->uri->segment(3))
             $indexnum = $this->uri->segment(3);
         else
             $indexnum = 0;
@@ -242,14 +240,9 @@ class User extends CI_Controller {
         $this->load->view("forms/registration.php");
         $this->load->view("main/guest.php", $data);
         $this->load->view("template/footer.php");
-    
-        
-        
-       
     }
 
     public function get_field() { // dovlacenje liste fileda za konferencije u myNewProject
-        
         $idconference = $this->input->post('idconference');
         $field = $this->Search_model->get_province_query($idconference);
         if (count($field) > 0) {
@@ -261,25 +254,26 @@ class User extends CI_Controller {
             echo $pro_select_box;
         }
     }
+
     public function get_field_invitations() { // dovlacenje fileda za konferencije u invitations
-        
         $idconference = $this->input->post('idconference');
         $field = $this->Search_model->get_province_query($idconference);
+        $i = 1;
         if (count($field) > 0) {
             $pro_input_box = '';
             $pro_input_box .= '<input type="text" id="" hidden="" value="">';
             $pro_radio_box = '';
-            $pro_radio_box .= '<input type="radio" name="competence" id="" value"">';
-            
+
             foreach ($field as $field) {
-                $pro_paragraph_box .= '<input type="text" name="field_' . $field->idfield . '" value="' . $field->name_field . '">';
-                $pro_radio_box .= '<input type="radio" name"competence" id="Not_familiar" value="1">';
-                $pro_radio_box .= '<input type="radio" name"competence" id="Low_knowledge" value="2">';
-                $pro_radio_box .= '<input type="radio" name"competence" id="General_knowledge" value="3">';
-                $pro_radio_box .= '<input type="radio" name"competence" id="Very_good_knowledge" value="4">';
-                $pro_radio_box .= '<input type="radio" name"competence" id="Expert" value="5">';
+                $pro_radio_box .= 'Field: <input type="text" name="field_' . $field->idfield . '" value="' . $field->name_field . '" disabled>';
+                $pro_radio_box .= '<input type="radio" name="competence' . $i . '" id="Not_familiar' . $i . '" value="1"><label for="Not_familiar' . $i . '"> Not familliar</label>';
+                $pro_radio_box .= '<input type="radio" name="competence' . $i . '" id="Low_knowledge' . $i . '" value="2"><label for="Low_knowledge' . $i . '"> Low knowledge</label>';
+                $pro_radio_box .= '<input type="radio" name="competence' . $i . '" id="General_knowledge' . $i . '" value="3"><label for="General_knowledge' . $i . '"> General knowledge</label>';
+                $pro_radio_box .= '<input type="radio" name="competence' . $i . '" id="Very_good_knowledge' . $i . '" value="4"><label for="Very_good_knowledge' . $i . '"> Very good knowledge</label>';
+                $pro_radio_box .= '<input type="radio" name="competence' . $i . '" id="Expert' . $i . '" value="5"><label for="Expert' . $i . '"> Expert</label><br>';
+                $i++;
             }
-            echo $pro_input_box;
+//            echo $pro_input_box;
             echo $pro_radio_box;
         }
     }
@@ -292,56 +286,57 @@ class User extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $this->newProject(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
         } else {
-        //ispravno
+            //ispravno
 //           foreach ($field_name as $field) {
 //            $section_pro .= $field['name_field'];
 //        }
-           $idconferenceee = $this->input->post('conferenc');
-        
-        $section_pro="";
-        $fieldid = $this->input->post("field");
-        $field_name = $this->Search_model->field($fieldid);
-        $project_name = $this->input->post("project_name");
-        $keywords = $this->input->post("keywords");
-        foreach ($field_name as $field) {
-            $section_pro .= $field['name_field'];
-        }
-        $apstract = $this->input->post("apstract");
-        $field_idfield = $this->input->post("field");
-        $iduser = $this->session->userdata('user')->iduser;
-        $idproject = $this->ModelRegistration->myNewProject($project_name, $keywords, $section_pro, $apstract, $field_idfield, $iduser);
-        
-        
-        // --------------DODAVANJE FOLDERA ZA KONKRETAN PROJEKAT AKO NE POSTOJI--------------
-        if (!is_dir('userProject/'.$idproject)){ 
-        mkdir('userProject/'.$idproject, 0777, TRUE);}
-        // --------------KONFIGURACIJA ZA SAM FAJL KOJI CE BITI UPLOADOVAN--------------
-        $config['upload_path'] = './userProject/'. $idproject .'/';
-        $config['allowed_types'] = 'pdf|doc|docx||txt|';
-        $config['max_size'] = 2048;
-        $time= date("d_m_Y_H_i_s");
-        $config['file_name'] = "project_" . $idproject."_".$time;
-        
-        $this->ModelRegistration->myNewFile($idproject, $project_name, $time);
-        $this->load->library('upload', $config);
-        $this->upload->do_upload('fileUpload');
-        
-        
-        
-        $successAddProject = $this->session->set_flashdata('successAddProject', 'You have successfully add a new project!');
-        $this->ModelRegistration->autor($idproject, $iduser);
-        $this->ModelRegistration->conference_has_project($idproject, $idconferenceee);
-        $successAddProject;
-        foreach ($_POST['autorslistselect'] as $item) {
+            $idconferenceee = $this->input->post('conferenc');
 
-            $coautorid = $this->Search_model->findUserByUsername($item);
-            foreach ($coautorid as $el) {
-                $coautorid2 = $el['iduser'];
+            $section_pro = "";
+            $fieldid = $this->input->post("field");
+            $field_name = $this->Search_model->field($fieldid);
+            $project_name = $this->input->post("project_name");
+            $keywords = $this->input->post("keywords");
+            foreach ($field_name as $field) {
+                $section_pro .= $field['name_field'];
             }
-            $this->ModelRegistration->autor($idproject, $coautorid2);
-        }
-        
-        redirect("User/index");
+            $apstract = $this->input->post("apstract");
+            $field_idfield = $this->input->post("field");
+            $iduser = $this->session->userdata('user')->iduser;
+            $idproject = $this->ModelRegistration->myNewProject($project_name, $keywords, $section_pro, $apstract, $field_idfield, $iduser);
+
+
+            // --------------DODAVANJE FOLDERA ZA KONKRETAN PROJEKAT AKO NE POSTOJI--------------
+            if (!is_dir('userProject/' . $idproject)) {
+                mkdir('userProject/' . $idproject, 0777, TRUE);
+            }
+            // --------------KONFIGURACIJA ZA SAM FAJL KOJI CE BITI UPLOADOVAN--------------
+            $config['upload_path'] = './userProject/' . $idproject . '/';
+            $config['allowed_types'] = 'pdf|doc|docx||txt|';
+            $config['max_size'] = 2048;
+            $time = date("d_m_Y_H_i_s");
+            $config['file_name'] = "project_" . $idproject . "_" . $time;
+
+            $this->ModelRegistration->myNewFile($idproject, $project_name, $time);
+            $this->load->library('upload', $config);
+            $this->upload->do_upload('fileUpload');
+
+
+
+            $successAddProject = $this->session->set_flashdata('successAddProject', 'You have successfully add a new project!');
+            $this->ModelRegistration->autor($idproject, $iduser);
+            $this->ModelRegistration->conference_has_project($idproject, $idconferenceee);
+            $successAddProject;
+            foreach ($_POST['autorslistselect'] as $item) {
+
+                $coautorid = $this->Search_model->findUserByUsername($item);
+                foreach ($coautorid as $el) {
+                    $coautorid2 = $el['iduser'];
+                }
+                $this->ModelRegistration->autor($idproject, $coautorid2);
+            }
+
+            redirect("User/index");
         }
     }
 
