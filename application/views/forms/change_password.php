@@ -1,5 +1,5 @@
-<div class="row">
-<form id="chpass" name = "changePW" action = "<?php echo site_url('ControllerChangePassword/changePW') ?>" method = "post">
+
+<form class="col-4 mb-4" name = "changePW" action = "<?php echo site_url('ControllerChangePassword/changePW') ?>" method = "post">
     <?php
 
     ?>
@@ -17,4 +17,3 @@
     echo form_close();
     ?>
 </form>
-    </div>

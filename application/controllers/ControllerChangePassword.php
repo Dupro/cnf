@@ -22,7 +22,9 @@ class ControllerChangePassword extends CI_Controller {
     public function index($message = NULL) {
             $data['message'] = $message;
         $this->load->view("template/header_" . $this->controller . ".php", $data);
+        if($this->controller=="admin"){$this->load->view("main/admin_sidebar.php");}
         $this->load->view('forms/change_password', $data);
+
         $this->load->view("template/footer.php");
     }
 
