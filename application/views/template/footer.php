@@ -47,9 +47,9 @@
                 </h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0  mx-auto">
                 <p>
-                    <i class="fa fa-home mr-3"><i class="glyphicon glyphicon-map-marker"></i></i> New York, NY 10012, US</p>
+                    <i class="fa fa-home mr-3"><i class="glyphicon glyphicon-map-marker"></i></i> Belgrade, Serbia 2018</p>
                 <p>
-                    <i class="fa fa-envelope mr-3"><i class="glyphicon glyphicon-envelope"></i></i> info@example.com</p>
+                    <i class="fa fa-envelope mr-3"><i class="glyphicon glyphicon-envelope"></i></i><a href="https://www.etf.bg.ac.rs/" >www.etf.bg.ac.rs</a></p>
                 <p>
                     <i class="fa fa-phone mr-3"><i class="glyphicon glyphicon-phone"></i></i> + 01 234 567 88</p>
                 <p>
