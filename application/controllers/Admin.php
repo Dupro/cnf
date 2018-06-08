@@ -552,6 +552,7 @@ class Admin extends CI_Controller {
     public function projectinfo() {
         $idproject = $this->input->post('info');
         $datainfo=$this->Search_model->projectinfo($idproject);
+        
         $coautors=$this->Search_model->coautors($idproject);
         $feildconf=$this->Search_model->fieldformconforproj($idproject);
         $idconf= $feildconf[0]['idconference'];
@@ -585,6 +586,11 @@ class Admin extends CI_Controller {
                 </thead></table>';
             echo $listofmark;
         }
+    }
+    public function return_to_author() {
+        $idproject= $this->input->post('idprojforreturn');
+        $this->Search_model->ReturnToAutor($idproject);
+        redirect('Admin/project');  
     }
 }
 

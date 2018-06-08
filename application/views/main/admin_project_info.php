@@ -85,6 +85,28 @@
         <div class="col-6" id="listofreviewercompetence2"></div>
     </div>
 </div>
+<div class="alert alert-dark " >
+    <div class="row mt-2">
+        <div class="col-2">
+            <form>
+            <input  name="idprojfordelete" type="hidden" value="<?php foreach ($projinfo as $el)echo $el['idproject'];?>">
+            <input  name="prodId" type="submit" class="btn btn-danger" value="Delete project from conference" href='<?php echo site_url("Admin/delete_from_conf"); ?>'>
+            </form></div>
+        <div class="col-6"></div>
+        
+        <div class="col-1">
+             <form>
+            <input  name="idprojforreturn" type="hidden" value="<?php foreach ($projinfo as $el)echo $el['idproject'];?>">
+            <input  name="prodId" type="submit" class="btn btn-secondary" value="Return to Author" href='<?php echo site_url("Admin/return_to_author"); ?>'>
+            </form>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-1"><form>
+            <input  name="idprojfordelete" type="hidden" value="<?php foreach ($projinfo as $el)echo $el['idproject'];?>">
+            <input  name="prodId" type="submit" class="btn btn-success" value="Send to Reviewers" href='#'>
+            </form></div>
+    </div>
+</div>
 <script>
    $(document).ready(function () {
         $('#inputGroup1').on('change', function () {
@@ -127,4 +149,12 @@
             
         });
     });
+    
+    $('#inputGroup1').change(function(e){
+if($(this).val() == ""){
+    alert('hi');
+    $("#inputGroup2 option[value='']").prop('disabled',true);
+}
+else $("#inputGroup2 option[value='']").prop('disabled',false);
+});
 </script>

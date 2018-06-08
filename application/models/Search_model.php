@@ -157,5 +157,10 @@ competence.reviewer_idreviewer=idreviewer and competence.conference_has_field_id
          $result = $query->result_array(); 
         return $result;
      }
+     public function ReturnToAutor($param) {
+        $this->db->where('idproject', $param);
+        $this->db->set("status", "4");
+        $this->db->update('project');
+    }
  }
 //
