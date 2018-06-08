@@ -140,4 +140,22 @@ competence.reviewer_idreviewer=idreviewer and competence.conference_has_field_id
          $result = $query->result_array(); 
         return $result;
      }
+     public function fieldformconforproj($idproject) {
+         $query = $this->db->query("select * from project, conference, field, conference_has_project, conference_has_field where idproject=project_idproject and conference_has_project.conference_idconference=idconference and idconference=conference_has_field.conference_idconference and field.idfield=conference_has_field.field_idfield and idproject=".$idproject."");
+         $result = $query->result_array(); 
+        return $result;
+     }
+     public function listofrewincof($idconference) {
+         $query = $this->db->query("select * from conference, reviewer, competence, user  where idconference=conference_idconference and iduser=user_iduser and reviewer_idreviewer=idreviewer and idconference=".$idconference." group by idreviewer");
+         $result = $query->result_array(); 
+        return $result;
+        
+     }
+     public function get_competenceofrew($idreviewer, $idconference) {
+         $query = $this->db->query("select * from conference, reviewer, competence, user, conference_has_field, field  where idconference=reviewer.conference_idconference and iduser=user_iduser and reviewer_idreviewer=idreviewer 
+ and idconference=".$idconference." and idfield=field_idfield and conference_has_field.conference_idconference=idconference and conference_has_field_id_conference_has_field=id_conference_has_field and idreviewer=".$idreviewer." ;");
+         $result = $query->result_array(); 
+        return $result;
+     }
  }
+//

@@ -553,6 +553,12 @@ class Admin extends CI_Controller {
         $idproject = $this->input->post('info');
         $datainfo=$this->Search_model->projectinfo($idproject);
         $coautors=$this->Search_model->coautors($idproject);
+        $feildconf=$this->Search_model->fieldformconforproj($idproject);
+        $idconf= $feildconf[1]['idconference'];
+        $data['idconfeee']=$idconf;
+        $revisors=$this->Search_model->listofrewincof($idconf);
+        $data['rew']=$revisors;
+        $data['fieldpi']=$feildconf;
         $data['coautor']=$coautors;
         $data['projinfo']=$datainfo;
         $data['controller'] = "Admin";
@@ -563,6 +569,22 @@ class Admin extends CI_Controller {
         $idproject = $this->input->post('id');
          $this->Search_model->add_projectformconf($idproject);
          echo 'Project ADDED to Conference'; 
+    }
+    public function get_competence() {
+        $idconference = $this->input->post('idconf');
+        $idreviewer = $this->input->post('idreviewer');
+        $mark = $this->Search_model->get_competenceofrew($idreviewer,$idconference);
+        if (count($mark) > 0) {
+            $listofmark = '';
+            $listofmark .= '
+            <table class="table"><thead> <tr>';
+ foreach ($mark as $fi) { 
+           $listofmark .= ' <th scope="col-6">'.$fi['competence_level'].'</th>';  } 
+
+            $listofmark .= '        </tr>
+                </thead></table>';
+            echo $listofmark;
+        }
     }
 }
 

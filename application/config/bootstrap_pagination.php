@@ -6,7 +6,7 @@
         $config['pagination']['full_tag_close'] = '</ul>';
         $config['pagination']['num_tag_open'] = '<li class="page-item">';
         $config['pagination']['num_tag_close'] = '</li>';
-        $config['pagination']['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+        $config['pagination']['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="guest.php#cardlistpppp">';
         $config['pagination']['cur_tag_close'] = '</a></li>';
         $config['pagination']['next_tag_open'] = '<li class="page-item">';
         $config['pagination']['next_tagl_close'] = '</a></li>';
