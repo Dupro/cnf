@@ -1,7 +1,7 @@
 <h3 style="text-align:center">Reviewer invitation</h3>
 
-<div class="row">
-    <form name = "reviewerInvitation" action = "<?php echo site_url('Admin/sendInv') ?>" method = "post" id="adrewinv">    
+<div  style="margin: auto;  width: 50%">
+    <form name = "reviewerInvitation" centered action = "<?php echo site_url('Admin/sendInv') ?>" method = "post" >    
     <div class="form-group">
         <label for="usernames">Users</label>
         <select class="form-control" id="usernames" name="usernames">
@@ -13,7 +13,7 @@
     </div>
 
 
-    <div class="form-group">
+    <div class="form-group" centered>
         <div class="row"> 
             <div class="col-sm-12" ><label for="conferenc">Conferences</label>
         <select class="form-control" id="conferenc" name="conferenc">
@@ -40,5 +40,6 @@
 </div>
 
 </div>-->
-    <input type="submit" class="btn btn-success" value="Send">
+    <input type="submit" class="btn btn-success" value="Send" >
 </form>
+</div>

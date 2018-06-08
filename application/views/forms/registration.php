@@ -1,3 +1,5 @@
+
+<link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
 <div class="container">
     <!-- Modal -->
     <div class="modal fade" id="RegistrationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -18,9 +20,9 @@
                             echo "<font color='red'>$message</font><br>";
                         ?>
                         Username: <?php echo form_error("username", "<font color='red'>", "</font>"); ?>
-                        <input title="Enter your username" class="form-control" type="text" name="username"  value="<?php echo set_value('username') ?>"/>
+                        <input class="form-control" type="text" name="username"  value="<?php echo set_value('username') ?>"/>
                         Password: <?php echo form_error("password", "<font color='red'>", "</font>"); ?>
-                        <input title="Password must contain at least 6 and max 12 characters, including at least one UPPER/lowercase and number and first character must be a letter" class="form-control" type="password" name="password"/>   
+                        <input class="form-control" type="password" name="password"/>   
                     <!--Confirm your Password:<input class="form-control" type="password" name="password"/>-->
                         <?php // echo form_error("password", "<font color='red'>", "</font>");  ?>
                         First name:<?php echo form_error("first_name", "<font color='red'>", "</font>"); ?>
