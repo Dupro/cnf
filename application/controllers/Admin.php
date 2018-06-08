@@ -554,7 +554,7 @@ class Admin extends CI_Controller {
         $datainfo=$this->Search_model->projectinfo($idproject);
         $coautors=$this->Search_model->coautors($idproject);
         $feildconf=$this->Search_model->fieldformconforproj($idproject);
-        $idconf= $feildconf[1]['idconference'];
+        $idconf= $feildconf[0]['idconference'];
         $data['idconfeee']=$idconf;
         $revisors=$this->Search_model->listofrewincof($idconf);
         $data['rew']=$revisors;
