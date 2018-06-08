@@ -16,27 +16,25 @@
             <!--/.First column-->
 
             <!--Second column-->
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 ">
                 <h6 id="fl" class="text-uppercase font-weight-semibold">
                     <strong>Useful links</strong>
                 </h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0  mx-auto">
                 <p>
-                    <a href="<?php echo base_url("$this->controller/index"); ?>">Home</a>
+                    <a href="<?php echo base_url("$this->controller/index"); ?> " id="futtext">Home</a>
                 </p>
                 <p>
-                    <a href="<?php echo base_url("$this->controller/conferences"); ?>">Conferences</a>
+                    <a href="<?php echo base_url("$this->controller/conferences"); ?>"id="futtext">Conferences</a>
                 </p>
                 <p><?php if ($this->controller!='guest'){
-                    ?><a href="<?php echo site_url("$this->controller/logout"); ?>">Logout</a>
+                    ?><a href="<?php echo site_url("$this->controller/logout"); ?>"id="futtext">Logout</a>
                         <?php
                 } else {?>
-                    <a data-toggle="modal" data-target="#LoginModal" href="">Login</a>
+                    <a data-toggle="modal" data-target="#LoginModal" href=""id="futtext">Login</a>
                 <?php } ?>
                 </p>
-                <p>
-                    <a href="#!">Help</a>
-                </p>
+               
             </div>
             <!--/.Second column-->
 
@@ -47,9 +45,9 @@
                 </h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0  mx-auto">
                 <p>
-                    <i class="fa fa-home mr-3"><i class="glyphicon glyphicon-map-marker"></i></i> Belgrade, Serbia 2018</p>
+                    <i class="fa fa-home mr-3"><i class="glyphicon glyphicon-map-marker" style="color:green" ></i></i> Belgrade, Serbia 2018</p>
                 <p>
-                    <i class="fa fa-envelope mr-3"><i class="glyphicon glyphicon-envelope"></i></i><a href="https://www.etf.bg.ac.rs/" >www.etf.bg.ac.rs</a></p>
+                    <i class="fa fa-envelope mr-3"><i class="glyphicon glyphicon-envelope"></i></i><a href="https://www.etf.bg.ac.rs/" id="futtext">www.etf.bg.ac.rs</a></p>
                 <p>
                     <i class="fa fa-phone mr-3"><i class="glyphicon glyphicon-phone"></i></i> + 01 234 567 88</p>
                 <p>

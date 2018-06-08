@@ -70,6 +70,13 @@ label {
   color: green;  
 }
 
+#futtext{
+    color:green;
+}
+
+#futtext:hover{
+    color:darkgreen;
+}
 
 
 nav a {
