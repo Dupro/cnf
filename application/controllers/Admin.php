@@ -579,7 +579,7 @@ class Admin extends CI_Controller {
             $listofmark .= '
             <table class="table"><thead> <tr>';
  foreach ($mark as $fi) { 
-           $listofmark .= ' <th scope="col-6">'.$fi['competence_level'].'</th>';  } 
+           $listofmark .= ' <th scope="col-6"> &nbsp &nbsp'.$fi['competence_level'].'</th>';  } 
 
             $listofmark .= '        </tr>
                 </thead></table>';
