@@ -1,6 +1,4 @@
 
-
-<link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
