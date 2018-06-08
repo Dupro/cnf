@@ -54,7 +54,7 @@ label {
     padding: 8px 8px 8px 16px;
     text-decoration: none;
     font-size: 22px;
-    
+    color: green;
     display: block;
     transition: 0.3s;
     border-bottom-right-radius: 3px;
@@ -63,31 +63,34 @@ label {
     
 }
 .sidenav a:hover{
-    color: green;
+    color: darkgreen;
     
+}
+.nav-link{
+  color: green;  
 }
 
 
 
 nav a {
-color: darkgreen;
+color: green;
 font-size: 25px;
 
 }
 nav a:hover{
-    color: green;
+    color: darkgreen;
    
 }
 
 #fl{
-   color: darkgreen; 
+   color: green; 
 }
 .card-deck{
     padding-top: 0px;
    padding-bottom: 50px;
 }
 #3{
-   color: darkgreen; 
+   color: green; 
 }
 #de{
    padding-bottom:50px;
