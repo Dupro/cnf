@@ -30,7 +30,7 @@ class Admin extends CI_Controller {
     public function loadView($data, $mainPart) {
 
         $this->load->view("template/header_" . $this->controller . ".php", $data);
-                $this->load->view("main/admin_sidebar.php");
+        $this->load->view("main/admin_sidebar.php");
         $this->load->view($mainPart, $data);
         $this->load->view("template/footer.php");
     }
@@ -71,7 +71,7 @@ class Admin extends CI_Controller {
     public function myProfile() {
         $data['controller'] = "Admin";
         $data['successPW'] = $this->session->flashdata('successPW');
-        $data['successEmail']= $this->session->flashdata('successEmail');
+        $data['successEmail'] = $this->session->flashdata('successEmail');
         //$data['successFirst']= $this->session->flashdata('successFirst');
         $idUser = $this->session->userdata("user")->username;
 
@@ -162,13 +162,13 @@ class Admin extends CI_Controller {
         $this->load->view("main/cnfdetails.php", $data);
         $this->load->view("template/footer.php");
     }
-    
-     public function dataconf($idconf) { //podaci o konferencijam
+
+    public function dataconf($idconf) { //podaci o konferencijam
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
         $controller = "";
         $data['controller'] = $controller;
-        
+
         $datacon = $this->Search_model->getInfoConf($idconf);
         $data['confinfo'] = $datacon;
         $this->load->view("template/header_" . $this->controller . ".php", $data);
@@ -215,7 +215,7 @@ class Admin extends CI_Controller {
     public function reviewerEmailInvitation() {
         $data['successSentEmail'] = $this->session->flashdata('successSentEmail');
         $this->loadView($data, "forms/admin_reviewer_email_invitation.php");
-        
+
 //        $this->load->view("main/admin_sidebar.php");
     }
 
@@ -249,18 +249,16 @@ class Admin extends CI_Controller {
         );
         $this->load->library('email', $config);
         $this->email->from($senderEmail, $full_name);
-         $data = array(
-
-       'userName'=> $username
-
-         );
+        $data = array(
+            'userName' => $username
+        );
         $this->email->set_newline("\r\n");
         $this->email->to($recipientEmail);
         $this->email->subject($subject);
-        $body = $this->load->view('template/email_template.php',$data,TRUE);
+        $body = $this->load->view('template/email_template.php', $data, TRUE);
         $this->email->message($messageEmail);
         $this->email->message($body);
-        
+
         $this->email->send();
         $this->email->print_debugger();
         $successSentEmail = $this->session->set_flashdata('successSentEmail', 'You have successfully sent a email!');
@@ -270,8 +268,8 @@ class Admin extends CI_Controller {
 
     // OVO TEK TREBA DA SE RADI
     public function reviewerInvitation() {
-        
-        $users= $this->Search_model->users();
+
+        $users = $this->Search_model->users();
         $data['users'] = $users;
         $mydata = $this->Search_model->conference();
         $data['mydata'] = $mydata;
@@ -284,19 +282,18 @@ class Admin extends CI_Controller {
         $this->load->view("forms/admin_reviewer_invitation.php", $data);
         $this->load->view("template/footer.php");
     }
-    
+
 //    TO DO
-    public function sendInv(){
+    public function sendInv() {
         $this->form_validation->set_rules('usernames', 'Usernames', 'required');
         $this->form_validation->set_rules('conferenc', 'conferenc', 'required');
         if ($this->form_validation->run() == FALSE) {
             $this->reviewerInvitation(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
         } else {
-        $usernames = $this->input->post("usernames");
-        $conferenc = $this->input->post("conferenc");
-        $this->ModelUser->reviewer_invitation($usernames, $conferenc);
-        redirect ("Admin/reviewerInvitation");        
-        
+            $usernames = $this->input->post("usernames");
+            $conferenc = $this->input->post("conferenc");
+            $this->ModelUser->reviewer_invitation($usernames, $conferenc);
+            redirect("Admin/reviewerInvitation");
         }
     }
 
@@ -430,30 +427,27 @@ class Admin extends CI_Controller {
         }
     }
 
-
-    
-
-    public function edit_My_Profile(){
-            $idUser = $this->session->userdata("user")->username;
-            $mydata = $this->ModelUser->myProfile($idUser);
-            $data['mydata'] = $mydata;
-            $data['controller'] = "Admin";
-            $this->loadView($data, "main/user_editmyprofile.php");
+    public function edit_My_Profile() {
+        $idUser = $this->session->userdata("user")->username;
+        $mydata = $this->ModelUser->myProfile($idUser);
+        $data['mydata'] = $mydata;
+        $data['controller'] = "Admin";
+        $this->loadView($data, "main/user_editmyprofile.php");
     }
-        
-        public function editMyProfile() {
-           //if ($this->input->post("submitMyEditProfile") !== NULL) {
-            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-            $this->form_validation->set_rules('first_name', 'First name', 'required');
-            $this->form_validation->set_rules('last_name', 'Last name', 'required');
-            $this->form_validation->set_rules('phone_number', 'Phone number', 'required');
-            $this->form_validation->set_rules('organisation', 'Organisation', 'required');
-            $this->form_validation->set_rules('date_of_birth', 'Date of birth', 'required');
-            $this->form_validation->set_message('valid_email','Your email address is invalid. Please enter a valid address.');
-            if ($this->form_validation->run()==FALSE)
-                $this->edit_My_Profile();
-            else {
-  
+
+    public function editMyProfile() {
+        //if ($this->input->post("submitMyEditProfile") !== NULL) {
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('first_name', 'First name', 'required');
+        $this->form_validation->set_rules('last_name', 'Last name', 'required');
+        $this->form_validation->set_rules('phone_number', 'Phone number', 'required');
+        $this->form_validation->set_rules('organisation', 'Organisation', 'required');
+        $this->form_validation->set_rules('date_of_birth', 'Date of birth', 'required');
+        $this->form_validation->set_message('valid_email', 'Your email address is invalid. Please enter a valid address.');
+        if ($this->form_validation->run() == FALSE)
+            $this->edit_My_Profile();
+        else {
+
             $iduser = $this->session->userdata("user")->iduser;
             $first_name = $this->input->post("first_name");
             $last_name = $this->input->post("last_name");
@@ -462,21 +456,19 @@ class Admin extends CI_Controller {
             $organisation = $this->input->post("organisation");
             $date_of_birth = $this->input->post("date_of_birth");
             $this->ModelRegistration->changeMyProfile($iduser, $first_name, $last_name, $phone_number, $email, $organisation, $date_of_birth);
-            $successEmail= $this->session->set_flashdata('successEmail', 'You have successfully changed your email address.');
-            if ($this->session->userdata('user')->coordinator == "1"){
-               $successEmail;
-                redirect('Admin/myProfile');     
-                
+            $successEmail = $this->session->set_flashdata('successEmail', 'You have successfully changed your email address.');
+            if ($this->session->userdata('user')->coordinator == "1") {
+                $successEmail;
+                redirect('Admin/myProfile');
             } else {
-               $successEmail;
+                $successEmail;
                 redirect('User/myProfile');
-                
             }
             //$successFirst= $this->session->set_flashdata('successFirst', 'You have successfully changed your first name.');
-            
-            }
-        } 
-   // }
+        }
+    }
+
+    // }
 
     public function selectprojectofconf() {
         $ididid = $this->input->post('idconference');
@@ -484,113 +476,141 @@ class Admin extends CI_Controller {
         $output = "";
         $result = $this->Search_model->myprojectofconf($ididid);
         $addinconf = $this->Search_model->addinconfproject($ididid);
-        $output .= '  
-      <div class="table-responsive">  
-           <table class="table table-bordered">  
-                    <tr>  
-                     <th width="5%">ID</th>  
-                     <th width="15%">First Name</th>  
-                     <th width="15%">Last Name</th>  
-                     <th width="40%">Project Name</th>  
+        $output .= '
+      <div class="table-responsive">
+           <table class="table table-bordered">
+                    <tr>
+                     <th width="5%">ID</th>
+                     <th width="15%">First Name</th>
+                     <th width="15%">Last Name</th>
+                     <th width="40%">Project Name</th>
                      <td width="5%"></td>
                      <td width="5%"></td>
                 </tr>';
         $output .= '<tr>  <td></td>
                 <td colspan="3"> <div class="input-group">
   <select class="custom-select" id="inputGroupSelect04" >';
-   foreach ($addinconf as $ap) {
-             $output .= '  <option data-id0="' . $ap["idproject"] . '"value="'.$ap["idproject"].'">' . $ap["first_name"] . ' ' . $ap["last_name"] . ' :  '. $ap["project_name"] .'</option>';
-                };
-              $output .= '  </select></div></td>
-                   <td colspan="2"><button type="button" name="btn_add"  id="btn_add" class="btn btn-xs btn-success">+</button></td>  
+        foreach ($addinconf as $ap) {
+            $output .= '  <option data-id0="' . $ap["idproject"] . '"value="' . $ap["idproject"] . '">' . $ap["first_name"] . ' ' . $ap["last_name"] . ' :  ' . $ap["project_name"] . '</option>';
+        };
+        $output .= '  </select></div></td>
+                   <td colspan="2"><button type="button" name="btn_add"  id="btn_add" class="btn btn-xs btn-success">+</button></td>
            </tr> ';
         if ($result !== 0) {
             foreach ($result as $row) {
-                $output .= '  
-                <tr'; 
-                $backgroundcolor="";
-                if($row["status"]==0){
-                    $backgroundcolor="#97bbf4";
+                $output .= '
+                <tr';
+                $backgroundcolor = "";
+                if ($row["status"] == 0) {
+                    $backgroundcolor = "#97bbf4";
+                } elseif ($row["status"] == 1) {
+                    $backgroundcolor = "#c7ffb5";
+                } elseif ($row["status"] == 2) {
+                    $backgroundcolor = "#fdffba";
+                } elseif ($row["status"] == 3) {
+                    $backgroundcolor = "#ffebbc";
+                } elseif ($row["status"] == 4) {
+                    $backgroundcolor = "#d2afff";
+                } else {
+                    $backgroundcolor = "#ffa5a5";
                 }
-                elseif($row["status"]==1){
-                    $backgroundcolor="#c7ffb5";
-                }
-                 elseif($row["status"]==2){
-                    $backgroundcolor="#fdffba";
-                }
-                 elseif($row["status"]==3){
-                    $backgroundcolor="#ffebbc";
-                }
-                 elseif($row["status"]==4){
-                    $backgroundcolor="#d2afff";
-                }else{
-                    $backgroundcolor="#ffa5a5";
-                }
-              $output .= ' style="background-color:' . $backgroundcolor . '" >  
-                     <td>' . $row["idproject"] . '</td>  
-                     <td class="first_name" data-id1="' . $row["idproject"] . '" >' . $row["first_name"] . '</td>  
-                     <td class="last_name" data-id2="' . $row["idproject"] . '" >' . $row["last_name"] . '</td>  
-                     <td class="last_name" data-id2="' . $row["idproject"] . '" >' . $row["project_name"] . '</td> 
+                $output .= ' style="background-color:' . $backgroundcolor . '" >
+                     <td>' . $row["idproject"] . '</td>
+                     <td class="first_name" data-id1="' . $row["idproject"] . '" >' . $row["first_name"] . '</td>
+                     <td class="last_name" data-id2="' . $row["idproject"] . '" >' . $row["last_name"] . '</td>
+                     <td class="last_name" data-id2="' . $row["idproject"] . '" >' . $row["project_name"] . '</td>
                       <td><form method="post" action="projectinfo">
                             <button name="info" type="submit" value="' . $row["idproject"] . '" class="btn btn-xs btn-info btn_info">Info</button>
                            </form></td>
-                     <td><button type="button" name="delete_btn" data-id3="' . $row["idproject"] . '" class="btn btn-xs btn-danger btn_delete">x</button></td>  
-                </tr>';}
+                     <td><button type="button" name="delete_btn" data-id3="' . $row["idproject"] . '" class="btn btn-xs btn-danger btn_delete">x</button></td>
+                </tr>';
+            }
         } else {
-            $output .= '<tr>  
-                          <td colspan="5">Data not Found</td>  
-                     </tr>'; }
-        $output .= '</table>  
-      </div>';
-        echo $output; 
+            $output .= '<tr>
+                          <td colspan="5">Data not Found</td>
+                     </tr>';
         }
-    public function deleteprojectformconf() {
-        $idproject = $this->input->post('id');
-         $this->Search_model->delete_projectformconf($idproject);
-         echo 'Project Deleted from Conference'; 
+        $output .= '</table>
+      </div>';
+        echo $output;
     }
+
+    public function deleteprojectformconf() {
+
+        $idproject = $this->input->post('id');
+        $this->Search_model->delete_projectformconf($idproject);
+        echo 'Project Deleted from Conference';
+    }
+
+    public function delete_from_conf() {
+        $idproject = $this->input->post('idprojfordelete');
+        $this->Search_model->delete_projectformconf($idproject);
+        redirect('Admin/projects');
+    }
+
     public function projectinfo() {
         $idproject = $this->input->post('info');
-        $datainfo=$this->Search_model->projectinfo($idproject);
-        
-        $coautors=$this->Search_model->coautors($idproject);
-        $feildconf=$this->Search_model->fieldformconforproj($idproject);
-        $idconf= $feildconf[0]['idconference'];
-        $data['idconfeee']=$idconf;
-        $revisors=$this->Search_model->listofrewincof($idconf);
-        $data['rew']=$revisors;
-        $data['fieldpi']=$feildconf;
-        $data['coautor']=$coautors;
-        $data['projinfo']=$datainfo;
+        $datainfo = $this->Search_model->projectinfo($idproject);
+
+        $coautors = $this->Search_model->coautors($idproject);
+        $feildconf = $this->Search_model->fieldformconforproj($idproject);
+        $idconf = $feildconf[0]['idconference'];
+        $data['idconfeee'] = $idconf;
+        $revisors = $this->Search_model->listofrewincof($idconf);
+        $data['rew'] = $revisors;
+        $data['fieldpi'] = $feildconf;
+        $data['coautor'] = $coautors;
+        $data['projinfo'] = $datainfo;
         $data['controller'] = "Admin";
-        
+
         $this->loadView($data, "main/admin_project_info.php");
-}
+    }
+
     public function addprojectformconf() {
         $idproject = $this->input->post('id');
-         $this->Search_model->add_projectformconf($idproject);
-         echo 'Project ADDED to Conference'; 
+        $this->Search_model->add_projectformconf($idproject);
+        echo 'Project ADDED to Conference';
     }
+
     public function get_competence() {
         $idconference = $this->input->post('idconf');
         $idreviewer = $this->input->post('idreviewer');
-        $mark = $this->Search_model->get_competenceofrew($idreviewer,$idconference);
+        $mark = $this->Search_model->get_competenceofrew($idreviewer, $idconference);
         if (count($mark) > 0) {
             $listofmark = '';
             $listofmark .= '
             <table class="table"><thead> <tr>';
- foreach ($mark as $fi) { 
-           $listofmark .= ' <th scope="col-6"> &nbsp &nbsp'.$fi['competence_level'].'</th>';  } 
+            foreach ($mark as $fi) {
+                $listofmark .= ' <th scope="col-6"> &nbsp &nbsp' . $fi['competence_level'] . '</th>';
+            }
 
             $listofmark .= '        </tr>
                 </thead></table>';
             echo $listofmark;
         }
     }
-    public function return_to_author() {
-        $idproject= $this->input->post('idprojforreturn');
-        $this->Search_model->ReturnToAutor($idproject);
-        redirect('Admin/project');  
-    }
-}
 
+    public function return_to_author() {
+        $idproject = $this->input->post('idprojforreturn');
+        $this->Search_model->ReturnToAutor($idproject);
+        redirect('Admin/projects');
+    }
+
+    public function send_to_rewiers() {
+        $date = $this->input->post('date_of_birth');
+        $idproject = $this->input->post('idprojforsend');
+        $idreviewer1 = $this->input->post('rewuer1');
+        $this->Search_model->Send_to_review($idreviewer1, $idproject, $date);
+        $idreviewer2 = $this->input->post('rewuer2');
+        $this->Search_model->Send_to_review($idreviewer2, $idproject, $date);
+        $this->Search_model->Send_to_reviewstatus($idproject);
+        redirect('Admin/projects');
+    }
+
+    public function alowprojinconf() {
+        $idproject = $this->input->post('idprojforadd');
+        $this->Search_model->projinconffinal($idproject);
+        redirect('Admin/projects');
+    }
+
+}
