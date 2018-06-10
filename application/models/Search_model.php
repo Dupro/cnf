@@ -10,9 +10,9 @@ class Search_model extends CI_Model {
     function fetch_data($var) {
         $query = $this->db->query("SELECT u.first_name, u.last_name, p.project_name FROM autor as a
             join user as u on u.iduser = a.user_iduser
-            join project as p on p.idproject = a.project_idproject where
+            join project as p on p.idproject = a.project_idproject where status='1' and core=iduser and (
 u.first_name LIKE '%{$var}%' OR u.last_name LIKE '%{$var}%' OR
-p.project_name LIKE '%{$var}%'");
+p.project_name LIKE '%{$var}%')");
 
 //$query= $this->db->query("SELECT first_name, last_name, project_name FROM user, autor, project
 //WHERE iduser=user_iduser AND project_idproject= idproject and
