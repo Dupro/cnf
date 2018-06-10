@@ -347,21 +347,21 @@ class Admin extends CI_Controller {
             $successAddConf = $this->session->set_flashdata('successAddConf', 'You have successfully created a new conference!');
             $this->ModelRegistration->userHasConference($idconf, $iduser);
 
-
-            $config['upload_path'] = './image/conference/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size'] = 2048;
-            $config['max_width'] = 2048;
-            $config['max_height'] = 1080;
-            $config['file_name'] = "conference_" . $idconf;
-
-            $this->load->library('upload', $config);
-            if (!file_exists("image/conference/conference_" . $idconf . ".jpg")) {
-                $this->upload->do_upload('imageConf');
-            } else if (file_exists("image/conference/conference_" . $idconf . ".jpg")) {
-                unlink('image/conference/' . "conference_" . $idconf . ".jpg");
-                $this->upload->do_upload('imageConf');
-            }
+//
+//            $config['upload_path'] = './image/conference/';
+//            $config['allowed_types'] = 'gif|jpg|png';
+//            $config['max_size'] = 2048;
+//            $config['max_width'] = 2048;
+//            $config['max_height'] = 1080;
+//            $config['file_name'] = "conference_" . $idconf;
+//
+//            $this->load->library('upload', $config);
+//            if (!file_exists("image/conference/conference_" . $idconf . ".jpg")) {
+//                $this->upload->do_upload('imageConf');
+//            } else if (file_exists("image/conference/conference_" . $idconf . ".jpg")) {
+//                unlink('image/conference/' . "conference_" . $idconf . ".jpg");
+//                $this->upload->do_upload('imageConf');
+//            }
             $successAddConf;
             redirect("Admin/index");
         }

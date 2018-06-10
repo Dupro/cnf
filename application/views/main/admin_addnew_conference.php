@@ -54,7 +54,7 @@
             <div>
                 <!--<label for="files" class="btn btn-info">Select Image</label>-->
                 <!--<input id="files" style="visibility:hidden; ili display:none" type="file">-->
-                <input id="files"  type="file" name="imageConf" size="20">
+                <!--<input id="files"  type="file" name="imageConf" size="20">-->
             </div><br>
         
         <input type="submit" class="btn btn-success" value="Create">
