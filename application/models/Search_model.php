@@ -195,6 +195,12 @@ competence.reviewer_idreviewer=idreviewer and competence.conference_has_field_id
         $this->db->update('project');
     }
 
+    public function reviewerofproject($data) {
+        $query = $this->db->query("select * from review,user, reviewer where project_idproject=" . $data . " and reviewer_idreviewer=idreviewer and user_iduser=iduser");
+        $result = $query->result_array();
+        return $result;
+    }
+
 }
 
 //

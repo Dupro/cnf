@@ -551,12 +551,13 @@ class Admin extends CI_Controller {
     public function projectinfo() {
         $idproject = $this->input->post('info');
         $datainfo = $this->Search_model->projectinfo($idproject);
-
+        $dataofreviewers = $this->Search_model->reviewerofproject($idproject);
         $coautors = $this->Search_model->coautors($idproject);
         $feildconf = $this->Search_model->fieldformconforproj($idproject);
         $idconf = $feildconf[0]['idconference'];
         $data['idconfeee'] = $idconf;
         $revisors = $this->Search_model->listofrewincof($idconf);
+        $data['rewersinf'] = $dataofreviewers;
         $data['rew'] = $revisors;
         $data['fieldpi'] = $feildconf;
         $data['coautor'] = $coautors;
