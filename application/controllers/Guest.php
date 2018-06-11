@@ -152,7 +152,7 @@ class Guest extends CI_Controller {
     public function dataconf($idconf) { //podaci o konferencijam
         $conference_data = $this->Search_model->conference();
         $data['confdata'] = $conference_data;
-        $controller = "";
+        $controller = "Guest";
         $data['controller'] = $controller;
         
         $datacon = $this->Search_model->getInfoConf($idconf);
