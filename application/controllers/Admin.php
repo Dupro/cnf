@@ -249,15 +249,10 @@ class Admin extends CI_Controller {
         );
         $this->load->library('email', $config);
         $this->email->from($senderEmail, $full_name);
-        $data = array(
-            'userName' => $username
-        );
         $this->email->set_newline("\r\n");
         $this->email->to($recipientEmail);
         $this->email->subject($subject);
-        $body = $this->load->view('template/email_template.php', $data, TRUE);
         $this->email->message($messageEmail);
-        $this->email->message($body);
 
         $this->email->send();
         $this->email->print_debugger();

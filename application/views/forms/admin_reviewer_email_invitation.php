@@ -13,12 +13,12 @@
     <label for="subject">Subject:</label> <br>
     <input type="text" class="form-control col-6" id="subject" name="subject" value="<?php echo set_value('subject'); ?>"><br>
     
-    <label for="username_reviewer">Username for reviewer:</label> <br>
-    <input type="text" class="form-control col-6" id="username_reviewer" name="username_reviewer" value="<?php echo set_value('username_reviewer'); ?>"><br>
+<!--    <label for="username_reviewer">Username for reviewer:</label> <br>
+    <input type="text" class="form-control col-6" id="username_reviewer" name="username_reviewer" value="<?php // echo set_value('username_reviewer'); ?>"><br>
     
     <label for="password_reviewer">Password for reviewer:</label> <br>
-    <input type="text" class="form-control col-6" id="password_reviewer" name="password_reviewer" value="<?php echo set_value('password_reviewer'); ?>"><br>
-    
+    <input type="text" class="form-control col-6" id="password_reviewer" name="password_reviewer" value="<?php // echo set_value('password_reviewer'); ?>"><br>
+    -->
     <label for="messageEmail">Message:</label> <br>
     <textarea name="messageEmail" class="form-control col-8" id="messageEmail" rows="10" cols="80" value="<?php echo set_value('messageEmail'); ?>"></textarea><br>
     
