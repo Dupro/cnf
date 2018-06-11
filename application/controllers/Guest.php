@@ -95,11 +95,11 @@ class Guest extends CI_Controller {
             $this->ModelUser->username = $this->input->post('username');
             if (!$this->ModelUser->usernameExist()){
                 $this->login("Incorrect username!");
-            redirect("Guest/index");}
+            }
             else if (!$this->ModelUser->correctPassword($this->input->post('password'))){
                 $this->login("Incorrect password!");
             
-            redirect("Guest/index");}
+            }
             else if ($this->ModelUser->coordinatorExist() == TRUE) {
                 $this->session->set_userdata('user', $this->ModelUser);
                 redirect("Admin/index");
