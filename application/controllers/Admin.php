@@ -184,7 +184,7 @@ class Admin extends CI_Controller {
         else
             $indexnum = 0;
 
-        $limit = 4;
+        $limit = 6;
         $conferencenum = $this->db->count_all('conference');
         $data['confdatapag'] = $this->Search_model->myconference($idUser, $limit, $indexnum);
 

@@ -119,7 +119,7 @@ where idconference=conference_idconference and idproject=conference_has_project.
     }
 
     public function projectinfo($param) {
-        $query = $this->db->query("SELECT * FROM project, user, autor where user_iduser=iduser and project_idproject=idproject and idproject=" . $param . " ");
+        $query = $this->db->query("SELECT * FROM project, user, autor where user_iduser=iduser and project_idproject=idproject and iduser=project.core and idproject=" . $param . " group by idproject ");
 
         $result = $query->result_array();
         return $result;
