@@ -361,6 +361,36 @@ class Admin extends CI_Controller {
             redirect("Admin/index");
         }
     }
+        public function addnewField(){
+        
+        $field_data= $this->Search_model->all_field();
+        $data['field_data'] = $field_data;
+        $data['controller'] = "Admin";
+        
+        $this->load->view("template/header_" . $this->controller . ".php", $data);
+        $this->load->view("main/admin_sidebar.php");
+        $this->load->view("main/admin_addnew_field.php", $data);
+        $this->load->view("template/footer.php");
+    }
+        public function createField($message = NULL){
+            $data = array();
+        if ($message)
+            $data['message'] = $message;
+
+        $this->form_validation->set_rules('fieldName', 'Field name', 'required|min_length[4]');
+        $this->form_validation->set_message("required", "Field {field} is empty.");
+        
+        if ($this->form_validation->run() == FALSE) {
+            $this->addnewField(); // ne treba redirect jer na refresh treba da proba da opet nesto doda
+        } else {
+            $fieldName = $this->input->post("fieldName");
+            $idfield = $this->ModelRegistration->newField($fieldName);
+            $successAddField;
+            redirect("Admin/index");
+        }
+        
+        
+        }
 
 //    DODAVANJE SLIKE U CONF
     public function addConfImage() {

@@ -45,6 +45,12 @@ class ModelRegistration extends CI_Model {
         $id = $this->db->insert_id();
         return $id;
     }
+    public function newField($fieldName) {
+        $this->db->set("name_field", $fieldName);
+        $this->db->insert("field");
+        $id = $this->db->insert_id();
+        return $id;
+    }
     public function confHasField($idfield, $idconf){
         $this->db->set("field_idfield", $idfield);
         $this->db->set("conference_idconference", $idconf);
